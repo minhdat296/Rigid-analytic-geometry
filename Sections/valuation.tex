@@ -1,0 +1,220 @@
+\section{Adic rings}
+    \subsection{Valuations}
+        \subsubsection{Valuation rings}
+            \begin{definition}[Valuation rings] \label{def: valuation_rings}
+                \noindent
+                \begin{enumerate}
+                    \item \textbf{(Domination):} Let $K$ be a field, let $(B, \m_B)$ be \textit{local} subrings of $K$, and let $(A, \m_A)$ be a \textit{local} subring of $B$. Within such a setup, we say that \textbf{$B$ dominates $A$} if and only if:
+                        $$\m_A = \m_B \cap A$$
+                    Note that within every field, local subrings form a (possibly empty and possibly uncountable) poset of dominations, which can be roughly depicted by the following tower:
+                        $$
+                            \begin{tikzcd}
+                            	K \\
+                            	\vdots \\
+                            	{(B, \m)} \\
+                            	{(B_1, \m_1)} \\
+                            	\vdots \\
+                            	{(B_n, \m_n)} \\
+                            	\vdots
+                            	\arrow[no head, from=5-1, to=4-1]
+                            	\arrow[no head, from=6-1, to=5-1]
+                            	\arrow[no head, from=7-1, to=6-1]
+                            	\arrow[no head, from=3-1, to=2-1]
+                            	\arrow[no head, from=2-1, to=1-1]
+                            	\arrow[no head, from=4-1, to=3-1]
+                            \end{tikzcd}
+                        $$
+                    Observe that for all fixed local subring $(B, \m)$ and any local subring $(B_n, \m_n)$ dominated by $(B, \m)$, it is inductively true that:
+                        $$\m_n = \m \cap \bigcap_{j \leq n} B_j$$
+                    \item \textbf{(Valuation rings):} A local integral domain $(\scrV, \m)$ is called a \textbf{valuation ring} if and only if it is maximal among the poset of dominations between local subrings of its field of fractions (should such a maximal element even exist). Note that there is no mention of uniqueness nor universality of valuation rings as a maximal local subring of its field of fractions.
+                    \item \textbf{(Centering):} A valuation ring $(\scrV, \m)$ is \textbf{centered} if and only if there are \textit{proper} subrings $B$ of its field of fractions containing $(\scrV, \m)$. In cruder terms, a valuation ring is centered if one can manage to \say{squeeze} rings in between it and its field of fractions.
+                \end{enumerate}
+            \end{definition}
+            
+            Alright, we will admit it: it is entirely unclear how valuation rings as deifned in definition \ref{def: valuation_rings} might have anything to do with valuations (i.e. \say{generalised absolute values}) whatsoever. Worry not, as these notions are intimately related, as their names suggest. However, establishing this link is not so much of a trivial process, which we shall subdivide into a few steps.
+            
+            Let us start with the existence and uniqueness of valuation rings within fields. 
+            \begin{lemma}[Existence and uniqueness of valuation rings] \label{lemma: valuation_rings_existence_and_uniqueness}
+                \noindent
+                \begin{enumerate}
+                    \item \textbf{(Existence):} Let $K$ be a field and let $(A, \m_A)$ be a local subring. Then, there exists a valuation ring $(\scrV, \m)$ with fraction field $K$ that dominates $(A, \m_A)$.
+                    \item \textbf{(Uniqueness):} Let $(\scrV, \m)$ be a valuation ring with field of fractions $K$. Then, given any $x \in K$, then:
+                        $$\forall x \in K: (x \in \scrV) \vee (x^{-1} \in \scrV)$$
+                    Conversely, given any local subring $(A, \m)$ of a field $K$ such that:
+                        $$\forall x \in K: (x \in A) \vee (x^{-1} \in A)$$
+                    then such a local subring is a valuation ring. This is to say, that the uniqueness of valuation rings within their field of fractions is up to the above condition.
+                \end{enumerate}
+            \end{lemma}
+                \begin{proof}
+                    \noindent
+                    \begin{enumerate}
+                        \item \textbf{(Existence):} Suppose for the sake of deriving a contradiction, that there exists a field $K$ whose poset of local subrings is non-empty and without maximal elements, and not that by definition, this is the same as suppose that our field $K$ does not contain a local subring that is a valuation ring (such a valuation ring, should it exist, would always dominate other local subrings of $K$; cf. definition \ref{def: valuation_rings}). Now, when we view the poset of local subrings of $K$ as a diagram category, we shall see that the morphisms therein are nothing but monomorphisms of commutative rings (which are local \textit{a priori}). Because of this, the union taken over this diagram (i.e. the filtered colimit of local subrings of $K$) must also be a local subring of $K$, owing to the fact that finite limits commute with filtered colimits. But hold on a minute, we have just built $K$ to not contain a maximal local strict subring, so now, it shall suffice to show that the above union of local subrings of $K$ is not $K$ itself.
+                        \item \textbf{(Uniqueness):}
+                    \end{enumerate}
+                \end{proof}
+                
+            \begin{example}[Some obvious valuation rings] \label{example: valuation_rings}
+                \noindent
+                \begin{enumerate}
+                    \item \textbf{($p$-adic integers):}
+                    \item \textbf{($p$-torsion-free rings):}
+                    \item \textbf{(Related: Pr\"ufer domains):}
+                    \item \textbf{(Fields):} Fields are trivially valuation rings. 
+                \end{enumerate}
+            \end{example}
+            
+            \begin{proposition}[Colimits of valuation rings] \label{prop: colimits_of_valuation_rings}
+                \noindent
+                \begin{enumerate}
+                    \item A filtered colimit of valuation ring is itself a valuation ring.
+                    \item Localisations and quotients of valuation rings at primes are again valuation rings. 
+                \end{enumerate}
+            \end{proposition}
+                \begin{proof}
+                    
+                \end{proof}
+                
+            \begin{proposition}[Extensions of valuation rings] \label{prop: extensions of valuation rings}
+                Let $(\scrV', \m_{\scrV'})$ be a valuation with fraction field $K'$, and let $K$ be an arbitrary subfield of $K'$. Then, the valuation ring $(\scrV', \m_{\scrV'})$ extends down to a (necessarily unqiue) valuation ring $(\scrV, \m_{\scrV})$ of $K$, which is given by:
+                    $$\scrV = \scrV' \cap K$$
+            \end{proposition}
+        
+        \subsubsection{Value groups}
+            \begin{definition}[Valuations] \label{def: valuations}
+                Let $\scrV$ be a valuation ring with field of fractions $K$. Then, a \textbf{valuation} on $K$ is an \textit{injective} group homomorphism:
+                    $$v: K^{\x} \to \Gamma$$
+                into a \textit{totally ordered} abelian group $(\Gamma, \leq)$ (like $\Z$ or $\R$, for instance) such that:
+                    $$v(x + y) \geq \min(v(x), v(y))$$
+                for all $x, y \in K^{\x}$. So-called \textbf{discrete valuations} are those taking values in $\Z$. 
+            \end{definition}
+            
+            \begin{lemma}[Valuations attached to valuation rings]
+                Attached to every valuation ring is a valuation, which needs not be unique ($\Q$ for instance, has many associated valuations). 
+            \end{lemma}
+                \begin{proof}
+                    
+                \end{proof}
+            \begin{theorem}[Principality and locality of valuation rings] \label{theorem: principality_and_locality_of_valuation rings}
+                A commutative ring $\scrV$ is a valuation ring if and only if it is a local domain wherein every finitely generated ideal is principal.
+            \end{theorem}
+                \begin{proof}
+                    \noindent
+                    \begin{enumerate}
+                        \item  
+                        \item 
+                    \end{enumerate}
+                \end{proof}
+            
+    \subsection{Linearly topologised rings and modules}
+        \subsubsection{Formal completions}
+            \begin{definition}[Adic modules] \label{def: adic_modules}
+                Let $A$ be a commutative ring and let $\m$ be an ideal thereof, which henceforth shall be referred to as the \textbf{ideal of definition} of $A$.
+                    \begin{enumerate}
+                        \item \textbf{(Adic rings):} 
+                            \begin{enumerate}
+                                \item \textbf{(Adic topologies):} Let $M$ be an $A$-module. Then, one can equip $M$ with the so-called \textbf{$\m$-adic topology} if and only if the sequence $\{\m^nM\}_{n \in \N}$ forms a system of open neighbourhoods inside $M$. The $A$-module $M$, in such a situation and when viewed as a topological module, shall be known as an \textbf{$\m$-adic module}.
+                                \item \textbf{(Adic rings):} To avoid terminology confusions that might arise from the somewhat liberal use of the word \say{adic} in various differing contexts, let us declare an \textbf{adic ring} to be a commutative ring $A$, viewed as a module over itself, that carries an $\m$-adic topology, with $\m$ an ideal thereof. 
+                            \end{enumerate}
+                        \item \textbf{(Formal completions):} The \textbf{$\m$-adic formal completion} of an $A$-module $M$ is nothing but the limit:
+                            $$(M, \m)^{\wedge} \cong \underset{n \in \N}{\lim} M/\m^{n + 1}M$$
+                    \end{enumerate}
+            \end{definition}
+            \begin{example}
+                The archetypal examples of adic rings are $\Z_p$ and $\F_p[\![t]\!]$ (for some prime $p$); these are complete with respect to the obvious $p$-adic and $t$-adic topologies respectively.
+            \end{example}
+            \begin{remark}
+                Our \say{adic rings} are also commonly known throughout the literature as \say{(adic) formal completions}, but we would like to avoid this terminology unless:
+                    \begin{itemize}
+                        \item either the ring in question is actually topologically complete, or
+                        \item we are working purely algebraically and do not have to worry about topologies.
+                    \end{itemize}
+            \end{remark}
+            
+            \begin{remark}[Basic properties of formal completions] \label{remark: basic_properties_of_formal_completions}
+                Fix a commutative ring $A$ and an ideal of definition $\m$. The following properties are entirely categorical, and for the most part come from the fact that filtered limits commute with other limits and finite colimits \textit{a priori}:
+                    \begin{itemize}
+                        \item Let $\{M_i\}_{i \in I}$ be a \textit{discrete} diagram of $A$-modules. Then, the process of taking its coproduct both commute with the process of formally $\m$-adically completing the factors $M_i$, i.e.:
+                            $$\coprod_{i \in I} M_i^{\wedge} \cong \left(\coprod_{i \in I} M_i\right)^{\wedge}$$
+                        Furthermore, if the index category $I$ is a finite set, then:
+                            $$\prod_{i \in I} M_i^{\wedge} \cong \left(\prod_{i \in I} M_i\right)^{\wedge}$$
+                        and in fact:
+                            $$\bigoplus_{i \in I} M_i^{\wedge} \cong \left(\bigoplus_{i \in I} M_i\right)^{\wedge}$$  
+                        \item Let $M \to N$ either be a monomorphism or epimorphism of $A$-modules. Its formal $\m$-adic completion will also either be a monomorphism or an epimorphism, respectively.
+                        \item The $\m$-adic formal completion of the zero module is still the zero module.
+                        \item If $\{M_i\}_{i \in I}$ is any diagram of $A$-modules, then:
+                            $$\underset{i \in I}{\colim} M_i^{\wedge} \cong \left(\underset{i \in I}{\colim} M_i\right)^{\wedge}$$
+                        \item By the tensor-hom adjunction and the fact that left-adjoints preserve colimits, one has:
+                            $$(M \tensor N)^{\wedge} \cong M^{\wedge} \tensor N^{\wedge}$$
+                        for all $A$-modules $M$ and $N$. This is actually a rather ubiquitous fact in the theory of adic modules, and hence has been graced with a special notation: $(M \tensor N)^{\wedge} \cong M \hat{\tensor} N$, the so-called \textbf{completed tensor product}.
+                        
+                        Furthermore, thanks to the fact that internal hom-functors preserve limits in their second entries and are contravariant in their first entries, one has:
+                            $$[M^{\wedge}, N^{\wedge}] \cong [M, N]^{\wedge}$$
+                        and again, for all $M, N \in A\mod$.
+                    \end{itemize}
+            \end{remark}
+            
+            \begin{proposition}[Formal completions along annihilating ideals] \label{prop: formal_completions_along_annihilating_ideals}
+                Let $A$ be a commutative ring and let $\m$ be an $A$-ideal such that there exists a power $I^n$ that annhilates some $A$-module $Q$, and suppose that $Q$ fits into the following short exact sequence of $A$-modules:
+                    $$0 \to N \to M \to Q \to 0$$
+                The formal $\m$-adic completion of this short exact sequence shall be the following short exact sequence:
+                    $$0 \to M^{\wedge} \to N^{\wedge} \to Q \to 0$$
+            \end{proposition}
+                \begin{proof}
+                    This is entirely categorical.
+                \end{proof}
+        
+        \subsubsection{Topologically complete adic modules}
+            Formally complete adic modules need not be legitimately complete, as eluded to above, but we can impose conditions upon the ideal of definition to guarantee topological completeness. In essence, one is applying the \textbf{Urysohn Metrisation Theorem}, which asserts that every second-countable regular Hausdorff space is (ultra-)metrisable; we will then construct an explicit metric on adic completions, with which we will be able to check the convergence of Cauchy sequences.
+            
+            Let us first recall the aforementioned topological notions:
+            \begin{definition}
+                Let $(X, \T_X)$ be a topological space.
+                    \begin{itemize}
+                        \item \textbf{(Second-countability):} $(X, \T_X)$ is said to be \textbf{second-countable} if and only if its topology $\T_X$ has a \textit{countable} basis.
+                        \item \textbf{(Regularity):} $(X, \T_X)$ is regular if for all $x \in X$ and all closed subset $Z \not \ni x$ of $X$, there exists an open neighbourhood $U \ni x$ and another $W \supseteq Z$ such that $U \cap W = \varnothing$.
+                        \item \textbf{(Metrisability)} $(X, \T_X)$ is said to be \textbf{(ultra-)metrisable} if and only if one can construct a(n) (ultra-)metric on it.
+                    \end{itemize}
+            \end{definition}
+            \begin{theorem}[The Urysohn Metrisation Theorem] \label{theorem: urysohn_metrisation_theorem}
+                Every second-countable regular Hausdorff space is (ultra-)metrisable.
+            \end{theorem}
+                \begin{proof}
+                    
+                \end{proof}
+            
+            Let us now apply the Urysohn Metrisation Theorem via the following lemma:
+            \begin{lemma}
+                Let $A$ be a commutative ring, let $\m$ be an ideal thereof, and let $M$ be an $A$-module. Then:
+                    \begin{enumerate}
+                        \item the formal $\m$-adic completion $(M, \m)^{\wedge}$ carries the $\m$-adic topology,
+                        \item $(M, \m)^{\wedge}$ is second-countable, 
+                        \item $(M, \m)^{\wedge}$ is furthermore regular, and
+                        \item $(M, \m)^{\wedge}$ is Hausdorff.
+                    \end{enumerate}
+            \end{lemma}
+                \begin{proof}
+                    \noindent
+                    \begin{enumerate}
+                        \item 
+                        \item 
+                        \item 
+                        \item 
+                    \end{enumerate}
+                \end{proof}
+            \begin{corollary}
+                Let $A$ be a commutative ring, let $\m$ be an ideal thereof, and let $M$ be an $A$-module. Then $(M, \m)^{\wedge}$ is ultra-metrisable.
+            \end{corollary}
+            \begin{proposition}[Topological completeness of adic modules] \label{prop: topologically_complete_adic_modules}
+                Let $A$ be a commutative ring, let $\m$ be an ideal thereof, and let $M$ be an $A$-module. Then:
+                    \begin{enumerate}
+                        \item \textbf{(Topological completeness):} The formal $\m$-adic completion $(M, \m)^{\wedge}$ is topologically complete if $\m$ is finitely generated over $A$.
+                        \item \textbf{(The fundamental system of neighbourhoods):} For every point $x \in M$, sequence of cosets $\{x + \m^nM\}_{n \in \N}$ forms a system of open neighbourhoods of $x$.
+                    \end{enumerate}
+            \end{proposition}
+                \begin{proof}
+                    \noindent
+                    \begin{enumerate}
+                        \item \textbf{(Topological completeness):}
+                        \item \textbf{(The fundamental system of neighbourhoods):} It will suffice to show the assertion for $x = 0$.
+                    \end{enumerate}
+                \end{proof}
