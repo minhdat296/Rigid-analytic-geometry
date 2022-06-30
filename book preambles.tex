@@ -1,4 +1,4 @@
-\documentclass[a4paper, 11pt]{article}
+\documentclass[a4paper, 11pt]{book}
 
 %\usepackage[center]{titlesec}
 
@@ -11,11 +11,10 @@
 \usepackage{pdfrender, xcolor}
 %\pdfrender{StrokeColor=black,LineWidth=.4pt,TextRenderingMode=2}
 
-%\usepackage{minitoc}
-%\setcounter{section}{-1}
-%\setcounter{tocdepth}{}
-%\setcounter{minitocdepth}{}
-%\setcounter{secnumdepth}{}
+\usepackage{minitoc}
+\setcounter{tocdepth}{5}
+\setcounter{minitocdepth}{5}
+\setcounter{secnumdepth}{5}
 
 \usepackage{graphicx}
 
@@ -66,7 +65,6 @@
 %\usepackage{amssymb}
 %\usepackage{amsthm}
 \renewcommand\qedsymbol{$\blacksquare$}
-
 \usepackage{tikz-cd}
 \tikzcdset{scale cd/.style={every label/.append style={scale=#1},
     cells={nodes={scale=#1}}}}
@@ -121,10 +119,10 @@
 \let\endchangemargin=\endlist 
 
 %   Generate the environment for the abstract:
-%\newcommand\summaryname{Abstract}
-%\newenvironment{abstract}%
-    %{\small\begin{center}%
-    %\bfseries{\summaryname} \end{center}}
+\newcommand\summaryname{Abstract}
+\newenvironment{abstract}%
+    {\small\begin{center}%
+    \bfseries{\summaryname} \end{center}}
 
 \newtheorem{theorem}{Theorem}[section]
     \numberwithin{theorem}{subsection}

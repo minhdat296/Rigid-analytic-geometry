@@ -1,11 +1,10 @@
-\input{article preambles}
+\input{book preambles}
 
-\setcounter{section}{-1}
+\setcounter{chapter}{-1}
 
 \input{commands}
 
 \begin{document}
-
 	\title{Rigid-analytic geometry}
 	
 	\author{Dat Minh Ha}
@@ -21,13 +20,42 @@
       \tableofcontents %sort sections alphabetically
     }
     
-    \input{Sections/introduction}
+    \input{Chapters/introduction}
     
-    \input{Sections/adic spaces}
+    \chapter{Deformation theory}
+        \begin{abstract}
+            
+        \end{abstract}
+        
+        \minitoc
     
-    \begin{appendices}
-        \input{Appendices/valuation}
-    \end{appendices}
+        \input{Chapters/Deformation theory/cotangent complexes}
+        
+        \input{Chapters/Deformation theory/deformation theory}
+        
+        \input{Chapters/Deformation theory/artin's axioms for representability}
+    
+    \chapter{Formal geometry}
+        \begin{abstract}
+            
+        \end{abstract}
+        
+        \minitoc
+        
+        \input{Chapters/Formal geometry/formal algebraic spaces}
+        
+        \input{Chapters/Formal geometry/algebraisation of formal algebraic spaces}
+        
+        \input{Chapters/Formal geometry/algebraisation of coherent sheaves}
+    
+    \chapter{Adic spaces}
+        \begin{abstract}
+            
+        \end{abstract}
+        
+        \minitoc
+        
+        \input{Chapters/Adic spaces/adic spaces}
 	
 	\addcontentsline{toc}{section}{References}
 	\printbibliography

@@ -68,6 +68,7 @@
 \DeclareMathOperator{\lcm}{lcm}
 \newcommand{\gr}{\operatorname{gr}}
 \newcommand{\vol}{\mathrm{vol}}
+\newcommand{\ord}{\operatorname{ord}}
 
 \newcommand{\GL}{\operatorname{GL}}
 \newcommand{\SL}{\operatorname{SL}}
@@ -112,6 +113,8 @@
 \newcommand{\Sch}{\mathrm{Sch}}
 \newcommand{\Coh}{\mathrm{Coh}}
 \newcommand{\QCoh}{\mathrm{QCoh}}
+\newcommand{\Perf}{\mathrm{Perf}} %perfect complexes
+\newcommand{\Sing}{\mathrm{Sing}} %singularity categories
 \newcommand{\Desc}{\mathrm{Desc}}
 \newcommand{\Sh}{\mathrm{Sh}}
 \newcommand{\Psh}{\mathrm{PSh}}
@@ -200,11 +203,13 @@
 \newcommand{\Pres}{\mathrm{Pres}} %presentable categories
 \newcommand{\Noohi}{\mathrm{Noohi}} %category of Noohi groups
 \newcommand{\Inf}{\mathrm{Inf}}
+\newcommand{\LPar}{\mathrm{LPar}} %Langlands parameters
 
 \newcommand{\Aut}{\mathrm{Aut}}
 \newcommand{\Inn}{\mathrm{Inn}}
 \newcommand{\Out}{\mathrm{Out}}
-\newcommand{\frakgl}{\mathfrak{gl}}
+\newcommand{\gl}{\mathfrak{gl}}
+\renewcommand{\sl}{\mathfrak{sl}}
 \newcommand{\der}{\mathfrak{der}} %derivations on Lie algebras
 \newcommand{\inn}{\mathfrak{inn}} %inner derivations
 \newcommand{\out}{\mathfrak{out}} %outer derivations
@@ -230,6 +235,8 @@
 \newcommand{\sk}{\mathrm{sk}} %skeleton of a category
 \newcommand{\eqv}{\mathrm{eqv}} %functor that maps groups $G$ to $G$-sets
 \newcommand{\Inert}{\mathrm{Inert}}
+\newcommand{\Fil}{\mathrm{Fil}}
+\newcommand{\Prim}{\mathfrak{Prim}}
 
 \newcommand{\colim}{\operatorname{colim} \:}
 \renewcommand{\lim}{\operatorname{lim} \:}
@@ -237,6 +244,12 @@
 %\newcommand{\tensor}{\otimes}
 \NewDocumentCommand{\tensor}{e{_^}}{%
   \mathbin{\mathop{\otimes}\displaylimits
+    \IfValueT{#1}{_{#1}}
+    \IfValueT{#2}{^{#2}}
+  }%
+}
+\NewDocumentCommand{\semidirect}{e{_^}}{%
+  \mathbin{\mathop{\rtimes}\displaylimits
     \IfValueT{#1}{_{#1}}
     \IfValueT{#2}{^{#2}}
   }%
@@ -278,6 +291,7 @@
 \newcommand{\act}{\mathrm{act}}
 \newcommand{\ram}{\mathrm{ram}} %ramification index
 \newcommand{\inv}{\mathrm{inv}}
+\newcommand{\Spr}{\mathrm{Spr}} %the Springer map/sheaf
 
 \newcommand{\bbU}{\mathbb{U}}
 \newcommand{\V}{\mathbb{V}}
@@ -341,6 +355,7 @@
 \newcommand{\scrK}{\mathscr{K}}
 \newcommand{\calK}{\mathcal{K}}
 \newcommand{\scrV}{\mathscr{V}}
+\newcommand{\scrW}{\mathscr{W}}
 \newcommand{\bbS}{\mathbb{S}}
 \newcommand{\scrH}{\mathscr{H}}
 \newcommand{\bfB}{\mathbf{B}}
@@ -357,6 +372,9 @@
 \newcommand{\frakN}{\mathfrak{N}}
 \newcommand{\frakX}{\mathfrak{X}}
 \newcommand{\frakY}{\mathfrak{Y}}
+\newcommand{\frakZ}{\mathfrak{Z}}
+\newcommand{\frakU}{\mathfrak{U}}
+\newcommand{\frakR}{\mathfrak{R}}
 
 \newcommand{\aff}{\mathrm{aff}}
 \newcommand{\ft}{\mathrm{ft}} %finite type
@@ -395,7 +413,7 @@
 \newcommand{\alg}{\mathrm{alg}}
 \newcommand{\sober}{\mathrm{sober}}
 \newcommand{\dR}{\mathrm{dR}}
-\newcommand{\rad}{\mathrm{rad}}
+\newcommand{\rad}{\mathfrak{rad}}
 \newcommand{\discrete}{\mathrm{discrete}}
 %\newcommand{\add}{\mathrm{add}}
 %\newcommand{\lin}{\mathrm{lin}}
@@ -462,6 +480,7 @@
 \newcommand{\cons}{\mathrm{c}} %constructible sheaves
 \newcommand{\tor}{\mathrm{tor}} %tor dimension
 \newcommand{\semisimple}{\mathrm{ss}}
+\newcommand{\connected}{\mathrm{connected}}
 
 %prism custom command
 \usepackage{relsize}
