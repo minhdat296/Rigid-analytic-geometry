@@ -1,7 +1,7 @@
 \section{Formal algebraic spaces}
     \subsection{Topological rings and modules}
         \subsubsection{Linearly topologised rings and modules}
-            \begin{definition}[Topological group] \label{def: topological_rings}
+            \begin{definition}[Topological group] \label{def: topological_groups}
                 A \textbf{topological group} is a group object internal to the cartesian-closed category of topological spaces. Homomrphisms of topological groups are nothing but continuous group homomorphisms.
             \end{definition}
             \begin{example}
@@ -25,6 +25,9 @@
             \end{definition}
             \begin{example}
                 An instance of an incomplete pre-adic ring is $\F_p$ (regarded as the quotient $\Z_p/p$) with the $p$-adic topology, whereas $\Z_p$ itself is complete with respect to the $p$-adic topology by construction. For more non-trivial instances of adic rings, consider perfectoid fields such as $\Q_p( p^{ 1/p^{\infty} } )^{\wedge} := \left( \bigcup_{n \in \N} \Q_p( p^{ 1/p^n } ) \right)^{\wedge}$, which by definition are residually semi-perfect\footnote{I.e. the Frobenius endomorphisms on their residue fields are surjective.} complete non-archimedean mixed-characteristic fields whose associated rank-$1$ valuation is non-discrete (cf. \cite{scholze2011perfectoid}).
+            \end{example}
+            \begin{example}
+                It also bears mentioning that discrete rings are $0$-adic and as such, the category of adic rings and continuous homomorphisms between them admits the category of discrete rings as a full subcategory. 
             \end{example}
             \begin{convention}[Adic completions] \label{conv: adic_completions}
                 From now on, the topological completion of a pre-adic ring $(A, I)$ shall be denoted by $(A, I)^{\wedge}$, or simply by $\hat{A}$ when the ideal of definition $I$ is clearly understood from context (e.g. $\Z_p$ with the $p$-adic topology).
@@ -69,12 +72,82 @@
                 Let $R$ be a topological ring and let $M$ be a linearly topologised $R$-module with a basis $\{M_{\lambda}\}_{\lambda \in \Lambda}$ of open neighbourhoods of $0$. The topological closure $\bar{N}$ of any submodule $N \subseteq M$ is thus given by $\bigcap_{\lambda \in \Lambda} (N + M_{\lambda})$.
             \end{proposition}
                 \begin{proof}
-                    By lemma \ref{lemma: sums_with_open_submodules_are_open}, each of the factor $N + M_{\lambda}$ (for every $\lambda \in \Lambda$) is an open submodule of $M$, meaning that they are also closed (cf. lemma \ref{lemma: open_submodules_are_closed}). The intersection $\bigcap_{\lambda \in \Lambda} (N + M_{\lambda})$ is therefore closed and as such is its own closure, and it thus remains to show that this intersection is the smallest closed subset of $M$ containing $N$. For this, consider firstly the following:
-                        $$\bigcap_{\lambda \in \Lambda} (N + M_{\lambda}) := \bigcap_{\lambda \in \Lambda} \{y + x^{(\lambda)} \mid \forall y \in N, x^{(\lambda)} \in M_{\lambda}\} = N + \bigcap_{\lambda \in \Lambda} M_{\lambda}$$
-                    which tells us that indeed, $N$ is a subset of $\bigcap_{\lambda \in \Lambda} (N + M_{\lambda})$. 
+                    By lemma \ref{lemma: sums_with_open_submodules_are_open}, each of the factor $N + M_{\lambda}$ (for every $\lambda \in \Lambda$) is an open submodule of $M$, meaning that they are also closed (cf. lemma \ref{lemma: open_submodules_are_closed}). The intersection $\bigcap_{\lambda \in \Lambda} (N + M_{\lambda})$ is therefore closed and as such is its own closure, and it thus remains to show that this intersection is the smallest closed subset of $M$ containing $N$. 
+                \end{proof}
+            
+            \begin{remark}[(Co)limits of topological groups] \label{remark: (co)limits_of_topological_groups}
+                Topological groups, by definition, are nothing but group objects internal to the category of topological spaces, which is both complete and cocomplete. As such, the category of topological groups is also complete and cocomplete. 
+            \end{remark}
+            \begin{remark}[(Co)limits of topological rings] \label{remark: (co)limits_of_topological_rings}
+                The category of topological abelian groups, like the category of topological group, is also complete and cocomplete. It is also symmetric monoidal 
+            \end{remark}
+            \begin{remark}[(Co)limits of topological modules] \label{remark: (co)limits_of_topological_modules}
+                
+            \end{remark}
+            \begin{lemma}[Adic completion as cofiltered limits] \label{lemma: adic_completion_as_cofiltered_limits}
+                Let $M$ be a linearly topologised module with a basis $\{M_{\lambda}\}_{\lambda \in \Lambda}$ of open submodules, which we shall view as partially ordered set, regarded as a filtered diagram. For such a topological module, the topological completion is given by the cofiltered limit $M^{\wedge} \cong \underset{\lambda \in \Lambda}{\lim} M/M_{\lambda}$.  
+            \end{lemma}
+                \begin{proof}
+                    
+                \end{proof}
+            \begin{remark}
+                Let $M$ be a linearly topologised module over some topological ring $R$ and fix a topological basis $\{M_{\lambda}\}_{\lambda \in M}$ of $M$ consisting of open submodules $M_{\lambda}$ (and note that such a basis indeed exists thanks to $M$ being linearly topologised). At the same time, consider a short exact sequence of topological $R$-modules:
+                    $$
+                        \begin{tikzcd}
+                        	0 & N & M & Q & 0
+                        	\arrow[from=1-1, to=1-2]
+                        	\arrow[from=1-2, to=1-3]
+                        	\arrow["\pi", from=1-3, to=1-4]
+                        	\arrow[from=1-4, to=1-5]
+                        \end{tikzcd}
+                    $$
+                Such a basis induces bases $\{M_{\lambda} \cap N\}_{\lambda \in \Lambda}$ for the subspace topology on $N$ and $\{\pi(M_{\lambda})\}_{\lambda}$ for the quotient topology on $Q$ induced via the quotient map $\pi: M \to Q$. 
+            \end{remark}
+            \begin{proposition}[Completion is exact] \label{prop: completion_is_exact}
+                Consider a short exact sequence:
+                    $$
+                        \begin{tikzcd}
+                        	0 & N & M & Q & 0
+                        	\arrow[from=1-1, to=1-2]
+                        	\arrow[from=1-2, to=1-3]
+                        	\arrow["\pi", from=1-3, to=1-4]
+                        	\arrow[from=1-4, to=1-5]
+                        \end{tikzcd}
+                    $$
+                of linearised topological modules over some topological ring $R$, wherein $N$ and $Q$ are endowed - respectively - with the subspace topology and the quotient topology induced from a given linear topology on $M$. Then:
+                    \begin{enumerate}
+                        \item the sequence $0 \to N^{\wedge} \to M^{\wedge} \to Q^{\wedge} \to 0$ of completions remains exact, 
+                        \item $N^{\wedge}$ is actually the topological closure of $N$ inside $\hat{M}$, i.e. $\overline{N^{\wedge}} = N^{\wedge}$ as $R$-submodules of $M^{\wedge}$, and
+                        \item if in addition, $M$ has a countable basis of open submodules then the quotient map $\pi^{\wedge}: M^{\wedge} \to Q^{\wedge}$
+                    \end{enumerate}
+            \end{proposition}
+                \begin{proof}
+                    \noindent
+                    \begin{enumerate}
+                        \item 
+                        \item 
+                        \item 
+                    \end{enumerate}
                 \end{proof}
         
         \subsubsection{Taut and adic ring maps}
+            \begin{definition}[Weakly (pre-)admissible rings] \label{def: weakly_pre_admissible_rings}
+                \noindent
+                \begin{enumerate}
+                    \item \textbf{(Topologically nilpotent elements):} An element $f \in A$ of a linearly topologised ring $A$ is said to be \textbf{topologically nilpotent} if $f^n \to 0$ as $n \to +\infty$. 
+                    \item \textbf{(Weakly (pre-)admissible rings):} A \textbf{weakly (pre-)admissible ring} is a pair $(A, I)$ consisting of a linearly topologised ring $A$ and an open ideal $I \subset A$ consisting entirely of topologically nilpotent elements. 
+                \end{enumerate}
+            \end{definition}
+            \begin{proposition}[Weakly admissible rings induce Henselian pairs] \label{prop: weakly_admissible_rings_induce_henselian_pairs}
+                Any weakly admissible ring $(A, I)$ is a Henselian pair.
+            \end{proposition}
+                \begin{proof}
+                    
+                \end{proof}
+        
+            \begin{definition}[Taut ring maps] \label{def: taut_ring_maps}
+                Let $\varphi: A \to B$ be a continuous homomorphism between linearly topologised rings; in addition, let $\{I_{\lambda}\}_{\lambda \in \Lambda}$ be a topological basis for $A$, consisting of open ideals $I_{\lambda}$. Such a homomorphism is said to be \textbf{taut} if for every open ideal $I \subseteq A$, the topological closure $\overline{\varphi(I)B}$ of the ideal $\varphi(I)B$ is also open, and if the open ideals $\overline{\varphi(I_{\lambda})B}$ form a topological basis for $B$.
+            \end{definition}
         
     \subsection{Affine formal algebraic spaces and affine formal schemes}
     
