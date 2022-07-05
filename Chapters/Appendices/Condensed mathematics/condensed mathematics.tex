@@ -1,8 +1,8 @@
 \section{The condensed formalism} \label{section: condensed_mathematics}
     \subsection{Introduction to the condensed formalism}
         \subsubsection{Condensed sets}
-            \begin{definition}[Condensation] \label{def: condensation}
-                Let $\kappa$ be a fixed strong limit cardinal and let $\C$ be a hypercomplete $\infty$-category with enough $\kappa$-small limits and enough $\kappa$-small filtered colimits. We then define so-called \textbf{condensed objects} of $\C$ to be $\C$-valued sheaves over the $\kappa$-small pro-\'etale site of a point (i.e. the pro-\'etale site of the spectrum of a field). 
+            \begin{definition}[Condensed objects] \label{def: condensed_objects}
+                Let $\kappa$ be a fixed strong limit cardinal and let $\C$ be a hyper-complete $\infty$-category with enough $\kappa$-small limits and enough $\kappa$-small filtered colimits. We then define so-called \textbf{condensed objects} of $\C$ to be $\C$-valued sheaves over the $\kappa$-small pro-\'etale site of a point (i.e. the pro-\'etale site of the spectrum of a field). 
                 
                 Clearly condensed objects of a given $\infty$-category $\C$ satisfying the above conditions form a category. We shall denote it by $\C^{\cond}$.
             \end{definition}
@@ -12,8 +12,8 @@
             \begin{example}
                 \noindent
                 \begin{itemize}
-                    \item \textbf{(\textit{Small} condensed sets):} The pro-\'etale topos $\Sh(*_{\kappa\-\proet})$ over a point is, by definition, the category of sheaves of sets on the pro-\'etale site of a point. Therefore, this topos is the category of \textbf{$\kappa$-small condensed sets}. Whenenver we wish to put emphasis on the fact that $\Sh(*_{\kappa\-\proet})$ is actually the category of $\kappa$-small condensed sets, we will write $\kappa\-\Sets^{\cond}$ instead.
-                    \item \textbf{(Condensed abelian groups and modules):} If $R$ is a condensed commutative ring, then the category $(R\mod^{\cond})^{\heart}$ of condensed $R$-modules is a \href{https://ncatlab.org/nlab/show/Grothendieck+category}{\underline{Grothendieck category}}; on the other hand, topological abelian groups even fails to form an abelian category, and as we well know: no abelian categories means no homological algebra. This is a \textit{biggy}, so we shall bestow upon it the dignity of theorem-hood.
+                    \item \textbf{(\textit{Small} condensed sets):} The pro-\'etale topos $\Sh(*_{\kappa\-\proet})$ over a point is, by definition, the category of sheaves of sets on the pro-\'etale site of a point. Therefore, this topos is the category of \textbf{$\kappa$-small condensed sets}. Whenenver we wish to put emphasis on the fact that $\Sh(*_{\kappa\-\proet})$ is actually the category of $\kappa$-small condensed sets, we will write $\Sets^{\kappa\-\cond}$ instead.
+                    \item \textbf{(Condensed abelian groups and modules):} If $R$ is a condensed commutative ring, then the category $R\mod^{\heart}$ of condensed $R$-modules is a \href{https://ncatlab.org/nlab/show/Grothendieck+category}{\underline{Grothendieck category}}; on the other hand, topological abelian groups even fails to form an abelian category, and as we well know: no abelian categories means no homological algebra. This is a \textit{biggy}, so we shall bestow upon it the dignity of theorem-hood.
                 \end{itemize}
             \end{example}
             \begin{remark}[Condensedness and profiniteness] \label{remark: condensedness_and_profiniteness}
@@ -21,20 +21,31 @@
                 
                 This identification of the category of $\kappa$-small profinite sets with the $\kappa$-small pro-\'etale site of a point allows us to re-interpret the sheaf condition defining condensed sets in the following more practical manner: a $\kappa$-small condensed set is a presheaf:
                     $$X: \kappa\-\Pro\Fin\Sets_{\surj}^{\op} \to \Sets$$
-                such that $X(\varnothing) \cong \{*\}$, $X(S \sqcup S') \cong X(S) \x (S')$ for all $S, S' \in \Ob(\kappa\-\Pro\Fin\Sets)$, and that for any surjection $\pi: S' \to S$ between $\kappa$-small profinite sets $S, S'$, the following diagram commutes in $\Sets$:
+                which takes finite colimits\footnote{In particular, this implies that $X(\varnothing) \cong \{*\}$ (observe that $\varnothing$ is initial as an object of $\kappa\-\Pro\Fin\Sets$, and is thus a finite colimit (of the empty diagram).).} in $\kappa\-\Pro\Fin\Sets_{\surj}$ to finite limits in $\Sets$, and which is such that for any surjection $\pi: S' \to S$ between $\kappa$-small profinite sets $S, S'$, the following diagram\footnote{This is simply saying that $X$ must satisfy descent.} commutes in $\Sets$:
+                    $$
+                        \begin{tikzcd}
+                        	{X(S' \x_{\pi, S, \pi} S')} & {X(S')} \\
+                        	{X(S')} & {X(S)}
+                        	\arrow["{X(\pr_1)}", two heads, from=2-1, to=1-1]
+                        	\arrow["{X(\pi)}"', tail, from=2-2, to=2-1]
+                        	\arrow["{X(\pr_2)}"', two heads, from=1-2, to=1-1]
+                        	\arrow["{X(\pi)}"', tail, from=2-2, to=1-2]
+                        	\arrow["\cong"', from=2-2, to=1-1]
+                        \end{tikzcd}
+                    $$
             \end{remark}
             
             \begin{remark}[Set-theoretic issues and technicalities] \label{remark: condensed_sets_set_theoretic_issues}
-                It might seem as though the fixture of a strong limit cardinal $\kappa$ is an unnecessary gimmick and that the issues that one might run into when removing this cardinal bound are purely philosophical. However, because the unbounded pro-\'etale site $*_{\proet}$ (or for that matter, the category of all profinite sets) is large, it is not guaranteed that a sheafification functor ${}^{\sh}(-): \Psh(*_{\proet}) \to \Sh(*_{\proet})$ would exist as the left-adjoint of the natural inclusion $\Psh(*_{\proet}) \subset \Sh(*_{\proet})$. Since many of the algebraic constructions in the condensed formalism (e.g. condensed rings, condensed modules, etc.) benefit from being objects internal to some hypothetical small topos\footnote{All topoi shall be sheaf topoi, i.e. Grothendieck topoi (cf. \cite[Expos\'e IV]{sga4}).} (as pro-\'etale sheafification is a somewhat tricky procedure), it will be worth our while to impose a cardinal bound $\kappa$ onto the underlying pro-\'etale site $*_{\proet}$ in order to obtain a $\kappa$-small topos $\kappa\-\Sets^{\cond}$ of $\kappa$-small condensed sets.
+                It might seem as though the fixture of a strong limit cardinal $\kappa$ is an unnecessary gimmick and that the issues that one might run into when removing this cardinal bound are purely philosophical. However, because the unbounded pro-\'etale site $*_{\proet}$ (or for that matter, the category of all profinite sets) is large, it is not guaranteed that a sheafification functor ${}^{\sh}(-): \Psh(*_{\proet}) \to \Sh(*_{\proet})$ would exist as the left-adjoint of the natural inclusion $\Psh(*_{\proet}) \subset \Sh(*_{\proet})$. Since many of the algebraic constructions in the condensed formalism (e.g. condensed rings, condensed modules, etc.) benefit from being objects internal to some hypothetical small topos\footnote{All topoi shall be sheaf topoi, i.e. Grothendieck topoi (cf. \cite[Expos\'e IV]{sga4}).} (as pro-\'etale sheafification is a somewhat tricky procedure), it will be worth our while to impose a cardinal bound $\kappa$ onto the underlying pro-\'etale site $*_{\proet}$ in order to obtain a $\kappa$-small topos $\Sets^{\kappa\-\cond}$ of $\kappa$-small condensed sets.
                 
                 In order to impose such a size bound on $*_{\proet}$ (or rather, the large category of all profinite sets), let us first of all fix a(n) (uncountable) strong limit cardinal $\kappa$ (i.e. $\kappa$ is uncountable and for all cardinals $\lambda < \kappa$, we also have $2^{\lambda} < \kappa$), which can be constructed as follows: define $\beta_0 := \aleph_0$, and then for all ordinals $\alpha$, define $\beth_{\alpha}$ inductively via $\beth_{\alpha^+} := 2^{\beth_{\alpha}}$, which would then ensure that for any fixed ordinals $\alpha_0$, the cardinal $\kappa := \beth_{\alpha_0}$ is a strong limit cardinal. $*_{\kappa\-\proet}$ can then be simply taken as the category of all $\kappa$-small profinite sets (cf. remark \ref{remark: condensedness_and_profiniteness}). 
                 
                 Now, if $\kappa < \kappa'$ are strong limit cardinals then there is an obvious inclusion $\kappa\-\Pro\Fin\Sets_{\surj} \subset \kappa'\-\Pro\Fin\Sets_{\surj}$ of the category of $\kappa$-small profinite sets into that of $\kappa'$-small profinite sets. This functor, in turn, induces a forgetful functor\footnote{Due to the fact that over any site $\C$, there is a fibration $\Sh \to \C^{\op}$ given by $(f: Y \to X) \mapsto (f^*: \Sh({\C_{/X}}) \to \Sh(\C_{/Y}))$.}:
-                    $$\oblv_{\kappa < \kappa'}: \kappa'\-\Sets^{\cond} \to \kappa\-\Sets^{\cond}$$
+                    $$\oblv_{\kappa < \kappa'}: \kappa'\-\Sets^{\cond} \to \Sets^{\kappa\-\cond}$$
                 which by general topos theory (cf. \cite[Expos\'e IV]{sga4}) admits a left-exact left-adjoint:
-                    $$L_{\kappa < \kappa'}: \kappa\-\Sets^{\cond} \to \kappa'\-\Sets^{\cond}$$
+                    $$L_{\kappa < \kappa'}: \Sets^{\kappa\-\cond} \to \kappa'\-\Sets^{\cond}$$
                 What can be shown is that for every pair $\kappa < \kappa'$ of strong limit cardinals, this left-adjoint is actually fully faithful (cf. proposition \ref{prop: increasing_the_cardinal_bound_on_condensed_sets}), thus allowing us to define the large category of all condensed sets (regardless of their cardinal bounds) as the filtered colimit along these fully faithful left-adjoints:
-                    $$\Sets^{\cond} \cong \underset{ \text{Strong limit cardinals $\kappa$} }{\colim} \kappa\-\Sets^{\cond}$$
+                    $$\Sets^{\cond} \cong \underset{ \text{Strong limit cardinals $\kappa$} }{\colim} \Sets^{\kappa\-\cond}$$
             \end{remark}
             \begin{definition}[Compacta] \label{def: compacta}
                 Let $\kappa$ be a strong limit cardinal. The category of ($\kappa$-small) \textbf{compacta} (singular: \textbf{compactum}), which we denote by $\kappa\-\Comp$, is then taken to be that of ($\kappa$-small) compact Hausdorff topological spaces and continuous functions between them. 
@@ -43,7 +54,7 @@
                 From now on, $\Comp_{\surj}$ (respectively, $\kappa\-\Comp_{\surj}$) shall denote the site of ($\kappa$-small) compacta on which the coverage is given by jointly surjective finite families.
             \end{convention}
             \begin{lemma}[Condensed sets as sheaves on compacta] \label{lemma: condensed_sets_as_sheaves_on_compacta}
-                For any strong limit cardinal $\kappa$, there is a canonical equivalence of topoi $\kappa\-\Sets^{\cond} \cong \Sh(\kappa\-\Comp_{\surj})$.
+                For any strong limit cardinal $\kappa$, there is a canonical equivalence of topoi $\Sets^{\kappa\-\cond} \cong \Sh(\kappa\-\Comp_{\surj})$.
             \end{lemma}
                 \begin{proof}
                     
@@ -60,18 +71,18 @@
                 Fix a strong limit cardinal $\kappa$. To any $\kappa$-small topological space $T$, there is an associated $\kappa$-small condensed set $T^{\kappa\-\cond}$, which is the sheafification of the presheaf\footnote{The readers can check for themselves that indeed, the presheaf $S \mapsto \Maps(S, T)$ is a sheaf.} on $\kappa\-\Pro\Fin\Sets_{\surj}$ given by $S \mapsto \Maps(S, T)$. Any topological group, ring, module, etc. is as such a condensed group, ring, module, etc. in a natural manner. 
                 
                 In addition, we note that the association:
-                    $$(-)^{\kappa\-\cond}: \kappa\-\Top \to \kappa\-\Sets^{\cond}$$
+                    $$(-)^{\kappa\-\cond}: \kappa\-\Top \to \Sets^{\kappa\-\cond}$$
                     $$T \mapsto T^{\kappa\-\cond}$$
                 of a $\kappa$-small topological space $T$ to its associated $\kappa$-small condensed set $T^{\kappa\-\cond}$ in the aforementioned manner is functorial (this is a Yoneda-type argument). For this reason, we have grounds for making definition \ref{def: condensation_of_topological_spaces}. 
             \end{remark}
             \begin{definition}[Condensation] \label{def: condensation_of_topological_spaces}
                 For a fixed a strong limit cardinal $\kappa$, there is a \textbf{condensation} functor:
-                    $$(-)^{\kappa\-\cond}: \kappa\-\Top \to \kappa\-\Sets^{\cond}$$
+                    $$(-)^{\kappa\-\cond}: \kappa\-\Top \to \Sets^{\kappa\-\cond}$$
                     $$T \mapsto T^{\kappa\-\cond}$$
                 constructed as in remark \ref{remark: topological_spaces_and_condensed_sets}.
             \end{definition}
             \begin{definition}[Compactly generated topological space] \label{def: compactly_generated_topological_spaces}
-                Let $\kappa$ be a strong limit cardinal. The category $\<\Comp\>$ of \textbf{compactly generated topological spaces} (respectively, the category $\kappa\-\<\Comp\>$ of \textbf{$\kappa$-small compactly generated topological spaces}) and continuous functions between them is the ($\kappa$-small) free cocompletion of the category of ($\kappa$-small) compacta. 
+                Let $\kappa$ be a strong limit cardinal. The category $\Top^{\cg}$ of \textbf{compactly generated topological spaces} (respectively, the category $\kappa\-\Top^{\cg}$ of \textbf{$\kappa$-small compactly generated topological spaces}) and continuous functions between them is the ($\kappa$-small) free cocompletion of the category of ($\kappa$-small) compacta. 
             \end{definition}
             \begin{remark}
                 Because the category of compacta is large (it contains the large category of all profinite sets as a full subcategory), its free cocompletion is not equivalent to the presheaf category $\Psh(\Comp)$. Of course, the category of compactly generated topological spaces is also large. 
@@ -92,23 +103,23 @@
                 Henceforth, we shall write $\Extr_{\surj}$ (respectively, $\kappa\-\Extr_{\surj}$) for the site of ($\kappa$-small) extremally disconnected spaces on which the topology is given by jointly surjective finite families.
             \end{convention}
             \begin{proposition}[Condensed sets as sheaves on extremally disconnected spaces] \label{prop: condensed_sets_are_sheaves_on_extremally_disconnected_spaces}
-                For any strong limit cardinal $\kappa$, there is a natural equivalence of topoi $\kappa\-\Sets^{\cond} \cong \Sh(\kappa\-\Extr_{\surj})$. Furthermore, there is a natural equivalence of large topoi $\Sets^{\cond} \cong \Sh(\Extr_{\surj})$.
+                For any strong limit cardinal $\kappa$, there is a natural equivalence of topoi $\Sets^{\kappa\-\cond} \cong \Sh(\kappa\-\Extr_{\surj})$. Furthermore, there is a natural equivalence of large topoi $\Sets^{\cond} \cong \Sh(\Extr_{\surj})$.
             \end{proposition}
                 \begin{proof}
                     
                 \end{proof}
             \begin{remark}
-                There is, of course, a natural fully faithful embedding $\<\Comp\> \subset \Top$ of the category of compactly generated topological spaces into that of all topological spaces. Interestingly, this embedding admits a right-adjoint (i.e. $\<\Comp\>$ is a coreflective subcategory of $\Top$), given by $T \mapsto \left(\coprod_{S \in \Ob(\Comp_{/T})} S \to T\right)$: what we can show is that for any topological space $T$, the canonically induced map $\coprod_{S \in \Ob(\Comp_{/T})} S \to T$ is surjective and as such one can endow $T$ with the quotient topology inherited from $\coprod_{S \in \Ob(\Comp_{/T})} S$, and since each $S$ is a compactum, doing so ensures that $T$ is actually a compactly generated topological space in the sense of definition \ref{def: compactly_generated_topological_spaces}. 
+                There is, of course, a natural fully faithful embedding $\Top^{\cg} \subset \Top$ of the category of compactly generated topological spaces into that of all topological spaces. Interestingly, this embedding admits a right-adjoint (i.e. $\Top^{\cg}$ is a coreflective subcategory of $\Top$), given by $T \mapsto \left(\coprod_{S \in \Ob(\Comp_{/T})} S \to T\right)$: what we can show is that for any topological space $T$, the canonically induced map $\coprod_{S \in \Ob(\Comp_{/T})} S \to T$ is surjective and as such one can endow $T$ with the quotient topology inherited from $\coprod_{S \in \Ob(\Comp_{/T})} S$, and since each $S$ is a compactum, doing so ensures that $T$ is actually a compactly generated topological space in the sense of definition \ref{def: compactly_generated_topological_spaces}. 
             \end{remark}
             \begin{theorem}[Condensation is (fully) faithful] \label{theorem: condensation_of_topological_spaces_is_fully_faithful}
-                For any fixed strong limit cardinal $\kappa$, the functor $(-)^{\kappa\-\cond}: \kappa\-\Top \to \kappa\-\Sets^{\cond}$ as in definition \ref{def: condensation} is faithful, and the restriction $(-)^{\kappa\-\cond}|_{\kappa\-\<\Comp\>}: \kappa\-\<\Comp\> \to \kappa\-\Sets^{\cond}$ down onto $\kappa$-small compactly generated topological spaces is furthermore full (hence fully faithful); in fact, the condensation $T^{\kappa\-\cond}$ of any $\kappa$-small compactum $T$ is a $\kappa$-small qcqs\footnote{A condensed set is qcqs if and only if it is so when viewed as a sheaf of sets on $(\Spec k)_{\proet}$ for some field $k$.} condensed set.
+                For any fixed strong limit cardinal $\kappa$, the functor $(-)^{\kappa\-\cond}: \kappa\-\Top \to \Sets^{\kappa\-\cond}$ as in definition \ref{def: condensed_objects} is faithful, and the restriction $(-)^{\kappa\-\cond}|_{\kappa\-\Top^{\cg}}: \kappa\-\Top^{\cg} \to \Sets^{\kappa\-\cond}$ down onto $\kappa$-small compactly generated topological spaces is furthermore full (hence fully faithful); in fact, the condensation $T^{\kappa\-\cond}$ of any $\kappa$-small compactum $T$ is a $\kappa$-small qcqs\footnote{A condensed set is qcqs if and only if it is so when viewed as a sheaf of sets on $(\Spec k)_{\proet}$ for some field $k$.} condensed set.
             \end{theorem}
                 \begin{proof}
                     
                 \end{proof}
             \begin{theorem}[Condensation is a right-adjoint] \label{theorem: condensation_of_topological_spaces_is_a_right_adjoint}
-                For any fixed strong limit cardinal $\kappa$, the functor $(-)^{\kappa\-\cond}: \kappa\-\Top \to \kappa\-\Sets^{\cond}$ as in definition \ref{def: condensation} admits a left-adjoint (which we shall call \textbf{decondensation}):
-                    $$(-)^{\kappa\-\decond}: \kappa\-\Sets^{\cond} \to \kappa\-\Top$$
+                For any fixed strong limit cardinal $\kappa$, the functor $(-)^{\kappa\-\cond}: \kappa\-\Top \to \Sets^{\kappa\-\cond}$ as in definition \ref{def: condensed_objects} admits a left-adjoint (which we shall call \textbf{decondensation}):
+                    $$(-)^{\kappa\-\decond}: \Sets^{\kappa\-\cond} \to \kappa\-\Top$$
                     $$X \mapsto X(\{*\})$$
                 wherein the topology on the space $X^{\kappa\-\decond} := X(\{*\})$ (note that indeed $\{*\} \in \Ob(\kappa\-\Pro\Fin\Sets)$) is understood to be equipped with the quotient topology coming from $\coprod_{S \in \Ob(\kappa\-\Pro\Fin\Sets_{/X^{\kappa\-\decond}})} S \to X^{\kappa\-\decond}$.
             \end{theorem}
@@ -119,16 +130,114 @@
                 For any strong limit cardinal $\kappa$, the pair $(-)^{\kappa\-\decond} \ladjoint (-)^{\kappa\-\cond}$ as in theorems \ref{theorem: condensation_of_topological_spaces_is_fully_faithful} and \ref{theorem: condensation_of_topological_spaces_is_a_right_adjoint} is an adjoint equivalence between the category of $\kappa$-small compacta and that of $\kappa$-small qcqs condensed sets.  
             \end{corollary}
             
-        \subsubsection{Condensed abelian sheaf cohomology}
+        \subsubsection{Condensed abelian groups}
             \begin{convention}[Regarding derived categories of modules] \label{conv: derived_categories_of_condensed_modules}
                 Let us note that elsewhere, for $R$ any ring, the notation $R\mod$ shall be used for denoting the derived category of $R$-modules (and $R\mod^{\leq 0}, R\mod^{\geq 0}, R\mod^-, R\mod^+, R\mod^b$ shall mean the usual truncated/bounded subcategories), whereas $R\mod^{\heart}$ shall mean the \textit{underived} category of $R$-modules\footnote{The notation is justified as the underived category of $R$-modules is the abelian category that is the heart of the canonical t-structure on the derived category $R\mod$.}. 
                 
-                In accordance with this convention for ordinary modules, if $R$ is a condensed ring then the \textit{underived} category of (condensed) $R$-modules shall be denoted by $(R\mod^{\cond})^{\heart}$, whereas $R\mod^{\cond}$ (respecitvely, $(R\mod^{\cond})^{\leq 0}, (R\mod^{\cond})^{\geq 0}, (R\mod^{\cond})^-, (R\mod^{\cond})^+, (R\mod^{\cond})^b$) shall mean the \textit{derived} category of (condensed) $R$-modules (respectively, its truncated/bounded subcategories).
+                In accordance with this convention for ordinary modules, if $R$ is a condensed ring then the \textit{underived} category of (condensed) $R$-modules shall be denoted by $R\mod^{\heart}$, whereas $R\mod^{\cond}$ (respecitvely, $R\mod^{\leq 0}, R\mod^{\geq 0}, R\mod^-, R\mod^+, R\mod^b$) shall mean the \textit{derived} category of (condensed) $R$-modules (respectively, its truncated/bounded subcategories).
             \end{convention}
+            \begin{convention}
+                Henceforth, $\Z^{\cond}$ (respectively, $\Z^{\kappa\-\cond}$) shall be used for denoting the condensed ring associated to $\Z$ regarded as a ($\kappa$-small, for some fixed strong limit cardinal $\kappa$) discrete ring (although note that since $\Z$ is countable, it is \textit{a priori} small with respect to all strong limit cardinals). Likewise for any discrete ring $R$.
+            \end{convention}
+            
+            \begin{remark}
+                Most of what will be developed in this section and the next shall work for the (derived) category of modules over any (commutative) condensed rings $R$, not just over $\Z^{\cond}$. To make the transition, one can either base-change or alternatively, view $R$ as a (commutative) monoid internal to the symmetric monoidal abelian category $\Z^{\cond}\mod$ and then $R\mod^{\heart}$ as the category of modules over that monoid. 
+            \end{remark}
+            \begin{remark}
+                While propositions \ref{prop: the_category_of_condensed_abelian_groups_is_AB3_and_AB3*}, \ref{prop: the_category_of_condensed_abelian_groups_is_AB4_and_AB4*}, \ref{prop: the_category_of_condensed_abelian_groups_is_AB5}, \ref{prop: small_categories_of_condensed_abelian_groups_have_generators}, \ref{prop: the_category_of_condensed_abelian_groups_is_AB6} are completely trivial for small condensed abelian groups, since small topoi are cocomplete (and therefore forming colimits does not require sheafification), they are not so within the large category $\Sets^{\cond}$ of all condensed sets with no cardinal bound imposed.
+            \end{remark}
+            \begin{proposition}[$\Z^{\cond}\mod^{\heart}$ is $AB3$ and $AB3^*$] \label{prop: the_category_of_condensed_abelian_groups_is_AB3_and_AB3*}
+                $\Z^{\cond}\mod^{\heart}$ is a complete and cocomplete abelian category.
+            \end{proposition}
+                \begin{proof}
+                    By proposition \ref{prop: condensed_sets_are_sheaves_on_extremally_disconnected_spaces}, we know that there is an equivalence of large topoi $\Sets^{\cond} \cong \Sh(\Extr_{\surj})$.
+                \end{proof}
+            \begin{proposition}[$\Z^{\cond}\mod^{\heart}$ is $AB4$ and $AB4^*$] \label{prop: the_category_of_condensed_abelian_groups_is_AB4_and_AB4*}
+                Coproducts in $\Z^{\cond}\mod^{\heart}$ commute with monomorphisms.
+            \end{proposition}
+                \begin{proof}
+                    
+                \end{proof}
+            \begin{proposition}[$\Z^{\cond}\mod^{\heart}$ is $AB5$] \label{prop: the_category_of_condensed_abelian_groups_is_AB5}
+                Filtered colimits in $\Z^{\cond}\mod^{\heart}$ commute with finite limits.
+            \end{proposition}
+                \begin{proof}
+                    
+                \end{proof}
+            \begin{lemma}[Free condensed abelian groups] \label{lemma: free_condensed_abelian_groups}
+                The obvious forgetful functor $\Z^{\cond}\-\oblv: \Z^{\cond}\mod^{\heart} \to \Sets^{\cond}$ (respectively, the small forgetful functor $\Z^{\kappa\-\cond}\-\oblv: \Z^{\kappa\-\cond}\mod^{\heart} \to \Sets^{\kappa\-\cond}$ for some fixed strong limit cardinal $\kappa$) admits a left-adjoint $\Z^{\cond}[-]: \Sets^{\cond} \to \Z^{\cond}\mod^{\heart}$ (respectively, $\Z^{\kappa\-\cond}[-]: \Sets^{\kappa\-\cond} \to \Z^{\kappa\-\cond}\mod^{\heart}$), called the functor of \textbf{free condensed abelian groups}. 
+            \end{lemma}
+                \begin{proof}
+                    
+                \end{proof}
+            \begin{proposition}[$\Z^{\kappa\-\cond}\mod^{\heart}$ has a generator] \label{prop: small_categories_of_condensed_abelian_groups_have_generators}
+                If $\kappa$ is a strong limit cardinal then the corresponding $\kappa$-small abelian category $\Z^{\cond}\mod^{\heart}$ of $\kappa$-small condensed abelian groups has a generator.
+            \end{proposition}
+                \begin{proof}
+                    
+                \end{proof}
+            \begin{corollary}[$\Z^{\kappa\-\cond}\mod^{\heart}$ is Grothendieck] \label{coro: small_categories_of_condensed_abelian_groups_are_grothendieck}
+                $\Z^{\cond}\mod^{\heart}$ has a generator and satisfies $AB5$, and as such is a Grothendieck category.
+            \end{corollary}
+            \begin{proposition}[$\Z^{\cond}\mod^{\heart}$ is $AB6$] \label{prop: the_category_of_condensed_abelian_groups_is_AB6}
+                Small filtered colimits in $\Z^{\cond}\mod^{\heart}$ commute with arbitrary small products.
+            \end{proposition}
+                \begin{proof}
+                    
+                \end{proof}
+                
+            \begin{lemma}[$\Z^{\cond}\mod^{\heart}$ is symmetric monoidal] \label{lemma: tensor_products_of_condensed_abelian_groups}
+                $\Z^{\cond}\mod^{\heart}$ is symmetric monoidal with respect to pointwise tensor products of abelian groups.
+            \end{lemma}
+                \begin{proof}
+                    
+                \end{proof}
+            \begin{proposition}[Forming free condensed abelian groups is monoidal] \label{prop: forming_free_condensed_abelian_groups_is_monoidal}
+                The functors $\Z^{\cond}[-]: \Sets^{\cond} \to \Z^{\cond}\mod^{\heart}$ and $\Z^{\kappa\-\cond}[-]: \Sets^{\kappa\-\cond} \to \Z^{\kappa\-\cond}\mod^{\heart}$ from lemma \ref{lemma: free_condensed_abelian_groups} is a (strong) monoidal functor with respect to the canonical monoidal structures on $\Sets^{\cond}$ $\Z^{\cond}\mod^{\heart}$ (respectively, $\Sets^{\kappa\-\cond}$ and $\Z^{\kappa\-\cond}\mod^{\heart}$).
+            \end{proposition}
+                \begin{proof}
+                    
+                \end{proof}
+            \begin{proposition}[$\Z^{\cond}\mod^{\heart}$ is monoidally closed] \label{lemma: the_category_of_condensed_abelian_groups_is_monoidally_closed}
+                As a symmetric monoidal category, $(\Z^{\cond}\mod^{\heart}, \tensor_{\Z^{\cond}}, \Z^{\cond})$ is closed; that is to say, for any condensed abelian group $M \in \Ob(\Z^{\cond}\mod^{\heart})$, there exists an adjunction:
+                    $$
+                        \begin{tikzcd}
+                        	{\Z^{\cond}\mod^{\heart}} & {\Z^{\cond}\mod^{\heart}}
+                        	\arrow[""{name=0, anchor=center, inner sep=0}, "{\Hom_{\Z^{\cond}}(M, -)}"', bend right, from=1-1, to=1-2]
+                        	\arrow[""{name=1, anchor=center, inner sep=0}, "{- \tensor_{\Z^{\cond}} M}"', bend right, from=1-2, to=1-1]
+                        	\arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
+                        \end{tikzcd}
+                    $$
+            \end{proposition}
+                
+        \subsubsection{Derived categories of condensed abelian groups}
+            \begin{proposition}[$\Z^{\kappa\-\cond}\mod^{\heart}$ has enough injectives] \label{prop: small_categories_of_condensed_abelian_groups_have_enough_injectives}
+                For any strong limit cardinal $\kappa$, the corresponding abelian category of $\kappa$-small condensed abelian groups $\Z^{\kappa\-\cond}\mod^{\heart}$ has enough injectives. 
+            \end{proposition}
+                \begin{proof}
+                    This is an immediate consequence (cf. \cite[Corollary 1.3.5.7]{HA}) of the fact that for any strong limit cardinal $\kappa$, the corresponding abelian category $\Z^{\kappa\-\cond}\mod^{\heart}$ of $\kappa$-small condensed abelian groups is Grothendieck (cf. corollary \ref{coro: small_categories_of_condensed_abelian_groups_are_grothendieck}).
+                \end{proof}
+            Interestingly, however, the large abelian category of all condensed abelian groups does not have enough injectives. In fact, the situation is even worse: there are no non-zero injectives whatsoever! As such, it is absolutely necessary that we introduce cut-off cardinals should we have any hopes of accessing injective resolutions of arbitrary condensed abelian groups.
+            \begin{proposition}[Injective large condensed abelian groups are trivial] \label{prop: injective_large_condensed_abelian_groups_are_trivial}
+                Any injective object of the large category $\Z^{\cond}\mod^{\heart}$ is automatically isomorphic to the zero object $0^{\cond}$ (the trivial abelian group with its discrete topology, viewed as a condensed abelian group).
+            \end{proposition}
+                \begin{proof}
+                    For now, see \href{https://mathoverflow.net/a/356261/143390}{\underline{this MO answer by Peter Scholze}}.
+                \end{proof}
+            On the other hand, the large category of condensed abelian groups has enough projectives, which means that for homological purposes, one can always work with projective resolutions and left-derived functors; in particular, the existence of enough projectives allows us to form the large derived category of condensed abelian groups $\Z^{\cond}\mod$. 
+            \begin{theorem}[$\Z^{\cond}\mod^{\heart}$ has enough projectives] \label{theorem: the_large_category_of_condensed_abelian_groups_has_enough_projectives}
+                The abelian category $\Z^{\cond}\mod^{\heart}$ has enough projectives.
+            \end{theorem}
+                \begin{proof}
+                    
+                \end{proof}
+            \begin{definition}[The derived category of condensed abelian groups] \label{def: the_derived_category_of_abelian_groups}
+                
+            \end{definition}
+            \begin{remark}[Condensed objects of the derived category of abelian groups ?] \label{remark: condensation_of_the_derived_category_of_abelian_groups}
+                As triangulated categories, $\Z^{\cond}\mod^-$ and $(\Z\mod^-)^{\cond}$ (i.e. the category of condensed objects\footnote{Note that as a derived $\infty$-category, $\Z\mod^-$ is indeed hyper-complete, small-complete, and small-cocomplete, and thus satisfies the conditions laid out in definition \ref{def: condensed_objects}.} of the bounded-below derived category of abelian groups $\Z\mod$) are not obviously equivalent in any manner; the reason behind this boils down to the essential fact that cones are not functorial. However, as derived $\infty$-categories (cf. \cite[Subsection 1.3.2]{HA}), there is indeed a t-exact equivalence between the two derived categories, thanks to the fact that the formations of fibre and cofibre sequences are functorial (as they are certain homotopy pullbacks and pushouts, respectively).
+            \end{remark}
         
-    \subsection{Symmetric monoidal structures; solidity}
-        \begin{convention}[Condensed local systems]
-            From now on, if $L \in \Sets$ is a set then the corresponding condensed local system (i.e. pro-\'etale local system over a point) shall be suggestively denoted by $L^{\cond}$.
-        \end{convention}
+    \subsection{Solidity}
     
-        First of all, let us clarify that it is not that tensor products of condensed modules do not exist. However, such tensor products will usually end up being topologically pathological or just outright nonsensical. Take for instance, the local system $\Z_p^{\cond} \in \Sets^{\cond}$. Its tensor product with other non-archimedean local systems can be easily topologised via formal completion, but if we were to consider say, $\Z_p^{\cond} \tensor \R^{\cond}$ or $\Z_p^{\cond} \tensor \Z_{\ell}^{\cond}$ (where $\ell \not = p$ is another prime), then it is not very clear what the corresponding topological completion should be.  
+    \subsection{\textit{Addendum}: Pyknoticity}
