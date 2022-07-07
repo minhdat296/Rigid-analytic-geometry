@@ -130,6 +130,15 @@
                 For any strong limit cardinal $\kappa$, the pair $(-)^{\kappa\-\decond} \ladjoint (-)^{\kappa\-\cond}$ as in theorems \ref{theorem: condensation_of_topological_spaces_is_fully_faithful} and \ref{theorem: condensation_of_topological_spaces_is_a_right_adjoint} is an adjoint equivalence between the category of $\kappa$-small compacta and that of $\kappa$-small qcqs condensed sets.  
             \end{corollary}
             
+        \subsubsection{\textit{Interlude}: Animated objects}
+            \begin{convention}[Compact and compact-projective objects]
+                If $\C$ is a category then we shall denote by $\C^{\cpt}$ it subcategory spanned by compact objects (i.e. objects $X \in \Ob(\C)$ such that $\C(X, -): \C \to \Sets$ preserves filtered colimits) and by $\C^{\cproj}$ of compact-projective objects (i.e. objects $X \in \Ob(\C)$ such that $\C(X, -): \C \to \Sets$ preserves sifted colimits).
+            \end{convention}
+            \begin{definition}[Animated objects] \label{def: animated_obejcts}
+                
+            \end{definition}
+            
+    \subsection{Condensed abelian sheaf cohomology}
         \subsubsection{Condensed abelian groups}
             \begin{convention}[Regarding derived categories of modules] \label{conv: derived_categories_of_condensed_modules}
                 Let us note that elsewhere, for $R$ any ring, the notation $R\mod$ shall be used for denoting the derived category of $R$-modules (and $R\mod^{\leq 0}, R\mod^{\geq 0}, R\mod^-, R\mod^+, R\mod^b$ shall mean the usual truncated/bounded subcategories), whereas $R\mod^{\heart}$ shall mean the \textit{underived} category of $R$-modules\footnote{The notation is justified as the underived category of $R$-modules is the abelian category that is the heart of the canonical t-structure on the derived category $R\mod$.}. 
@@ -231,12 +240,82 @@
                 \begin{proof}
                     
                 \end{proof}
-            \begin{definition}[The derived category of condensed abelian groups] \label{def: the_derived_category_of_abelian_groups}
-                
-            \end{definition}
-            \begin{remark}[Condensed objects of the derived category of abelian groups ?] \label{remark: condensation_of_the_derived_category_of_abelian_groups}
-                As triangulated categories, $\Z^{\cond}\mod^-$ and $(\Z\mod^-)^{\cond}$ (i.e. the category of condensed objects\footnote{Note that as a derived $\infty$-category, $\Z\mod^-$ is indeed hyper-complete, small-complete, and small-cocomplete, and thus satisfies the conditions laid out in definition \ref{def: condensed_objects}.} of the bounded-below derived category of abelian groups $\Z\mod$) are not obviously equivalent in any manner; the reason behind this boils down to the essential fact that cones are not functorial. However, as derived $\infty$-categories (cf. \cite[Subsection 1.3.2]{HA}), there is indeed a t-exact equivalence between the two derived categories, thanks to the fact that the formations of fibre and cofibre sequences are functorial (as they are certain homotopy pullbacks and pushouts, respectively).
+            \begin{convention}[$\infty$-categories]
+                For us, an $\infty$-category (cf. \cite[Chapters 1-3]{HTT}) shall always be an $(\infty, 1)$-category. We shall not be overly concerned with the model (or lack thereof) underlying the construction of our $\infty$-categories. 
+            \end{convention}
+            \begin{remark}[Bounded-below derived $\infty$-categories]
+                For definition \ref{def: the_derived_category_of_abelian_groups}, recall that if $\calA$ is an abelian category \textit{with enough projectives} and $\Ch^-(\calA)$ is its associated category of bounded-below chain complexes (i.e. chain complexes $M^{\bullet} \in \Ob(\Ch(\calA))$ such that $M^n \cong 0$ for $n \ll 0$), then we can define the derived $\infty$-category $\rmD^-(\calA)$ of $\calA$ (or more specifically, the bounded-below derived $\infty$-category of $\calA$) as the localisation of $\Ch^-(\calA)$ at quasi-isomorphisms (i.e. chain maps $M^{\bullet} \to N^{\bullet}$ such that $H^i(M^{\bullet}) \cong H^i(N^{\bullet})$ for all $i \in \Z$). Again, note that we index \textit{cohomologically}. 
             \end{remark}
+            \begin{definition}[The derived category of condensed abelian groups] \label{def: the_derived_category_of_condensed_abelian_groups}
+                Due to the existence of enough projectives in $\Z^{\cond}\mod^{\heart}$, we can define the \textbf{bounded-below derived category of condensed abelian groups} (or simply the \textbf{derived category of condensed abelian groups}, due to the lack of injectives), which we denote\footnote{Cf. convention \ref{conv: derived_categories_of_condensed_modules}.} by $\Z^{\cond}\mod^-$, as the bounded-below derived $\infty$-category $\rmD^-(\Z^{\cond}\mod^{\heart})$.
+                
+                The t-structure on $\Z^{\cond}\mod^-$ is the obvious one.
+            \end{definition}
+            \begin{remark}[Derived tensor products and homs for condensed abelian groups] \label{remark: derived_tensor_products_and_homs_for_condensed_abelian_groups}
+                Using the fact that the abelian category $\Z^{\cond}\mod^{\heart}$ has enough projectives and that there is an adjunction:
+                    $$
+                        \begin{tikzcd}
+                        	{\Z^{\cond}\mod^{\heart}} & {\Z^{\cond}\mod^{\heart}}
+                        	\arrow[""{name=0, anchor=center, inner sep=0}, "{\Hom_{\Z^{\cond}}(M, -)}"', bend right, from=1-1, to=1-2]
+                        	\arrow[""{name=1, anchor=center, inner sep=0}, "{- \tensor_{\Z^{\cond}} M}"', bend right, from=1-2, to=1-1]
+                        	\arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
+                        \end{tikzcd}
+                    $$
+                we can construct a corresponding $\infty$-adjunction using projective resolutions, which exist uniquely as derived functors of the adjunction above by some abstract nonsense:
+                    $$
+                        \begin{tikzcd}
+                        	{\Z^{\cond}\mod^-} & {\Z^{\cond}\mod^-}
+                        	\arrow[""{name=0, anchor=center, inner sep=0}, "{\R\Hom_{\Z^{\cond}}(M, -)}"', bend right, from=1-1, to=1-2]
+                        	\arrow[""{name=1, anchor=center, inner sep=0}, "{- \tensor_{\Z^{\cond}}^{\L} M}"', bend right, from=1-2, to=1-1]
+                        	\arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
+                        \end{tikzcd}
+                    $$
+            \end{remark}
+            \begin{remark}[Condensed objects of the derived category of abelian groups ?] \label{remark: condensation_of_the_derived_category_of_abelian_groups}
+                As triangulated ($1$-)categories, $\Z^{\cond}\mod^-$ and $(\Z\mod^-)^{\cond}$ (i.e. the category of condensed objects\footnote{Note that as a derived $\infty$-category, $\Z\mod^-$ is indeed hyper-complete, small-complete, and small-cocomplete, and thus satisfies the conditions laid out in definition \ref{def: condensed_objects}.} of the bounded-below derived category of abelian groups $\Z\mod$) are not obviously equivalent in any manner; the reason behind this boils down to the essential fact that cones are not functorial. However, as derived $\infty$-categories (cf. \cite[Subsection 1.3.2]{HA}), there is indeed a t-exact equivalence between the two triangulated $\infty$-categories, thanks to the fact that the formations of fibre and cofibre sequences are functorial (as they are certain homotopy pullbacks and pushouts, respectively). This is one of the reasons why we have defined $\Z^{\cond}\mod$ as a derived $\infty$-category as opposed to merely as a triangulated ($1$-)category.
+                
+                Of course, one can always \say{flatten} the stable $\infty$-category $\Z^{\cond}\mod^-$ into a usual derived $1$-category via considering its homotopy category $\Ho(\Z^{\cond}\mod^-)$, which is \textit{a priori} a triangulated category. 
+            \end{remark}
+            \begin{proposition}[$\Z^{\cond}\mod^-$ is compactly generated] \label{prop: the_derived_category_of_condensed_abelian_groups_is_compactly_generated}
+                The derived category $\Z^{\cond}\mod^-$ from definition \ref{def: the_derived_category_of_condensed_abelian_groups} is compactly generated (i.e. ).
+            \end{proposition}
+                \begin{proof}
+                    
+                \end{proof}
+                
+            Now that we have set up a general homological framework for all condensed abelian groups, let us try to apply these machineries to locally compact abelian groups, a very important and common class of topological-algebraic objects. 
+            \begin{remark}
+                First of all, notice that objects of the category $\Loc\Comp\Ab$ of locally compact abelian groups are special cases of compactly generated topological spaces and thus the category embeds fully faithfully into the category $\Z^{\cond}\mod^{\heart}$ of condensed abelian gorups. 
+            \end{remark}
+            \begin{remark}[$\Loc\Comp\Ab$ is monoidally closed] \label{remark: the_category_of_locally_compact_abelian_groups_is_monoidally_closed}
+                
+            \end{remark}
+                
+        \subsubsection{Condensed abelian sheaf cohomology}
+            Let us now investigate whether or not cohomologies of (compactly generated) topological spaces with condensed abelian coeffients agree with results given by the classical cohomology theories (e.g. singular cohomology, \v{C}ech cohomology, and abelian sheaf cohomology).
+        
+            \begin{lemma}[Simplicial hypercovers by extremally disconnected spaces] \label{lemma: simplical_hypercovers_of_compacta_by_extremally_disconnected_spaces}
+                
+            \end{lemma}
+                \begin{proof}
+                    
+                \end{proof}
+            \begin{lemma}
+                
+            \end{lemma}
+                \begin{proof}
+                    
+                \end{proof}
+            \begin{proposition}[Free resolutions of condensed abelian groups] \label{prop: free_resolutions_of_condensed_abelian_groups}
+                Let $S$ be a compactly generated topological space and $S_{\bullet} \to S$ be a simplicial hypercover thereof by extremally disconnected spaces. Then $\Z^{\cond}[S_{\bullet}]$ shall be a free (hence projective) resolution of $\Z^{\cond}[S]$.
+            \end{proposition}
+                \begin{proof}
+                            
+                \end{proof}
+            \begin{definition}[Condensed abelian sheaf cohomology] \label{def: condensed_abelian_sheaf_cohomology}
+                Let $S$ be a compactly generated topological space, $S_{\bullet} \to S$ be a simplicial hypercover by extremally disconnected spaces, and $M \in \Ob(\Z^{\cond}\mod^{\heart})$ be some condensed abelian group. The \textbf{condensed abelian cohomology of $S$ with coefficients in $M^{\bullet}$} (or simply the \say{condensed cohomology of $S$ with coefficients in $M$}), denoted by $H^*_{\cond}(S, M)$, shall then be given by:
+                    $$H^*_{\cond}(S, M) \cong \Ext^*_{\Z^{\cond}}(\Z^{\cond}[S_{\bullet}], M)$$
+            \end{definition}
         
     \subsection{Solidity}
     
