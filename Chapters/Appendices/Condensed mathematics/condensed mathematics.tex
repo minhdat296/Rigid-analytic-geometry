@@ -138,6 +138,8 @@
                 
             \end{definition}
             
+        \subsubsection{\textit{Addendum}: Pyknoticity}
+            
     \subsection{Condensed abelian sheaf cohomology}
         \subsubsection{Condensed abelian groups}
             \begin{convention}[Regarding derived categories of modules] \label{conv: derived_categories_of_condensed_modules}
@@ -174,7 +176,7 @@
                     
                 \end{proof}
             \begin{lemma}[Free condensed abelian groups] \label{lemma: free_condensed_abelian_groups}
-                The obvious forgetful functor $\Z^{\cond}\-\oblv: \Z^{\cond}\mod^{\heart} \to \Sets^{\cond}$ (respectively, the small forgetful functor $\Z^{\kappa\-\cond}\-\oblv: \Z^{\kappa\-\cond}\mod^{\heart} \to \Sets^{\kappa\-\cond}$ for some fixed strong limit cardinal $\kappa$) admits a left-adjoint $\Z^{\cond}[-]: \Sets^{\cond} \to \Z^{\cond}\mod^{\heart}$ (respectively, $\Z^{\kappa\-\cond}[-]: \Sets^{\kappa\-\cond} \to \Z^{\kappa\-\cond}\mod^{\heart}$), called the functor of \textbf{free condensed abelian groups}. 
+                The obvious forgetful functor $\Z^{\cond}\-\oblv^{\heart}: \Z^{\cond}\mod^{\heart} \to \Sets^{\cond}$ (respectively, the small forgetful functor $\Z^{\kappa\-\cond}\-\oblv^{\heart}: \Z^{\kappa\-\cond}\mod^{\heart} \to \Sets^{\kappa\-\cond}$ for some fixed strong limit cardinal $\kappa$) admits a left-adjoint $\Z^{\cond}[-]^{\heart}: \Sets^{\cond} \to \Z^{\cond}\mod^{\heart}$ (respectively, $\Z^{\kappa\-\cond}[-]^{\heart}: \Sets^{\kappa\-\cond} \to \Z^{\kappa\-\cond}\mod^{\heart}$), called the functor of ($\kappa$-small) \textbf{free condensed abelian groups}. 
             \end{lemma}
                 \begin{proof}
                     
@@ -202,7 +204,7 @@
                     
                 \end{proof}
             \begin{proposition}[Forming free condensed abelian groups is monoidal] \label{prop: forming_free_condensed_abelian_groups_is_monoidal}
-                The functors $\Z^{\cond}[-]: \Sets^{\cond} \to \Z^{\cond}\mod^{\heart}$ and $\Z^{\kappa\-\cond}[-]: \Sets^{\kappa\-\cond} \to \Z^{\kappa\-\cond}\mod^{\heart}$ from lemma \ref{lemma: free_condensed_abelian_groups} is a (strong) monoidal functor with respect to the canonical monoidal structures on $\Sets^{\cond}$ $\Z^{\cond}\mod^{\heart}$ (respectively, $\Sets^{\kappa\-\cond}$ and $\Z^{\kappa\-\cond}\mod^{\heart}$).
+                The functors $\Z^{\cond}[-]^{\heart}: \Sets^{\cond} \to \Z^{\cond}\mod^{\heart}$ and $\Z^{\kappa\-\cond}[-]^{\heart}: \Sets^{\kappa\-\cond} \to \Z^{\kappa\-\cond}\mod^{\heart}$ from lemma \ref{lemma: free_condensed_abelian_groups} is a (strong) monoidal functor with respect to the canonical monoidal structures on $\Sets^{\cond}$ $\Z^{\cond}\mod^{\heart}$ (respectively, $\Sets^{\kappa\-\cond}$ and $\Z^{\kappa\-\cond}\mod^{\heart}$).
             \end{proposition}
                 \begin{proof}
                     
@@ -244,7 +246,7 @@
                 For us, an $\infty$-category (cf. \cite[Chapters 1-3]{HTT}) shall always be an $(\infty, 1)$-category. We shall not be overly concerned with the model (or lack thereof) underlying the construction of our $\infty$-categories. 
             \end{convention}
             \begin{remark}[Bounded-below derived $\infty$-categories]
-                For definition \ref{def: the_derived_category_of_abelian_groups}, recall that if $\calA$ is an abelian category \textit{with enough projectives} and $\Ch^-(\calA)$ is its associated category of bounded-below chain complexes (i.e. chain complexes $M^{\bullet} \in \Ob(\Ch(\calA))$ such that $M^n \cong 0$ for $n \ll 0$), then we can define the derived $\infty$-category $\rmD^-(\calA)$ of $\calA$ (or more specifically, the bounded-below derived $\infty$-category of $\calA$) as the localisation of $\Ch^-(\calA)$ at quasi-isomorphisms (i.e. chain maps $M^{\bullet} \to N^{\bullet}$ such that $H^i(M^{\bullet}) \cong H^i(N^{\bullet})$ for all $i \in \Z$). Again, note that we index \textit{cohomologically}. 
+                For definition \ref{def: the_derived_category_of_condensed_abelian_groups}, recall that if $\calA$ is an abelian category \textit{with enough projectives} and $\Ch^-(\calA)$ is its associated category of bounded-below chain complexes (i.e. chain complexes $M^{\bullet} \in \Ob(\Ch(\calA))$ such that $M^n \cong 0$ for $n \ll 0$), then we can define the derived $\infty$-category $\rmD^-(\calA)$ of $\calA$ (or more specifically, the bounded-below derived $\infty$-category of $\calA$) as the localisation of $\Ch^-(\calA)$ at quasi-isomorphisms (i.e. chain maps $M^{\bullet} \to N^{\bullet}$ such that $H^i(M^{\bullet}) \cong H^i(N^{\bullet})$ for all $i \in \Z$). Again, note that we index \textit{cohomologically}. 
             \end{remark}
             \begin{definition}[The derived category of condensed abelian groups] \label{def: the_derived_category_of_condensed_abelian_groups}
                 Due to the existence of enough projectives in $\Z^{\cond}\mod^{\heart}$, we can define the \textbf{bounded-below derived category of condensed abelian groups} (or simply the \textbf{derived category of condensed abelian groups}, due to the lack of injectives), which we denote\footnote{Cf. convention \ref{conv: derived_categories_of_condensed_modules}.} by $\Z^{\cond}\mod^-$, as the bounded-below derived $\infty$-category $\rmD^-(\Z^{\cond}\mod^{\heart})$.
@@ -283,13 +285,22 @@
                     
                 \end{proof}
                 
-            Now that we have set up a general homological framework for all condensed abelian groups, let us try to apply these machineries to locally compact abelian groups, a very important and common class of topological-algebraic objects. 
-            \begin{remark}
-                First of all, notice that objects of the category $\Loc\Comp\Ab$ of locally compact abelian groups are special cases of compactly generated topological spaces and thus the category embeds fully faithfully into the category $\Z^{\cond}\mod^{\heart}$ of condensed abelian gorups. 
-            \end{remark}
-            \begin{remark}[$\Loc\Comp\Ab$ is monoidally closed] \label{remark: the_category_of_locally_compact_abelian_groups_is_monoidally_closed}
-                
-            \end{remark}
+            Now that we have set up a general homological framework for all condensed abelian groups, let us try to apply these machineries to locally compact abelian groups, a very important and common class of topological-algebraic objects. Before we do, notice that objects of the category $\Loc\Comp\Ab$ of locally compact abelian groups are special cases of compactly generated topological spaces and thus the category embeds fully faithfully into the category $\Z^{\cond}\mod^{\heart}$ of condensed abelian groups. 
+            \begin{convention}
+                From now on, we observe the following conventions:
+                    \begin{itemize}
+                        \item $\Top\Grp$ and $\Top\Ab$, respectively, shall denote the categories of topological groupos and topological abelian groups.
+                        \item $\Haus\Ab, \Comp\Ab$, and $\Loc\Comp\Ab$ (respectively, $\kappa\-\Haus\Ab, \kappa\-\Comp\Ab$, and $\kappa\-\Loc\Comp\Ab$, for some fixed strong limit cardinal $\kappa$) shall be denoting the categories of Hausdorff abelian groups, compact abelian groups, and locally compact abelian groups (respectively, their $\kappa$-small subcategories). 
+                        \item If $X, Y$ are two topological spaces then the set $\Maps(X, Y)$ of continuous maps $\varphi: X \to Y$ shall, by default and unless specifically stated otherwise, by endowed with the compact-open topology. 
+                    \end{itemize}
+            \end{convention}
+            \begin{lemma}[Condensing hom-sets] \label{lemma: condensing_hom_sets_between_hausdorff_abelian_groups}
+                Let $M, N$ be Hausdorff abelian groups and that $M$ is compactly generated. Then there is a natural isomorphism of condensed abelian groups:
+                    $$\Hom_{\Z^{\cond}}(M^{\cond}, N^{\cond}) \cong \Haus\Ab(M, N)^{\cond}$$
+            \end{lemma}
+                \begin{proof}
+                    
+                \end{proof}
                 
         \subsubsection{Condensed abelian sheaf cohomology}
             Let us now investigate whether or not cohomologies of (compactly generated) topological spaces with condensed abelian coeffients agree with results given by the classical cohomology theories (e.g. singular cohomology, \v{C}ech cohomology, and abelian sheaf cohomology).
@@ -307,7 +318,7 @@
                     
                 \end{proof}
             \begin{proposition}[Free resolutions of condensed abelian groups] \label{prop: free_resolutions_of_condensed_abelian_groups}
-                Let $S$ be a compactly generated topological space and $S_{\bullet} \to S$ be a simplicial hypercover thereof by extremally disconnected spaces. Then $\Z^{\cond}[S_{\bullet}]$ shall be a free (hence projective) resolution of $\Z^{\cond}[S]$.
+                Let $S$ be a compactly generated topological space and $S_{\bullet} \to S$ be a simplicial hypercover thereof by extremally disconnected spaces. Then $\Z^{\cond}[S_{\bullet}]$ shall be a free (hence projective) resolution of $\Z^{\cond}[S]^{\heart}$.
             \end{proposition}
                 \begin{proof}
                             
@@ -317,6 +328,34 @@
                     $$H^*_{\cond}(S, M) \cong \Ext^*_{\Z^{\cond}}(\Z^{\cond}[S_{\bullet}], M)$$
             \end{definition}
         
-    \subsection{Solidity}
-    
-    \subsection{\textit{Addendum}: Pyknoticity}
+    \subsection{Solid abelian groups}
+        \subsubsection{The category of solid abelian groups}
+            \begin{definition}[Solid abelian groups] \label{def: solid_abelian_groups}
+                The (underived) category of solid abelian groups, which we shall denote by $\Z^{\solid}\mod^{\heart}$, is the pro-completion of the essential image $\Z^{\cond}[\Fin\Sets]^{\heart}$ of the category $\Fin\Sets$ under the free condensed abelian group functor $\Z^{\cond}[-]^{\heart}: \Sets^{\cond} \to \Z^{\cond}\mod^{\heart}$.
+            \end{definition}
+            \begin{remark}
+                Since finite sets with their discrete topologies are compacta, they are in fact particular instances of compactly generated topological spaces according to definition \ref{def: compactly_generated_topological_spaces}; by theorem \ref{theorem: condensation_of_topological_spaces_is_fully_faithful}, one may therefore view $\Fin\Sets$ as a full subcategory of $\Sets^{\cond}$. 
+            \end{remark}
+            \begin{remark}[Solid abelian groups are condensed] \label{remark: solid_abelian_groups_are_condensed}
+                Since the category of condensed abelian groups is complete (cf. proposition \ref{prop: the_category_of_condensed_abelian_groups_is_AB3_and_AB3*}), solid abelian groups are particular cases of condensed abelian groups.
+            \end{remark}
+            \begin{remark}[Free solid abelian groups] \label{remark: free_solid_abelian_groups}
+                Due to the fact that $\Pro(\Fin\Sets) \cong \Pro\Fin\Sets$, the \textbf{free solid abelian groups} are precisely those isomorphic to solid abelian groups of the form:
+                    $$\Z^{\solid}[S] := \underset{i}{\lim} \Z^{\cond}[S_i]$$
+                where $S \cong \underset{i}{\lim} S_i$ is a copresentation of a profinite set $S$ (note that $S$ need not be strictly profinite, meaning that $\Z^{\cond}[S]$ for $S$ finite is also a free solid abelian group). Equivalently (and since $\Sets^{\cond}$ is complete by virtue of being a topos), one may say that the functor of free solid abelian groups\footnote{We shall let the reader figure out the construction of $\Z^{\kappa\-\solid}[-]^{\heart}$ (with hopefully self-explanatory notation) for themselves.}:
+                    $$\Z^{\solid}[-]^{\heart}: \Sets^{\cond} \to \Z^{\solid}\mod^{\heart}$$
+                is nothing but the pro-completion of the following domain-restriction of the functor of free condensed abelian group:
+                    $$\Z^{\cond}[-]^{\heart}|_{\Fin\Sets}: \Fin\Sets \to \Z^{\cond}\mod^{\heart}$$
+            \end{remark}
+            \begin{proposition}[Free solid abelian groups (cont.)] \label{prop: free_solid_abelian_groups}
+                The obvious forgetful functor $\Z^{\solid}\-\oblv^{\heart}: \Z^{\solid}\mod^{\heart} \to \Sets^{\cond}$ admits a left-adjoint $\Z^{\solid}[-]^{\heart}: \Sets^{\cond} \to \Z^{\solid}\mod^{\heart}$. 
+            \end{proposition}
+                \begin{proof}
+                    
+                \end{proof}
+            
+            \begin{remark}[The abelian category of solid abelian groups] \label{remark: the_abelian_category_of_solid_abelian_groups}
+                As limits commute with one another and with finite limits, the category of solid abelian groups is also a complete abelian category which is furthermore finitely cocomplete.
+            \end{remark}
+        
+        \subsubsection{Relativisation}

@@ -1,0 +1,168 @@
+\section{Some classical analysis}
+    \subsection{The theory of topological vector spaces and functional analysis}
+        In functional analysis, the concept of distributional density, usually just called \textbf{distribution} for short, is something that may be integrated against a bump function to produce a number (and hence a \say{mathematically analytic} version of the notion of physical density\footnote{Probability density functions, in fact, are special kinds of distribution.}). If a non-degenerate background density/volume form:
+            $$d\vol$$
+        is fixed, then each other density is a function relative to $d\vol$, and hence with such an identification understood distributional densities are generalized functions, namely objects that may arise as potentially singular limits of sequences of smooth functions (i.e. of non-singular distributions). Famous examples of such are the Dirac delta-\say{function} and the Heaviside distribution which behave like constant functions with an infinitely sharp \say{spike} or \say{kink}, respectively.
+
+        Distributional densities appear notably as fundamental solutions to linear partial differential equations (such as for the wave equation and/or Klein-Gordon equation, whose fundamental solutions are the propagators of free quantum fields), which is the context in which the concept was originally introduced. The study of their singularity structure (encoded by their singular support and their wave front set) is a fundamental tool in PDE theory (for instance in the propagation of singularities theorem), known as microlocal analysis. Distributions are also fundamental in the rigorous construction of perturbative quantum field theory, where they appear in the variant as operator-valued distributions.
+        
+        Often distributions are considered by default just on open subsets of Euclidean space with its canonical volume form tacitly understood. But the concept of distributions makes sense more generally on general smooth manifolds (at least). If these are equipped with the structure of a (pseudo-)Riemannian manifold then the induced volume form again identifies distributions with generalised functions.
+        
+        \subsubsection{Generalities on topological vector spaces}
+            We start with a reminder of the notion of (locally) convex topological vector spaces, that of Fr\'echet spaces, and then the notion of \textbf{LF-spaces}.
+            
+            The first technical notion is that of semi-norms and gauges.
+            \begin{definition}[Semi-norms and gauge spaces] \label{def: seminorms_and_gauges}
+                \noindent
+                \begin{enumerate}
+                    \item \textbf{(Pseudo-norms):} A \textbf{pseudo-metric space} is a pair $(X, d)$ is a pair consisting of:
+                        \begin{itemize}
+                            \item a set $X$,
+                            \item a function $d: X \x X \to \R_{\geq 0}$ subjected to the following conditions:
+                                \begin{itemize}
+                                    \item $\forall x \in X: d(x, x) = 0$,
+                                    \item $\forall x, y \in X: d(x, y) = d(y, x)$,
+                                    \item $\forall x, y, z \in X: d(x, z) \leq d(x, y) + d(y, z)$.
+                                \end{itemize}
+                        \end{itemize}
+                    By requiring furthermore that $d(x, y) > 0$ for all pairs of distinct points $x \not y$, one gets the familiar notion of \textbf{metric spaces}.
+                    
+                    If $X$ is a vector space, then the $d: X \x X \to \R_{\geq 0}$ shall be known as a \textbf{semi-norm}.
+                    \item \textbf{(Gauge spaces):} A \textbf{gauge} is a \textit{countable} direct set $\{d_i\}_{i \in I}$ of pseudo-metrics on a given set $X$. 
+                    
+                    A \textbf{gauge space} $(X, \del)$ is a pair consisting of a set $X$ (typically, a vector space) and a gauge $\del$.
+                \end{enumerate}
+            \end{definition}
+            \begin{example}
+                Consider the countable directed set $\{(\R^n, d_n)\}_{n \in \N}$ of finite-dimensional real vector spaces equipped with their canonical Euclidean norms. Its filtered limit taken in the category of topological spaces:
+                    $$\R^{\infty} \cong \underset{n \in \N}{\lim} \R^n$$
+                then carries a natural gauge:
+                    $$d_{\infty}: \R^{\infty} \x \R^{\infty} \to \R_{\geq 0}$$
+                which is naturally the limit of norms thanks to some abstract nonsense in the category of topological spaces, i.e.:
+                    $$d_{\infty} \cong \underset{n \in \N}{\lim} d_n$$
+                More succinctly, one can define the gauge space $(\R^{\infty}, d_{\infty})$ as:
+                    $$(\R^{\infty}, d_{\infty}) \cong \underset{n \in \N}{\lim} (\R^n, d_n)$$
+                where we take the limit in the category of metric spaces (recall that metrics are \textit{a priori} continuous functions).
+            \end{example}
+            
+            \begin{proposition}[Topologies induced by pseudo-metrics and gauges] \label{prop: topologies_induced_by_pseudo_metrics_and_gauges}
+                Every pseudo-metric induces a topology, and so does every gauge.
+            \end{proposition}
+                \begin{proof}
+                   \noindent
+                   \begin{enumerate}
+                       \item 
+                       \item 
+                   \end{enumerate}
+                \end{proof}
+            
+            Next, we introduce the notion of locally convex topological vector spaces. Let us first recall the notion of topological vector spaces.
+            \begin{definition}[Topological vector spaces] \label{def: topological_vector_spaces}
+                The category of \textbf{topological vector spaces} (over some fixed topological field $K$) and continuous linear maps between them is the same as the category of internal $K$ vector spaces in $\Top$. When $K$ is understood (as is the case for us), we shall write $K\-\Top\Vect$ for this category. 
+            \end{definition}
+            \begin{remark}
+                One crucial thing to note is that $K\-\Top\Vect$ does not have a well-behaved monoidal structure. For instance, it is not clear how one would topologise the $\Q$-vector space\footnote{Spoilers: the answer is the condesned formalism; cf. section \ref{section: condensed_mathematics}.}:
+                    $$\R \tensor_{\Q} \Q_p$$
+                wherein $\Q$ is endowed with the usual Archimedean norm. We can, however, still find certain subcategories of $K\-\Top\Vect$ which do admit a canonical monoidal structure: the full subcategory of locally convex topological vector spaces is one such example. 
+            \end{remark}
+            Let us also remind ourselves of the universal constructions that exist in the category of topological vector spaces.
+            \begin{proposition}[(Co)limits of topological vector spaces] \label{prop: (co)limits_of_topological_vector_spaces}
+                \noindent
+                \begin{enumerate}
+                    \item \textbf{(Limits):} 
+                        \begin{enumerate}
+                            \item \textbf{(Subspaces):} Subspaces of topological vector spaces are topological vector (sub)spaces. 
+                            \item \textbf{(Products):} Products of topological vector spaces are topological vector spaces, equipped with the canonical product topology.
+                        \end{enumerate}
+                    \item \textbf{(Colimits):} Quotients of topological vector spaces by subspaces are once more topological vector spaces, equipped with the canonical quotient topology.
+                \end{enumerate}
+            \end{proposition}
+                \begin{proof}
+                    \noindent
+                    \begin{enumerate}
+                        \item \textbf{(Limits):}
+                        \begin{enumerate}
+                            \item \textbf{(Subspaces):}
+                            \item \textbf{(Products):}
+                        \end{enumerate}
+                        \item \textbf{(Colimits):}
+                    \end{enumerate}
+                \end{proof}
+            \begin{remark}
+                The category of topological vector spaces is not abelian.
+            \end{remark}
+            
+            \begin{definition}[Locally convex topological vector space] \label{def: locally_convex_topological_vector_spaces}
+                For a fixed topological field $K$, the category of \textbf{locally convex topological $K$-vector spaces} - which we shall denote by $K\-\Top\Vect^{\loc.\convex}$ - is the full subcategory of the category of topological $K$-vector spaces spanned by Hausdorff gauge spaces. 
+            \end{definition}
+            \begin{proposition}[Tensor products of locally convex topological vector space] \label{prop: tensor_products_of_locally_convex_topological_vector_spaces}
+                $K\-\Top\Vect^{\loc.\convex}$ admits a natural \textit{closed} symmetric monoidal structure, namely that where the internal-hom is given by spaces of continuous linear maps and the tensor product is just the continuous tensor product.  
+            \end{proposition}
+                \begin{proof}
+                            
+                \end{proof}
+            \begin{proposition}[(Co)limits of locally convex topological vector spaces] \label{prop: (co)limits_of_locally_convex_topological_vector_spaces}
+                \noindent
+                \begin{enumerate}
+                    \item \textbf{(Limits):}
+                    \item \textbf{(Colimits):}
+                \end{enumerate}
+            \end{proposition}
+                \begin{proof}
+                    \noindent
+                    \begin{enumerate}
+                        \item \textbf{(Limits):}
+                        \item \textbf{(Colimits):}
+                    \end{enumerate}
+                \end{proof}
+            
+            \begin{definition}[Banach spaces] \label{def: banach_spaces}
+                \noindent
+                \begin{enumerate}
+                    \item \textbf{(Bounded linear maps):} A continuous linear map between two \textit{normed} spaces:
+                        $$f: V \to W$$
+                    is said to be \textbf{bounded} if and only if its operator norm is bounded, i.e. if and only if:
+                        $$\forall v \in V: \exists M \in \R_{\geq 0}: \|f(v)\| \leq M \|v\|$$
+                    or alternatively, if and only if $\sup_{v \in V} \|f(v)\|$ is finite.
+                    \item \textbf{(Banach spaces):} The category of \textbf{Banach spaces} (denoted by $K\Ban$) is the \textit{non-full} subcategory of $K\-\Top\Vect$ spanned by complete normed spaces and bounded linear maps between them.
+                \end{enumerate}
+            \end{definition}
+            \begin{definition}[Cross norms] \label{def: cross_norms}
+                Let $V, W$ be Banach space. Then, a \textbf{uniform cross norm} on the algebraic tensor product $V \tensor W$ is a norm such that:
+                    \begin{itemize}
+                        \item $\forall v \in V: \forall w \in W: \|v \tensor w\| = \|v\| \|w\|$,
+                        \item $\forall \varphi \in V^*: \forall \psi \in W^*: \|\varphi \tensor \psi\| = \|\varphi\| \|\psi\|$ (where $(-)^*$ denotes the continuous dual).
+                    \end{itemize}
+            \end{definition}
+            \begin{proposition}[Tensor products of Banach spaces] \label{prop: tensor_product_of_banach_spaces}
+                \noindent
+                \begin{enumerate}
+                    \item \textbf{(Existence of cross norm):}
+                    \item \textbf{(Completed tensor products):}
+                \end{enumerate}
+            \end{proposition}
+                \begin{proof}
+                    \noindent
+                    \begin{enumerate}
+                        \item \textbf{(Existence of cross norm):}
+                        \item \textbf{(Completed tensor products):}
+                    \end{enumerate}
+                \end{proof}
+            
+            \begin{definition}[Fr\'echet spaces] \label{def: frechet_spaces}
+                A \textbf{Fr\'echet space} is a complete gauge space.
+            \end{definition}
+            
+            \begin{definition}[LF-spaces] \label{def: LF_spaces}
+                An \textbf{LF-space} is a \textit{countable} directed colimit of \textit{locally convex} topological vector spaces.
+            \end{definition}
+            
+        \subsubsection{Distributions}
+            Let us first write down the definition of the space of distribution on a pre-determined open subset $X \subseteq \R^n$, which shall be a filtered colimit of Fr\'echet spaces endowed with a natural final topology.
+            \begin{definition}[Distributions] \label{def: distributions}
+                
+            \end{definition}
+    
+        \subsubsection{Sobolev spaces}
+        
+    \subsection{Spectral theory}
