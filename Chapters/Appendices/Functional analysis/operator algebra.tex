@@ -1,0 +1,68 @@
+\section{Some classical functional analysis}
+    \subsection{Topological vector spaces}
+        \subsubsection{Generalities}
+
+        \subsubsection{Banach and Hilbert spaces}
+
+    \subsection{Operator algebras}
+        \begin{convention}
+            Throughout this entire subsection, we work within the tensor category $\bbC\Ban$ of complex Banach spaces. In particular, terms like \say{Banach space} or \say{Banach algebra} shall always be understood to be over $\bbC$. 
+        \end{convention}
+        \begin{convention} \label{conv: banach_algebras_are_associative}
+            Banach algebras are never assumed to be either unital (e.g. convolution of $L^1$-functions is not unital) or commutative unless specifically stated to be so, but they shall always be associative.
+        \end{convention}
+        
+        \subsubsection{\texorpdfstring{$C^*$}{}-algebras}
+            \begin{example}
+                Before we begin our study of $C^*$-algebras, let us point out certain common complex Banach spaces and algebras:
+                    \begin{itemize}
+                        \item \textbf{(Bounded continuous functions):} If $X$ is a compact topological space then the $\bbC$-algebra:
+                            $$C^0(X) := \Maps(X, \bbC)$$
+                        of complex-valued continuous functions on $X$ will be a Banach algebra with respect to the sup-norm, given by $\|f\|_{\infty} := \sup_{x \in X} |f(x)|$. When $X$ is non-compact, we can not apply the Extreme Value Theorem to guarantee that $\sup_{x \in X} |f(x)|$ shall always be a finite non-negative real number, and therefore $\|\cdot\|_{\infty}: X \to \R_{\geq 0}$ might fail to be a norm; of course, one can always restrict one's attention to the $\bbC$-subalgebra:
+                            $$C^b(X) := \Maps^b(X, \bbC)$$
+                        of bounded complex-valued continuous functions on $X$ (i.e. functions $f: X \to \bbC$ such that $|f(x)| < +\infty$ for all $x \in X$) in order to obtain a Banach algebra with respect to the sup-norm: now, even if $X$ is non-compact, $\|\cdot\|_{\infty}: X \to \R_{\geq 0}$ will still never return infinite values, meaning that we can then verify that it is indeed a norm and that $C^b(X)$ is topologically complete with respect to it to check that it is a Banach algebra. Of course, we have $C^0(X) = C^b(X)$ when $X$ is compact. 
+                        \item \textbf{(Bounded operators):} More generally, for $X$ an arbitrary topological space and $V$ a Banach space, one might consider the complex vector space:
+                            $$C^b(X, V) := \Maps^b(X, V)$$
+                        of bounded $V$-valued continuous functions on $X$ and check that it is a Banach space; of course, when $X$ is compact, one can consider instead the entire space $C^0(X, \bbC) := \Maps(X, V)$ of $V$-valued continuous functions on $X$.
+                        
+                        A particular case of this phenomenon is that of bounded continuous linear maps between topological vector spaces: if $W$ is a topological vector space and $V$ is as before, then the $\bbC$-vector space $\Hom_{\cont}(W, V)$ of continuous $\bbC$-linear maps from $W$ to $V$ (i.e. $\bbC$-linear maps $\varphi: W \to V$ such that $\sup_{w \in W} \frac{\|\varphi(w)\|}{\|w\|} < +\infty$) shall be a Banach subspace of $\Maps^b(W, V)$. This - in turn - implies that for any Banach space $V$, the space $\End_{\cont}^b(V)$ of bounded continuous operators on $V$ is a Banach algebra with respect to the operator norm (given by $\|\varphi\| := \sup_{w \in W} \frac{\|\varphi(w)\|}{\|w\|}$). 
+                        \item \textbf{($L^1$-functions on locally compact groups):} Let $G$ be a locally compact topological group, $\mu$ a fixed Haar measure thereon, and denote by $L^1(G, \mu)$ the corresponding space of absolutely integrable complex-valued functions, always implicitly understood to be equipped with the $L^1$-norm, given by $\|f\|_{L^1(G, \mu)} := \int_G |f| d\mu$. The operation of convolution then endows $L^1(G, \mu)$ with the structure of a \textit{non-unital} Banach algebra.
+                    \end{itemize}
+            \end{example}
+            
+            \begin{lemma}[Invertible elements of Banach algebras form open subsets] \label{lemma: invertible_elements_of_banach_algebras_form_open_subsets}
+                Let $A$ be a unital Banach algebra. Then the subset $A^{\x} \subset A$ of two-sided invertible elements is open.
+            \end{lemma}
+                \begin{proof}
+                    It suffices to show that any invertible element $x \in A^{\x}$ admits an open neighbourhood $U \ni x$ consisting entirely of invertible elements; in fact, since multiplication by $x^{-1}$ is a homeomorphism for all $x \in A^{\x}$, we can simply show that the multiplicative unit $1 \in A^{\x}$ admits an open neighbourhood $U \ni 1$ of invertible elements. Actually, we might as well show that there exists a radius $\delta > 0$ so that the open $\delta$-ball $B_{\delta}(1)$ centered at $1$ is a subset of $A^{\x}$: because $\|1 + y\| \leq 1 + \|y\|$ per the definition of norms, this amounts to showing that $1 + y \in A^{\x}$ if $\|y\|$ is sufficiently small. For this, consider firstly the fact that $1 + y = \frac{1 + y^N}{\sum_{n = 0}^N (-1)^n y^n}$, wherein $N$ is any positive integer. By taking the limit $N \to +\infty$, one see that $(1 + y)^{-1} = \sum_{n = 0}^{+\infty} (-1)^n y^n$: this is a sum that indeed converges to $1$ for all $y \in A$ such that $\|y\| < 1$, and so one can always choose an open ball $B_{\delta}(1)$ of radius $0 < \delta < 1$ centered at $1$. As stated, this implies that $A^{\x}$ is open inside $A$.
+                \end{proof}
+            \begin{corollary}
+                For any unital Banach algebra $A$, the subset $A^{\x} \subset A$ of two-sided invertible elements is a topological subgroup whose topology is the subspace topology inherited from $A$. 
+            \end{corollary}
+            \begin{remark}
+                The proof strategy used for lemma \ref{lemma: invertible_elements_of_banach_algebras_form_open_subsets} also works for unital Banach algebras over non-archimedean fields\footnote{E.g. when the Banach algebra $A$ is a finite-dimensional \textit{commutative} Banach algebra over a complete non-archimedean field then $y$ can be taken to be contained in the unique maximal ideal of $A$ (for instance, one may take $A$ to be the $\Q_p$-algebra $\Q_p(p^{1/p^{\infty}})^{\wedge}$).} without any heavy modification. Instead of proving the existence of open balls of radii $0 < \delta < 1$, we observe that the sum $1 + y = \frac{1 + y^N}{\sum_{n = 0}^N (-1)^n y^n}$ converges to $1$ whenever $y$ is topologically nilpotent. 
+            \end{remark}
+            \begin{definition}[Spectra of operators] \label{def: spectra_of_operators}
+                Let $A$ be a (complex) unital Banach algebra. Then the \textbf{spectrum} of any element $x \in A$ shall be the following closed (in fact, compact) subset of $\bbC$:
+                    $$\sigma(x) := \{\lambda \in \bbC \mid \lambda - x \not \in A^{\x}\}$$
+            \end{definition}
+            \begin{remark}[Spectra are closed discs] \label{remark: spectra_of_operators_are_closed_discs}
+                
+            \end{remark}
+            \begin{proposition}[Spectra of non-zero operators are non-empty] \label{prop: spectra_of_non_zero_operators_are_non_empty}
+                Let $A$ be a unital \textit{non-zero} Banach algebra and let $x \in A \setminus \{0\}$ be an arbitrarily chosen non-zero element. Then $\sigma(x) \not = \varnothing$. 
+            \end{proposition}
+                \begin{proof}
+                    Suppose for the sake of deriving a contradiction that there exists $x \in A \setminus \{0\}$ such that $\sigma(x) = \varnothing$. By definition \ref{def: spectra_of_operators}, this means that $\lambda - x \in A^{\x}$ for all $\lambda \in \bbC$. Next, let $\phi: A \to \bbC$ be a continuous $\bbC$-linear map\footnote{I.e. a linear functional.} and observe that $\lambda \mapsto \phi\left(\frac{1}{\lambda - x}\right)$ is a holomorphic function on $\bbC$; furtheremore, this function is bounded ($\left|\phi\left(\frac{1}{\lambda - x}\right)\right| \leq \|\phi\|_{\infty}$ for all $\lambda \in \bbC$ thanks to the assumption that $x \in A \setminus \{0\}$) on the entirety of $\bbC$ (in fact, it vanishes as $\lambda \to \infty$), which by Liouville's Theorem implies that it is actually constant. The linear functional $\phi$ is arbitrary, so the function $\lambda \mapsto \frac{1}{\lambda - x}$ is therefore constant, which in turn implies that $\lambda \mapsto \lambda - x$ is constant, i.e. $\lambda = \lambda - x$. This means that $x = 0$, but since we have assumed that $x \in A \setminus \{0\}$, it can only be the case that $A = 0$, but as we have assumed that $A$ is non-zero, this is clearly a contradiction. As such, our assumption that there exists $x \in A \setminus \{0\}$ such that $\sigma(x) = \varnothing$ is false, meaning that $\sigma(x) \not = \varnothing$ for all $x \in A \setminus \{0\}$ whenever $A \not = 0$, as claimed.
+                \end{proof}
+            \begin{corollary}
+                Any complex Banach algebra $A$ that is a division algebra (hence non-zero and unital) is isomorphic as a $\bbC$-algebra to $\bbC$ itself.
+            \end{corollary}
+                \begin{proof}
+                    We know from proposition \ref{prop: spectra_of_non_zero_operators_are_non_empty} that $\sigma(x) \not = \varnothing$ for all $x \in A \setminus \{0\}$, so we can always choose $\lambda \in \sigma(x)$ for any fixed $x \in A \setminus \{0\}$. For such a $\lambda$, we have by definition \ref{def: spectra_of_operators} that $x - \lambda \not \in A^{\x}$, and because $A$ is assumed to be a division algebra, this means that $x - \lambda = 0$. But this in turn implies that $x = \lambda$, meaning that indeed $A \cong \bbC$.
+                \end{proof}
+            \begin{remark}
+                
+            \end{remark}
+        
+        \subsubsection{von Neumann algebras}
