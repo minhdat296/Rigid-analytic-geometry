@@ -1,20 +1,15 @@
-\section{Some classical functional analysis}
-    \subsection{Topological vector spaces}
-        \subsubsection{Generalities}
-
-        \subsubsection{Banach and Hilbert spaces}
-
-    \subsection{Operator algebras}
-        \begin{convention}
-            Throughout this entire subsection, we work within the tensor category $\bbC\Ban$ of complex Banach spaces. In particular, terms like \say{Banach space} or \say{Banach algebra} shall always be understood to be over $\bbC$. 
-        \end{convention}
-        \begin{convention} \label{conv: banach_algebras_are_associative}
-            Banach algebras are never assumed to be either unital (e.g. convolution of $L^1$-functions is not unital) or commutative unless specifically stated to be so, but they shall always be associative.
-        \end{convention}
-        
-        \subsubsection{\texorpdfstring{$C^*$}{}-algebras}
+\section{Operator algebras}
+    \begin{convention}
+        Throughout this entire subsection, we work within the tensor category $\bbC\Ban$ of complex Banach spaces. In particular, terms like \say{Banach space} or \say{Banach algebra} shall always be understood to be over $\bbC$. 
+    \end{convention}
+    \begin{convention} \label{conv: banach_algebras_are_associative}
+        Banach algebras are never assumed to be either unital (e.g. convolution of $L^1$-functions is not unital) or commutative unless specifically stated to be so, but they shall always be associative.
+    \end{convention}
+    
+    \subsection{\texorpdfstring{$\rmC^*$}{}-algebras}
+        \subsubsection{Spectra of operators}
             \begin{example}
-                Before we begin our study of $C^*$-algebras, let us point out certain common complex Banach spaces and algebras:
+                Before we begin our study of $\rmC^*$-algebras, let us point out certain common complex Banach spaces and algebras:
                     \begin{itemize}
                         \item \textbf{(Bounded continuous functions):} If $X$ is a compact topological space then the $\bbC$-algebra:
                             $$C^0(X) := \Maps(X, \bbC)$$
@@ -30,6 +25,25 @@
                     \end{itemize}
             \end{example}
             
+            \begin{definition}[Spectra of operators] \label{def: spectra_of_operators}
+                Let $A$ be a (complex) unital Banach algebra. Then the \textbf{spectrum} of any element $x \in A$ shall be the following closed (in fact, compact) subset of $\bbC$:
+                    $$\sigma(x) := \{\lambda \in \bbC \mid \lambda - x \not \in A^{\x}\}$$
+            \end{definition}
+            \begin{example}[Spectral elements are eigenvalues] \label{example: spectral_elements_are_eigenvalues}
+                Let $V$ be a finite-dimensional complex vector space of dimension $n = \dim V$ and consider its endomorphism algebra $\End(V)$ with the operator norm (note that $\End_{\cont}(V) = \End(V)$ since every operator on a finite-dimensional complex vector space is bounded). The spectrum of an operator $\varphi \in \End(V)$ (viewed as an $n \x n$ complex matrix) is then, by definition, the set of complex numbers $\lambda \in \bbC$ such that $\lambda I_n - \varphi$ is not invertible, where $I_n$ denotes the $n \x n$ identity matrix. We know that a finite-dimensional matrix with coefficients in a field is non-invertible if and only if its determinant is zero, so $\det(\lambda I_n - \varphi) = 0$ for all $\lambda \in \sigma(\varphi)$. Now, observe that $\det(\lambda I_n - \varphi)$ is nothing but the characteristic polynomial of $\varphi$. Therefore, complex numbers $\lambda \in \bbC$ such that $\det(\lambda I_n - \varphi) = 0$ are precisely the eigenvalues of the operator $\varphi \in \End(V)$, and hence definition \ref{def: spectra_of_operators} agrees with the usual notion of the spectrum of a finite-dimensional matrix with coefficients from a field, that being its set of eigenvalues not counting (algebraic) multiplicities.
+            \end{example}
+            \begin{proposition}[Spectra of non-zero operators are non-empty] \label{prop: spectra_of_non_zero_operators_are_non_empty}
+                Let $A$ be a unital \textit{non-zero} Banach algebra and let $x \in A \setminus \{0\}$ be an arbitrarily chosen non-zero element. Then $\sigma(x) \not = \varnothing$. 
+            \end{proposition}
+                \begin{proof}
+                    Suppose for the sake of deriving a contradiction that there exists $x \in A \setminus \{0\}$ such that $\sigma(x) = \varnothing$. By definition \ref{def: spectra_of_operators}, this means that $\lambda - x \in A^{\x}$ for all $\lambda \in \bbC$. Next, let $\phi: A \to \bbC$ be a continuous $\bbC$-linear map\footnote{I.e. a linear functional.} and observe that $\lambda \mapsto \phi\left(\frac{1}{\lambda - x}\right)$ is a holomorphic function on $\bbC$; furtheremore, this function is bounded ($\left|\phi\left(\frac{1}{\lambda - x}\right)\right| \leq \|\phi\|_{\infty}$ for all $\lambda \in \bbC$ thanks to the assumption that $x \in A \setminus \{0\}$) on the entirety of $\bbC$ (in fact, it vanishes as $\lambda \to \infty$), which by Liouville's Theorem implies that it is actually constant. The linear functional $\phi$ is arbitrary, so the function $\lambda \mapsto \frac{1}{\lambda - x}$ is therefore constant, which in turn implies that $\lambda \mapsto \lambda - x$ is constant, i.e. $\lambda = \lambda - x$. This means that $x = 0$, but since we have assumed that $x \in A \setminus \{0\}$, it can only be the case that $A = 0$, but as we have assumed that $A$ is non-zero, this is clearly a contradiction. As such, our assumption that there exists $x \in A \setminus \{0\}$ such that $\sigma(x) = \varnothing$ is false, meaning that $\sigma(x) \not = \varnothing$ for all $x \in A \setminus \{0\}$ whenever $A \not = 0$, as claimed.
+                \end{proof}
+            \begin{corollary} \label{coro: banach_division_algebras_are_isomorphic_to_ground_field}
+                Any complex Banach algebra $A$ that is a division algebra (hence non-zero and unital) is isomorphic as a $\bbC$-algebra to $\bbC$ itself.
+            \end{corollary}
+                \begin{proof}
+                    We know from proposition \ref{prop: spectra_of_non_zero_operators_are_non_empty} that $\sigma(x) \not = \varnothing$ for all $x \in A \setminus \{0\}$, so we can always choose $\lambda \in \sigma(x)$ for any fixed $x \in A \setminus \{0\}$. For such a $\lambda$, we have by definition \ref{def: spectra_of_operators} that $x - \lambda \not \in A^{\x}$, and because $A$ is assumed to be a division algebra, this means that $x - \lambda = 0$. But this in turn implies that $x = \lambda$, meaning that indeed $A \cong \bbC$.
+                \end{proof}
             \begin{lemma}[Invertible elements of Banach algebras form open subsets] \label{lemma: invertible_elements_of_banach_algebras_form_open_subsets}
                 Let $A$ be a unital Banach algebra. Then the subset $A^{\x} \subset A$ of two-sided invertible elements is open.
             \end{lemma}
@@ -42,27 +56,62 @@
             \begin{remark}
                 The proof strategy used for lemma \ref{lemma: invertible_elements_of_banach_algebras_form_open_subsets} also works for unital Banach algebras over non-archimedean fields\footnote{E.g. when the Banach algebra $A$ is a finite-dimensional \textit{commutative} Banach algebra over a complete non-archimedean field then $y$ can be taken to be contained in the unique maximal ideal of $A$ (for instance, one may take $A$ to be the $\Q_p$-algebra $\Q_p(p^{1/p^{\infty}})^{\wedge}$).} without any heavy modification. Instead of proving the existence of open balls of radii $0 < \delta < 1$, we observe that the sum $1 + y = \frac{1 + y^N}{\sum_{n = 0}^N (-1)^n y^n}$ converges to $1$ whenever $y$ is topologically nilpotent. 
             \end{remark}
-            \begin{definition}[Spectra of operators] \label{def: spectra_of_operators}
-                Let $A$ be a (complex) unital Banach algebra. Then the \textbf{spectrum} of any element $x \in A$ shall be the following closed (in fact, compact) subset of $\bbC$:
-                    $$\sigma(x) := \{\lambda \in \bbC \mid \lambda - x \not \in A^{\x}\}$$
-            \end{definition}
-            \begin{remark}[Spectra are closed discs] \label{remark: spectra_of_operators_are_closed_discs}
-                
-            \end{remark}
-            \begin{proposition}[Spectra of non-zero operators are non-empty] \label{prop: spectra_of_non_zero_operators_are_non_empty}
-                Let $A$ be a unital \textit{non-zero} Banach algebra and let $x \in A \setminus \{0\}$ be an arbitrarily chosen non-zero element. Then $\sigma(x) \not = \varnothing$. 
+            \begin{proposition}[Spectra are closed discs] \label{prop: spectra_of_operators_are_closed_discs}
+                Let $A$ be a unital complex Banach algebra and $x \in A$ be an arbitrarily chosen element. Then $\sigma(x)$ will be a closed subset of $\bbC$ (understood to be endowed with the usual metric topology); in fact, $\sigma(x) = \{\lambda \in \bbC \mid |\lambda| \leq \|x\|\}$.
             \end{proposition}
                 \begin{proof}
-                    Suppose for the sake of deriving a contradiction that there exists $x \in A \setminus \{0\}$ such that $\sigma(x) = \varnothing$. By definition \ref{def: spectra_of_operators}, this means that $\lambda - x \in A^{\x}$ for all $\lambda \in \bbC$. Next, let $\phi: A \to \bbC$ be a continuous $\bbC$-linear map\footnote{I.e. a linear functional.} and observe that $\lambda \mapsto \phi\left(\frac{1}{\lambda - x}\right)$ is a holomorphic function on $\bbC$; furtheremore, this function is bounded ($\left|\phi\left(\frac{1}{\lambda - x}\right)\right| \leq \|\phi\|_{\infty}$ for all $\lambda \in \bbC$ thanks to the assumption that $x \in A \setminus \{0\}$) on the entirety of $\bbC$ (in fact, it vanishes as $\lambda \to \infty$), which by Liouville's Theorem implies that it is actually constant. The linear functional $\phi$ is arbitrary, so the function $\lambda \mapsto \frac{1}{\lambda - x}$ is therefore constant, which in turn implies that $\lambda \mapsto \lambda - x$ is constant, i.e. $\lambda = \lambda - x$. This means that $x = 0$, but since we have assumed that $x \in A \setminus \{0\}$, it can only be the case that $A = 0$, but as we have assumed that $A$ is non-zero, this is clearly a contradiction. As such, our assumption that there exists $x \in A \setminus \{0\}$ such that $\sigma(x) = \varnothing$ is false, meaning that $\sigma(x) \not = \varnothing$ for all $x \in A \setminus \{0\}$ whenever $A \not = 0$, as claimed.
+                    $\|x\| \geq 0$ for all $x \in A$ so we might as well consider only $\lambda \not = 0$.
+                    
+                    If $\lambda \in \sigma(x)$ then $\lambda - x$ is not invertible as an element of $A$, meaning that the series\footnote{Thought of as the formal inverse of $1 - \frac{x}{\lambda}$} $\sum_{n = 0}^{+\infty} \left(\frac{x}{\lambda}\right)^n$ does not converge to $\frac{1}{1 - \frac{x}{\lambda}}$, which is the case if and only if $|\lambda| \leq \|x\|$. On the other hand, if $\lambda \in \bbC$ is such that $|\lambda| \leq \|x\|$ then again, the series $\sum_{n = 0}^{+\infty} \left(\frac{x}{\lambda}\right)^n$ will not converge to $1 - \frac{x}{\lambda}$, from which we infer that $1 - \frac{x}{\lambda}$ is not invertible; since $\lambda \not = 0$ this implies that $\lambda - x$ is also not invertible, i.e. $\lambda \in \sigma(x)$ by definition. 
                 \end{proof}
-            \begin{corollary}
-                Any complex Banach algebra $A$ that is a division algebra (hence non-zero and unital) is isomorphic as a $\bbC$-algebra to $\bbC$ itself.
+            \begin{corollary}[Characters of unital complex Banach algebras are continuous] \label{coro: characters_of_unital_complex_banach_algebras_are_continuous}
+                Let $A$ be a unital complex Banach algebra. Then any homomorphism $\chi: A \to \bbC$ of $\bbC$-algebras\footnote{Such homomorphisms are also called \say{\textbf{characters}}.} has sup-norm $\leq 1$ (so in particular, it is continuous).
             \end{corollary}
                 \begin{proof}
-                    We know from proposition \ref{prop: spectra_of_non_zero_operators_are_non_empty} that $\sigma(x) \not = \varnothing$ for all $x \in A \setminus \{0\}$, so we can always choose $\lambda \in \sigma(x)$ for any fixed $x \in A \setminus \{0\}$. For such a $\lambda$, we have by definition \ref{def: spectra_of_operators} that $x - \lambda \not \in A^{\x}$, and because $A$ is assumed to be a division algebra, this means that $x - \lambda = 0$. But this in turn implies that $x = \lambda$, meaning that indeed $A \cong \bbC$.
+                    By definition $\|\chi\|_{\infty} := \sup_{x \in A} \frac{|\chi(x)|}{\|x\|}$ so showing that $\|\chi\|_{\infty} \leq 1$ amounts to showing that $|\chi(x)| \leq \|x\|$ for all $x \in A$, which is the same as showing that $\chi(x) \in \sigma(x)$ (cf. proposition \ref{prop: spectra_of_operators_are_closed_discs}). To this end, suppose for the sake of deriving a contradiction that $\chi(x) \not \in \sigma(x)$; should this be true, $\chi(x) - x$ would be invertible. However, since $\chi(\chi(x) - x) - \chi(x) - \chi(x) = 0$, which is not invertible as an element of $\bbC$, $\chi(x) - x$ must be non-invertible as an element of $A$. This contradicts the asumption that $\chi(x) \not \in \sigma(x)$, which as stated, means that indeed $\|\chi\|_{\infty} \leq 1$ as claimed.
                 \end{proof}
-            \begin{remark}
+            \begin{proposition}[Residue fields of commutative Banach algebras] \label{prop: residue_fields_of_commutative_banach_algebras}
+                Let $A$ be a commutative and unital complex Banach algebra. Then, for any $\m \in \Spm A$, there is an isomorphism of $\bbC$-algebras $A/\m \cong \bbC$. 
+            \end{proposition}
+                \begin{proof}
+                    Let us firstly recall lemma \ref{lemma: invertible_elements_of_banach_algebras_form_open_subsets}, which tells us that because $1 \in A$ is invertible, it has an open neighbourhood $U$ consisting entirely of invertible elements (i.e. $U$ is a subset of $A^{\x}$). $\m$ is a proper ideal by definition and therefore does not contain any invertible element \textit{a priori}; as such, $\m \cap U = \varnothing$ for any open neighbourhood $U \ni 1$ inside $A^{\x}$. Now, the inversion map $(-)^{-1}: A \setminus \{0\} \to A$ can be easily checked to be continuous: this is a fact that we can use to show that the topological closure $\bar{\m} \supseteq \m$ also can not contain any invertible element. We can then use the additional facts that addition and scalar multiplications are also continuous maps to show that $\bar{\m}$ must therefore be a proper $A$-ideal; the maximality of $\m$ then implies that $\bar{\m} = \m$, i.e. any maximal $A$-ideal $\m \in \Spm A$ is closed as a subset of $A$. Now, endow $A/\m$ with the quotient topology induced by the canonical quotient map $A \to A/\m$ and recall that quotients of metric spaces are themselves metric spaces. It is not hard to verify that precisely because $\m$ is closed, the quotient $A/\m$ is indeed a complete metric space, and since it is already a $\bbC$-algebra via the composition, it is thus a complex Banach algebra by definition. Then, simply apply corollary \ref{coro: banach_division_algebras_are_isomorphic_to_ground_field} to get a $\bbC$-algebra isomorphism $A/\m \cong \bbC$.
+                \end{proof}
                 
+            \begin{definition}[Spectral radii] \label{def: spectral_radii}
+                Let $A$ be a unital complex Banach algebra and $x \in A$ be an arbitrarily chosen element. Its spectral radius is then defined as:
+                    $$\rho(x) := \sup_{\lambda \in \sigma(x)} |\lambda|$$
+                Note that this number is always finite as a direct consequence of proposition \ref{prop: spectra_of_operators_are_closed_discs}.
+            \end{definition}
+            \begin{theorem}[Gelfand's spectral radius formula] \label{theorem: gelfand_spectral_radius_formula}
+                Let $A$ be a unital complex Banach algebra and $x \in A$ be an arbitrarily chosen element. Then, the spectral radius of $x$ can be computed as:
+                    $$\rho(x) = \limsup_{n \to +\infty} \|x^n\|^{\frac1n}$$
+            \end{theorem}
+                \begin{proof}
+                    
+                \end{proof}
+            
+        \subsubsection{Involutions}
+            \begin{definition}[Involutions and $\rmC^*$-algebras] \label{def: involutions}
+                An \textbf{involution} on a $\bbC$-algebra $A$ (which need not be unital, commutative, nor associative) is an additive and multiplicative map (i.e. a $\Z$-algebra homomorphism) $(-)^*: A \to A$ that is \textit{idempotent} (i.e. $x^{**} = x$ for all $x \in A$) and such that $\lambda^*$ is the complex-conjugate for all $\lambda \in \bbC$ (by definition, $\bbC$ is contained inside the centre of $A$).
+                
+                A $\bbC$-algebra equipped with an involution is called a \textbf{$*$-algebra} or an \textbf{involutive algebra}; we prefer the latter. A \textbf{$\rmC^*$-algebra} is an involutive Banach algebra $(A, (-)^*)$ such that $\|x\|^2 = \|x^* x\|$ for all $x \in A$. Homomorphisms of involutive algebras are $\bbC$-algebra homomorphisms $f: (A, (-)^*) \to ()B, (-)^{\dagger}$ such that $f(x^*) = f(x)^{\dagger}$ for all $x \in A$. 
+            \end{definition}
+            \begin{example}
+                If $X$ is any topological space then $C^0(X)$ with pointwise complex conjugation will be an involutive algebra. If $X$ is compact then $C^0(X)$ will furthermore be a $\rmC^*$-algebra; alternatively, one might consider $C^b(X)$, which is also a $\rmC^*$-algebra.
+            \end{example}
+            \begin{example}
+                Let $H$ be a Hilbert space and consider the algebra $\End^b(H)$ of bounded endomorphisms on $H$. The adjunction map $(-)^{\dagger}: \End^b(H) \to \End^b(H)$ which sends bounded operators $\varphi \in \End^b(H)$ to their complex-conjugate transposition $\varphi^{\dagger}$ (after some choice of basis for $H$) can be easily checked to be involutive and as such turns $\End^b(H)$ into an involutive algebra. In fact, $(\End^b(H), (-)^{\dagger})$ is a $\rmC^*$-algebra since we have $\|\varphi^{\dagger} \varphi\| = \|\varphi\|^2$.
+            \end{example}
+            \begin{convention}
+                There is a category of involutive algebras, denoted by $*\-\Assoc\Alg$, wherein involutive algebras are the objects and homomorphisms between them are the morphisms. $\rmC^*$-algebras form a full subcategory of this category\footnote{Check this!} which shall be denoted by $\rmC^*\-\Assoc\Alg$. 
+            \end{convention}
+            
+            \begin{definition}[Gelfand spectra] \label{def: gelfand_spectra}
+                The \textbf{Gelfand spectrum} of a unital complex Banch algebra $A$ is given by:
+                    $$\bbX(A) := \Hom_{\bbC\-\Assoc\Alg}(A, \bbC)$$
+            \end{definition}
+            \begin{remark}
+                Note that all $\bbC$-algebra homomorphism $\chi \in \Hom_{\bbC\-\Assoc\Alg}(A, \bbC)$ are continuous by corollary \ref{coro: characters_of_unital_complex_banach_algebras_are_continuous}. Furthermore, the assignment $\bbX: \bbC\Ban\Assoc\Alg^{\op} \to \Sets$ is a functor; in fact, this extends to a functor $\bbX: \bbC\Ban\Assoc\Alg^{\op} \to \Top$ since the set $\bbX(A)$ can be endowed with the sup-norm to get turned into a metric space. 
             \end{remark}
-        
-        \subsubsection{von Neumann algebras}
+    
+    \subsection{von Neumann algebras}
