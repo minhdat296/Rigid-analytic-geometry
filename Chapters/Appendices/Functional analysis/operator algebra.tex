@@ -82,36 +82,106 @@
                     $$\rho(x) := \sup_{\lambda \in \sigma(x)} |\lambda|$$
                 Note that this number is always finite as a direct consequence of proposition \ref{prop: spectra_of_operators_are_closed_discs}.
             \end{definition}
+            The following theorem is our first non-trivial result, not only because of it gives us a practical formula for computing spectral radii of elements of Banach algebras (i.e. operators) but also, because it immediately implies (cf. corollary \ref{coro: the_spectral_multiplicative_semi_norm}) that $\rho: A \to \R_{\geq 0}$ is a multiplicative semi-norm, which leads us to the theory of Berkovich spaces.  
             \begin{theorem}[Gelfand's spectral radius formula] \label{theorem: gelfand_spectral_radius_formula}
                 Let $A$ be a unital complex Banach algebra and $x \in A$ be an arbitrarily chosen element. Then, the spectral radius of $x$ can be computed as:
-                    $$\rho(x) = \limsup_{n \to +\infty} \|x^n\|^{\frac1n}$$
+                    $$\rho(x) = \limsup_{n \to +\infty} \|x^n\|^{\frac1n} = \underset{n \to +\infty}{\lim} \|x^n\|^{\frac1n}$$
             \end{theorem}
                 \begin{proof}
                     
                 \end{proof}
+            \begin{corollary}[The spectral multiplicative semi-norm] \label{coro: the_spectral_multiplicative_semi_norm}
+                The assignment of spectral radii to elements $x \in A$ of a given unital Banach algebra $(A, \|-\|)$:
+                    $$\rho: A \to \R_{\geq 0}$$
+                is a multiplicative semi-norm\footnote{A \textbf{semi-norm} on a vector space $V$ over a normed field $(k, |\cdot|)$ is a function $\|-\|: V \to \R_{\geq 0}$ such that $\rho(\lambda v) = |\lambda| \rho(v)$ for all $\lambda \in k$ and all $v \in V$ and $\rho(v + v') \leq \rho(v) + \rho(v')$ for all $v, v' \in V$, but it is not required that $\rho(v) = 0$ implies $v = 0$. A semi-norm $\rho: A \to \R_{\geq 0}$ is \textbf{multiplicative} if $\rho|_{A \setminus \{0\}}: A \setminus \{0\} \to \R_{> 0}$ it is a homomorphism of (multiplicative) monoids, supposing that we view $\R_{> 0} \subset \R_{\geq 0}$ as a (commutative) multiplicative monoid with respect to the usual numerical multiplication.}. In fact, it is the maximal multiplicative semi-norm that is dominated by $\|-\|$.
+            \end{corollary}
             
         \subsubsection{Involutions}
             \begin{definition}[Involutions and $\rmC^*$-algebras] \label{def: involutions}
                 An \textbf{involution} on a $\bbC$-algebra $A$ (which need not be unital, commutative, nor associative) is an additive and multiplicative map (i.e. a $\Z$-algebra homomorphism) $(-)^*: A \to A$ that is \textit{idempotent} (i.e. $x^{**} = x$ for all $x \in A$) and such that $\lambda^*$ is the complex-conjugate for all $\lambda \in \bbC$ (by definition, $\bbC$ is contained inside the centre of $A$).
                 
-                A $\bbC$-algebra equipped with an involution is called a \textbf{$*$-algebra} or an \textbf{involutive algebra}; we prefer the latter. A \textbf{$\rmC^*$-algebra} is an involutive Banach algebra $(A, (-)^*)$ such that $\|x\|^2 = \|x^* x\|$ for all $x \in A$. Homomorphisms of involutive algebras are $\bbC$-algebra homomorphisms $f: (A, (-)^*) \to ()B, (-)^{\dagger}$ such that $f(x^*) = f(x)^{\dagger}$ for all $x \in A$. 
+                A $\bbC$-algebra equipped with an involution is called a \textbf{$*$-algebra} or an \textbf{involutive algebra}; we prefer the latter. A \textbf{$\rmC^*$-algebra} is an involutive Banach algebra $(A, (-)^*)$ such that $\|x\|^2 = \|x^* x\|$ for all $x \in A$. Homomorphisms of involutive algebras are $\bbC$-algebra homomorphisms $f: (A, (-)^*) \to ()B, (-)^{\dagger}$ such that $f(x^*) = f(x)^{\dagger}$ for all $x \in A$.
             \end{definition}
-            \begin{example}
+            \begin{example}[Bounded continuous functions] \label{example: continuous_functions_with_complex_conjugation}
                 If $X$ is any topological space then $C^0(X)$ with pointwise complex conjugation will be an involutive algebra. If $X$ is compact then $C^0(X)$ will furthermore be a $\rmC^*$-algebra; alternatively, one might consider $C^b(X)$, which is also a $\rmC^*$-algebra.
             \end{example}
-            \begin{example}
+            \begin{example}[Bounded operators on Hilbert spaces]
                 Let $H$ be a Hilbert space and consider the algebra $\End^b(H)$ of bounded endomorphisms on $H$. The adjunction map $(-)^{\dagger}: \End^b(H) \to \End^b(H)$ which sends bounded operators $\varphi \in \End^b(H)$ to their complex-conjugate transposition $\varphi^{\dagger}$ (after some choice of basis for $H$) can be easily checked to be involutive and as such turns $\End^b(H)$ into an involutive algebra. In fact, $(\End^b(H), (-)^{\dagger})$ is a $\rmC^*$-algebra since we have $\|\varphi^{\dagger} \varphi\| = \|\varphi\|^2$.
+            \end{example}
+            \begin{example}[$L^1$-functions on unimodular groups] 
+                A topological group $G$ whose Haar measure $\mu$ is right-invariant via $g \cdot \mu = \mu \cdot g^{-1}$ in addition to being left-invariant is said to be \textbf{unimodular}. Then, by equipping the $\bbC$-vector space $L^1(G)$ of absolutely integrable functions on $G$ can be endowed with convolution and the involution $(-)^{\dagger}: L^1(G) \to L^1(G)$ determined via $f^{\dagger}(g) := f(g^{-1})^*$ for all $g \in G$ to turn it into an involutive algebra. However, this is generally not a $C^*$-algebra, since \textit{a priori} do not have $\|f\|_{L^1(G)}^2 = \|f^{\dagger} f\|_{L^1(G)}$.
             \end{example}
             \begin{convention}
                 There is a category of involutive algebras, denoted by $*\-\Assoc\Alg$, wherein involutive algebras are the objects and homomorphisms between them are the morphisms. $\rmC^*$-algebras form a full subcategory of this category\footnote{Check this!} which shall be denoted by $\rmC^*\-\Assoc\Alg$. 
             \end{convention}
-            
+                
+            \begin{definition}[Normal elements] \label{def: normal_elements}
+                An element $x \in A$ of an involutive algebra $(A, (-)^*)$ is called \textbf{normal} if and only if $[x, x^*] = 0$.
+            \end{definition}
+            The following lemma will be used in the proof of theorem \ref{theorem: gelfand_duality}.
+            \begin{lemma}[Spectral radii and norms of normal elements] \label{prop: spectral_radii_and_norms_of_normal_elements}
+                Let $(A, \|-\|, (-)^*)$ be a $C^*$-algebra and $x \in A$ be a fixed normal element. Then $\rho(x) = \|x\|$.
+            \end{lemma}
+                \begin{proof}
+                    Combine theorem \ref{theorem: gelfand_spectral_radius_formula} with definitions \ref{def: involutions} and \ref{def: normal_elements}.
+                \end{proof}
+                
             \begin{definition}[Gelfand spectra] \label{def: gelfand_spectra}
                 The \textbf{Gelfand spectrum} of a unital complex Banch algebra $A$ is given by:
-                    $$\bbX(A) := \Hom_{\bbC\-\Assoc\Alg}(A, \bbC)$$
+                    $$\rmC^*\-\Spec A := \bbC\-\Alg(A, \bbC)$$
+                where $\bbC\-\Alg$ denotes the category where the objects are $\bbC$-algebras, which need not be associative, comnmutative, nor even unital, and the morphisms are $\bbC$-algebra homomorphisms. We might also refer to this as the \textbf{$\rmC^*$-spectrum} of $A$, for reasons that will become clear after theorem \ref{theorem: gelfand_duality}.
             \end{definition}
             \begin{remark}
-                Note that all $\bbC$-algebra homomorphism $\chi \in \Hom_{\bbC\-\Assoc\Alg}(A, \bbC)$ are continuous by corollary \ref{coro: characters_of_unital_complex_banach_algebras_are_continuous}. Furthermore, the assignment $\bbX: \bbC\Ban\Assoc\Alg^{\op} \to \Sets$ is a functor; in fact, this extends to a functor $\bbX: \bbC\Ban\Assoc\Alg^{\op} \to \Top$ since the set $\bbX(A)$ can be endowed with the sup-norm to get turned into a metric space. 
+                Note that all $\bbC$-algebra homomorphism $\chi \in \bbC\-\Alg(A, \bbC)$ are continuous by corollary \ref{coro: characters_of_unital_complex_banach_algebras_are_continuous}. Furthermore, the assignment $\rmC^*\-\Spec: \bbC\Ban\Assoc\Alg^{\op} \to \Sets$ is a functor; in fact, this extends to a functor $\rmC^*\-\Spec: \bbC\Ban\Assoc\Alg^{\op} \to \Top$ since the set $\rmC^*\-\Spec A$ can be endowed with the sup-norm to get turned into a metric space. 
             \end{remark}
+            \begin{theorem}[Gelfand Duality] \label{theorem: gelfand_duality}
+                \noindent
+                \begin{enumerate}
+                    \item \textbf{(Unital Gelfand Duality):} There is an adjoint equivalence between the opposite $\rmC^*\-\Comm\Alg^{\op}$ of the category of commutative $\rmC^*$-algebras and the category $\Comp$ of compacta\footnote{Cf. definition \ref{def: compacta}.} as follows:
+                        $$
+                            \begin{tikzcd}
+                            	{\rmC^*\-\Comm\Alg^{\op}} & \Comp
+                            	\arrow[""{name=0, anchor=center, inner sep=0}, "{\rmC^*\-\Spec}"', bend right, from=1-1, to=1-2]
+                            	\arrow[""{name=1, anchor=center, inner sep=0}, "{C^0(-)}"', bend right, from=1-2, to=1-1]
+                            	\arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
+                            \end{tikzcd}
+                        $$
+                    \item \textbf{(Non-unital Gelfand Duality):} There is an adjoint equivalence between the opposite $\rmC^*\-\Semi\Comm\Alg^{\op}$ of the category of not-necessarily unital commutative $\rmC^*$-algebras and the category ${}^{\pt/}\Comp$ of pointed compacta as follows:
+                        $$
+                            \begin{tikzcd}
+                            	{\rmC^*\-\Semi\Comm\Alg^{\op}} & { \Comp}
+                            	\arrow[""{name=0, anchor=center, inner sep=0}, "{\rmC^*\-\Spec}"', bend right, from=1-1, to=1-2]
+                            	\arrow[""{name=1, anchor=center, inner sep=0}, "{C^0(-)}"', bend right, from=1-2, to=1-1]
+                            	\arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
+                            \end{tikzcd}
+                        $$
+                    wherein the functor $C^0(-): {}^{\pt/}\Comp \to \rmC^*\-\Semi\Comm\Alg^{\op}$ is understood to be given by $C^0(X, x_0) := \{f \in C^0(X) \mid f(x_0) = 0\}$.
+                \end{enumerate}
+            \end{theorem}
+                \begin{proof}
+                    \noindent
+                    \begin{enumerate}
+                        \item \textbf{(Unital Gelfand Duality):} 
+                        \item \textbf{(Non-unital Gelfand Duality):} 
+                    \end{enumerate}
+                \end{proof}
+            
+            \begin{definition}[Hermitian and skew-symmetric elements] \label{def: hermitian_and_skew_symmetric_elements}
+                Following terminologies from elementary linear algebra, we say that an element $x \in A$ of an involutive algebra $(A, (-)^*)$ is \textbf{Hermitian} if and only if $x^* = x$,  \textbf{skew-symmetric} if and only if $x^* = -x$.
+            \end{definition}
+            \begin{definition}[Positivity and negativity] \label{def: positivity_and_negativity}
+                Let $(A, (-)^*)$ be an involutive algebra. A Hermitian element $x \in A$ is \textbf{positive} (respectively, \textbf{negative}) if and only if $\sigma(x) \subseteq \R_{\geq 0}$ (respectively, $\sigma(x) \subseteq \R_{\leq 0}$). An element $x \in A$ is real if and only if $\sigma(x) \subseteq \R$.
+            \end{definition}
+            \begin{proposition}[Hermitian elements are real] \label{prop: hermitian_elements_are_real}
+                Hermitian elements in any involutive algebra are always real.
+            \end{proposition}
+                \begin{proof}
+                    
+                \end{proof}
+            \begin{example}
+                Let $X$ be a topological space and consider the involutive algebra $(C^0(X), (-)^*)$ (cf. example \ref{example: continuous_functions_with_complex_conjugation}). Then, the non-negative functions $f: X \to \R_{\geq 0}$ are evidently are the positive elements.
+            \end{example}
+                
+        \subsubsection{\textit{Addendum}: Stone-\v{C}ech Compactifications}
     
     \subsection{von Neumann algebras}

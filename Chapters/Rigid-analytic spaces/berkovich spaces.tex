@@ -1,6 +1,47 @@
-\section{Berkovich's rigid-analytic spaces}
-    \subsection{Berkovich spectra of Banach algebras}
+\section{Rigid-analytic varieties}
+    \subsection{Tate's rigid spaces}
+        \subsubsection{Affinoid algebras}
+            \begin{convention}
+                Henceforth, we fix a \textit{complete} non-archimedean field $(K, |-|)$ valuation ring $K^{\circ} := \{x \in K \mid |x| \leq 1\}$ and residue field $k := K^{\circ}/\m$, where $\m := \{x \in K \mid |x| < 1\}$ is the unique maximal ideal of $K^{\circ}$. In addition, we will be caring about the value group of $K$ (or rather, of $K^{\circ}$), which comes from the valuation $v: K^{\x} \to \R$ that determines the non-archimedean ultrametric $|-| := \exp(v(-))$, and is given by $\Gamma := \im v$ (note that this is well-defined because $v: K^{\x} \to \R$ is a group homomorphism); this is a totally ordered abelian group whose ordering is inherited from the archimedean ordering of $(\R, \leq)$.
+            \end{convention}
+            \begin{remark}
+                In addition, recall that the valuation ring $K^{\circ}$ is Noetherian if and only if the value group $\Gamma$ is a discrete subgroup of $\R$; in which case, $K^{\circ}$ will be a discrete valuation ring.
+            \end{remark}
+            
+            \begin{convention}[Multi-indices] \label{conv: mutli_indices}
+                Fix a positive integer $n$. An \textbf{$n$-multi-index} is an ordered $n$-tuple $J := (j_1, ..., j_n) \in \N^n$. By $|J|$, we shall mean $\sum_{i = 1}^n j_i$ and for any ordered $n$-tuple of variables $X := (x_1, ..., x_n)$ we shall write $X^J := \prod_{i = 1}^n x_i^{j_i}$.
+            \end{convention}
+            \begin{definition}[Tate algebras and affinoid algebras] \label{def: affinoid_algebras}
+                Let $n$ be a fixed positive integer and let $X := (x_1, ..., x_n)$ be an $n$-tuple of variables. The \textbf{$n^{th}$ Tate $K$-algebra}, denoted by $K\{X\} := K\{x_1, ..., x_n\}$, is the $K$-subalgebra\footnote{We will let the readers check for themselves that $K\{X\}$ is a $K$-subalgebra of $K[\![X]\!]$.} of $K[\![X]\!] := K[\![x_1, ..., x_n]\!]$ whose elements are the convergent\footnote{Recall that a non-archimedean power series $\sum_{|J| = 0}^{+\infty} a_J X^J$ with coefficients $a_J \in K$ converges if and only if the coefficients $a_J$ are topologically nilpotent.} power series $\sum_{|J| = 1}^{+\infty} a_J X^J$ with coefficients $a_J \in K$. This is naturally a normed algebra via the so-called \textbf{Gauss norm}, which is given by $\left\|\sum_{|J| = 0}^{+\infty} a_J X^J\right\| := \sup_J |a_J|$ and well-defined because non-archimedean convergent power series must have topologically nilpotent (hence bounded) coefficients; obviously $\|f\| = 0$ if and only if $f = 0$.
+                
+                An \textbf{affinoid $K$-algebra} is a quotient of a Tate $K$-algebra by an ideal thereof (i.e. Tate algebras are \say{free} affinoid algebras). 
+            \end{definition}
+            \begin{lemma}[Ideals of Tate algebras are closed] \label{lemma: tate_algebra_ideals_are_closed}
+                Ideals inside Tate algebras are closed with respect to the topology induced by the Gauss norm.
+            \end{lemma}
+                \begin{proof}
+                    
+                \end{proof}
+            \begin{proposition}[Affinoid algebras are Banach algebras] \label{prop: affinoid_algebras_are_banach_algebras}
+                Affinoid algebras are Banach $K$-algebras with respect to the Gauss norm (note that this relies crucially on the assumption that $K$ is complete as a non-archimedean field).
+            \end{proposition}
+                \begin{proof}
+                    
+                \end{proof}
+            \begin{corollary}
+                There is a category of affinoid $K$-algebras, which we shall denote by $K\-\Affd$, wherein the objects are (of course!) affinoid $K$-algebras and the morphisms are the continuous (i.e. bounded) $K$-algebra homomorphisms, i.e. $K$-algebra homomorphisms $\varphi: A \to B$ such that $\frac{\|\varphi(f)\|}{\|f\|} < +\infty$ for all $f \in A$. In fact, this is a full subcategory of the category of Banach $K$-algebras and continuous $K$-algebra homomorphisms.
+            \end{corollary}
+            \begin{proposition}[Maximal spectra of affinoid algebras] \label{prop: maximal_spectra_of_affinoid_algebras}
+                There is a functor: $\Spm: K\-\Affd \to \Sets$ which associates to each affinoid $K$-algebra $A$ the set $\Spm A$ whose elements are the maximal ideals of $A$. 
+            \end{proposition}
+                \begin{proof}
+                    This amounts to showing that the pre-image of a maximal ideal of an affinoid algebra under a continuous $K$-algebra homomorphism is a maximal ideal of the domain. 
+                \end{proof}
+        
+        \subsubsection{The Tate topology on affinoids}
+        
+        \subsubsection{Structure sheaves of Tate's rigid spaces}
     
-    \subsection{Analytification and GAGA}
+    \subsubsection{Raynaud's formal models}
     
-    \subsubsection{Formal models}
+    \subsection{Berkovich's functional-analytic approach to rigid-analytic spaces}
