@@ -1,8 +1,8 @@
 \section{Rigid-analytic varieties}
     \subsection{Tate's rigid spaces}
-        \subsubsection{Affinoid algebras}
+        \subsubsection{Affinoid algebras and the Tate topology}
             \begin{convention}
-                Henceforth, we fix a \textit{complete} non-archimedean field $(K, |-|)$ valuation ring $K^{\circ} := \{x \in K \mid |x| \leq 1\}$ and residue field $k := K^{\circ}/\m$, where $\m := \{x \in K \mid |x| < 1\}$ is the unique maximal ideal of $K^{\circ}$. In addition, we will be caring about the value group of $K$ (or rather, of $K^{\circ}$), which comes from the valuation $v: K^{\x} \to \R$ that determines the non-archimedean ultrametric $|-| := \exp(v(-))$, and is given by $\Gamma := \im v$ (note that this is well-defined because $v: K^{\x} \to \R$ is a group homomorphism); this is a totally ordered abelian group whose ordering is inherited from the archimedean ordering of $(\R, \leq)$.
+                Henceforth, we fix a \textit{complete}\footnote{This is an important hypothesis because eventually, we will want out affinoid algebras to be instances of Banach algebra over $K$ (cf. proposition \ref{prop: affinoid_algebras_are_banach_algebras}).} non-archimedean field $(K, |-|)$ valuation ring $K^{\circ} := \{x \in K \mid |x| \leq 1\}$ and residue field $k := K^{\circ}/\m$, where $\m := \{x \in K \mid |x| < 1\}$ is the unique maximal ideal of $K^{\circ}$. In addition, we will be caring about the value group of $K$ (or rather, of $K^{\circ}$), which comes from the valuation $v: K^{\x} \to \R$ that determines the non-archimedean ultrametric $|-| := \exp(v(-))$, and is given by $\Gamma := \im v$ (note that this is well-defined because $v: K^{\x} \to \R$ is a group homomorphism); this is a totally ordered abelian group whose ordering is inherited from the archimedean ordering of $(\R, \leq)$.
             \end{convention}
             \begin{remark}
                 In addition, recall that the valuation ring $K^{\circ}$ is Noetherian if and only if the value group $\Gamma$ is a discrete subgroup of $\R$; in which case, $K^{\circ}$ will be a discrete valuation ring.
@@ -38,10 +38,9 @@
                     This amounts to showing that the pre-image of a maximal ideal of an affinoid algebra under a continuous $K$-algebra homomorphism is a maximal ideal of the domain. 
                 \end{proof}
         
-        \subsubsection{The Tate topology on affinoids}
-        
         \subsubsection{Structure sheaves of Tate's rigid spaces}
     
-    \subsubsection{Raynaud's formal models}
+    \subsection{Raynaud's formal models}
     
     \subsection{Berkovich's functional-analytic approach to rigid-analytic spaces}
+        \subsubsection{Non-archimedean Gelfand spectra of Banach algebras}
