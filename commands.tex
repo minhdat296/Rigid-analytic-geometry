@@ -253,6 +253,12 @@
     \IfValueT{#2}{^{#2}}
   }%
 }
+\NewDocumentCommand{\hattensor}{e{_^}}{%
+  \mathbin{\mathop{\hat{\otimes}}\displaylimits
+    \IfValueT{#1}{_{#1}}
+    \IfValueT{#2}{^{#2}}
+  }%
+}
 \NewDocumentCommand{\semidirect}{e{_^}}{%
   \mathbin{\mathop{\rtimes}\displaylimits
     \IfValueT{#1}{_{#1}}
