@@ -10,12 +10,12 @@
             \end{remark}
             
             \begin{convention}[Multi-indices] \label{conv: mutli_indices}
-                Fix a positive integer $n$. An \textbf{$n$-multi-index} is an ordered $n$-tuple $J := (j_1, ..., j_n) \in \N^n$. By $|J|$, we shall mean $\sum_{i = 1}^n j_i$ and for any ordered $n$-tuple of variables $X := (x_1, ..., x_n)$ we shall write $X^J := \prod_{i = 1}^n x_i^{j_i}$.
+                Fix a $n \in \N$. An \textbf{$n$-multi-index} is an ordered $n$-tuple $J := (j_1, ..., j_n) \in \N^n$. By $|J|$, we shall mean $\sum_{i = 1}^n j_i$ and for any ordered $n$-tuple of variables $X := (x_1, ..., x_n)$ we shall write $X^J := \prod_{i = 1}^n x_i^{j_i}$.
             \end{convention}
             \begin{definition}[Tate algebras and affinoid algebras] \label{def: affinoid_algebras}
-                Let $n$ be a fixed positive integer and let $X := (x_1, ..., x_n)$ be an $n$-tuple of variables. The \textbf{$n^{th}$ Tate $K$-algebra}, denoted by $K\{X\} := K\{x_1, ..., x_n\}$, is the $K$-subalgebra\footnote{We will let the readers check for themselves that $K\{X\}$ is a $K$-subalgebra of $K[\![X]\!]$.} of $K[\![X]\!] := K[\![x_1, ..., x_n]\!]$ whose elements are the convergent\footnote{Recall that a non-archimedean power series $\sum_{|J| = 0}^{+\infty} a_J X^J$ with coefficients $a_J \in K$ converges if and only if the coefficients $a_J$ are topologically nilpotent.} power series $\sum_{|J| = 1}^{+\infty} a_J X^J$ with coefficients $a_J \in K$. This is naturally a normed algebra via the so-called \textbf{Gauss norm}, which is given by $\left\|\sum_{|J| = 0}^{+\infty} a_J X^J\right\| := \sup_J |a_J|$ and well-defined because non-archimedean convergent power series must have topologically nilpotent (hence bounded) coefficients; obviously $\|f\| = 0$ if and only if $f = 0$.
+                Let $n \in \N$ be a fixed natural number and let $X := (x_1, ..., x_n)$ be an $n$-tuple of variables ($0$-tuples are to be understood as the empty set). The \textbf{$n^{th}$ Tate $K$-algebra}, denoted by $K\{X\} := K\{x_1, ..., x_n\}$, is the $K$-subalgebra\footnote{We will let the readers check for themselves that $K\{X\}$ is a $K$-subalgebra of $K[\![X]\!]$.} of $K[\![X]\!] := K[\![x_1, ..., x_n]\!]$ whose elements are the convergent\footnote{Recall that a non-archimedean power series $\sum_{|J| = 0}^{+\infty} a_J X^J$ with coefficients $a_J \in K$ converges if and only if the coefficients $a_J$ are topologically nilpotent.} power series $\sum_{|J| = 1}^{+\infty} a_J X^J$ with coefficients $a_J \in K$; when $n = 0$, we get the zero ring $K\{\varnothing\} := 0$. This is naturally a normed algebra via the so-called \textbf{Gauss norm}, which is given by $\left\|\sum_{|J| = 0}^{+\infty} a_J X^J\right\| := \sup_J |a_J|$ and well-defined because non-archimedean convergent power series must have topologically nilpotent (hence bounded) coefficients; obviously $\|f\| = 0$ if and only if $f = 0$.
                 
-                An \textbf{affinoid $K$-algebra} is a quotient of a Tate $K$-algebra by an ideal thereof (i.e. Tate algebras are \say{free} affinoid algebras). 
+                An \textbf{affinoid $K$-algebra} is either the zero ring or a quotient of a Tate $K$-algebra by an ideal thereof (i.e. Tate algebras are \say{free} affinoid algebras). 
             \end{definition}
             
             Before we move on, let us first recall several aspects of the theory of Banach spaces over non-archimedean fields, mostly to be clear about what we specfically mean by such \say{Banach spaces}.
@@ -45,13 +45,13 @@
                 Of course, one ought to check that the projective cross ultra-norm as in definition \ref{def: completed_tensor_products_of_non_archimedean_vector_spaces} is indeed a well-defined ultra-norm. This, however, is easy and as such will be left to our readers as an exercise.  
             \end{remark}
             \begin{proposition}[Completed tensor products of non-archimedean Banach spaces] \label{prop: completed_tensor_products_of_non_archimedean_banach_spaces}
-                The category $K\Ban$ is an infinite tensor category\footnote{This is as in \cite[Definition 4.1.1]{EGNO}, but without the local finiteness condition. In particular, this means that $K\Ban$ is symmetric monoidal, rigid, and closed with respect to the completed tensor product of non-archimedean $K$-vector spaces.} whose monoidal structure is the completed tensor product $\hattensor_K$ of non-archimedean $K$-vector spaces.
+                The category $K\Ban$ is an infinite tensor category\footnote{This is as in \cite[Definition 4.1.1]{EGNO}, but without the local finiteness condition. In particular, this means that $K\Ban$ is symmetric monoidal, rigid, and closed with respect to the completed tensor product of non-archimedean $K$-vector spaces.} - wherein zero objects are isomorphic to the zero $K$-Banach space $0$ - whose monoidal structure is the completed tensor product $\hattensor_K$ of non-archimedean $K$-vector spaces.
             \end{proposition}
                 \begin{proof}
                     
                 \end{proof}
             \begin{corollary}
-                There exists a category of commutative Banach $K$-algebras internal to $K\Ban$, whose objects are the commutative monoids internal to $K\Ban$ and whose morphisms are the continuous (i.e. bounded) $K$-algebra homomorphisms between them. This category shall be denoted by $K\Ban\Comm\Alg$. This category is complete and cocomplete and in particular, coproducts are given by the completed tensor product $\hattensor_K$.
+                There exists a category of commutative Banach $K$-algebras internal to $K\Ban$, whose objects are the commutative monoids internal to $K\Ban$ and whose morphisms are the continuous (i.e. bounded) $K$-algebra homomorphisms between them. This category shall be denoted by $K\Ban\Comm\Alg$. This category is complete and cocomplete and in particular, coproducts are given by the completed tensor product $\hattensor_K$, and initial objects are isomorphic to the zero ring $0$.
             \end{corollary}
             
             \begin{lemma}[Quotients of non-archimedean Banach spaces] \label{lemma: quotients_of_non_archimedean_banach_spaces}
@@ -70,7 +70,7 @@
                 Affinoid algebras are Banach $K$-algebras when equipped with the Gauss norm (note that this relies crucially on the assumption that $K$ is complete as a non-archimedean field).
             \end{proposition}
                 \begin{proof}
-                    Thanks to lemma \ref{lemma: quotients_of_non_archimedean_banach_spaces} and \ref{lemma: tate_algebra_ideals_are_closed}, it suffices to only prove that any given Tate algebra $K\{x_1, ..., x_n\}$ (for any positive integer $n$) is a Banach $K$-algebra with respect to the topology induced by the Gauss norm; in fact, because $K\{x_1, ..., x_n\} \cong K\{x_1\} \hattensor_K ... \hattensor_K K\{x_n\}$. For this, pick a Cauchy sequence $\{f_i\}_{i \in \N}$ of single-variable convergent power series $f_i(x) := \sum_{d = 0}^{+\infty} a_d^{(i)} x^d \in K\{x\}$ and observe that because:
+                    Thanks to lemma \ref{lemma: quotients_of_non_archimedean_banach_spaces} and \ref{lemma: tate_algebra_ideals_are_closed}, it suffices to only prove that any given Tate algebra $K\{x_1, ..., x_n\}$ (for any $n \in \N$) is a Banach $K$-algebra with respect to the topology induced by the Gauss norm; in fact, because $K\{x_1, ..., x_n\} \cong K\{x_1\} \hattensor_K ... \hattensor_K K\{x_n\}$. For this, pick a Cauchy sequence $\{f_i\}_{i \in \N}$ of single-variable convergent power series $f_i(x) := \sum_{d = 0}^{+\infty} a_d^{(i)} x^d \in K\{x\}$ and observe that because:
                         $$\|f_i(x) - f_j(x)\| = \left\| \sum_{d = 0}^{+\infty} (a_d^{(i)} - a_d^{(j)}) x^d \right\| = \sup_d \|a_d^{(i)} - a_d^{(i)}\|$$
                     the sequence of coefficients $\{a_d^{(i)}\}_{i \in \N}$ is also Cauchy at each degree $d \geq 0$ as a result of the assumption that $\{f_i\}_{i \in \N}$ is Cauchy. Because $K$ is complete by hypothesis, the sequences of coefficients $\{a_d^{(i)}\}_{i \in \N}$ all converge by virtue of being Cauchy. Now, observe that:
                         $$\underset{i \to +\infty}{\lim} f_i(x) = \underset{i \to +\infty}{\lim} \sum_{d = 0}^{+\infty} a_d^{(i)} x^d = \sum_{d = 0}^{+\infty} \left( \underset{i \to +\infty}{\lim} a_d^{(i)} \right) x^d$$
@@ -108,19 +108,19 @@
                 Any affinoid $K$-algebra is Noetherian.
             \end{proposition}
                 \begin{proof}
-                    Ideals of Tate $K$-algebras are closed (cf. lemma \ref{lemma: tate_algebra_ideals_are_closed}), so $(x_1, ..., x_n) \subset K\{x_1, ..., x_n\}$ is maximal for any positive integer $n$. The ideal is finitely generated as a $K\{x_1, ..., x_n\}$-module, so by using its maximality, one sees immediately that $K\{x_1, ..., x_n\}$ is Noetherian as a module over itself. Affinoid $K$-algebras are then Noetherian as $K\{x_1, ..., x_n\}$-modules by virtue of being quotients of $K\{x_1, ..., x_n\}$ by definition. One can then apply the Third Isomorphism Theorem to show that affinoid $K$-algebras are also Noetherian as modules over themselves, as claimed.
+                    Ideals of Tate $K$-algebras are closed (cf. lemma \ref{lemma: tate_algebra_ideals_are_closed}), so $(x_1, ..., x_n) \subset K\{x_1, ..., x_n\}$ is maximal for any $n \in \N$. The ideal is finitely generated as a $K\{x_1, ..., x_n\}$-module, so by using its maximality, one sees immediately that $K\{x_1, ..., x_n\}$ is Noetherian as a module over itself. Affinoid $K$-algebras are then Noetherian as $K\{x_1, ..., x_n\}$-modules by virtue of being quotients of $K\{x_1, ..., x_n\}$ by definition. One can then apply the Third Isomorphism Theorem to show that affinoid $K$-algebras are also Noetherian as modules over themselves, as claimed.
                 \end{proof}
             \begin{proposition}[Affinoid algebras are Jacobson] \label{prop: affinoid_algebras_are_jacobson}
                 Any affinoid $K$-algebra is Jacobson; that is, every affindoid $K$-algebra $A$ is such that every radical $A$-ideal $I$ is equal to the intersection of the maximal $A$-ideals containing it, i.e. we have $I = \bigcap_{\m \in \Spm A/I} \m$ for every radical $A$-ideal $I$.
             \end{proposition}
                 \begin{proof}
-                    Recall that an ideal $I \subset A$ is radical if and only if $I = \sqrt{I}$, where $\sqrt{I} := \{f \in A \mid \exists m \in \N: f^m \in I\}$ and as such, radical ideals of Tate $K$-algebras are 
+                    
                 \end{proof}
             \begin{proposition}[Affinoid algebras admit Noetherian normalisations] \label{prop: affinoid_algebras_admit_noetherian_normalisation}
                 Let $A$ be an affinoid $K$-algebra of dimension $d$ (which is necessarily finite, since $A$ is Noetherian). Then there exists a finite $K$-algebra extension $K\{x_1, ..., x_d\} \subset A$.
             \end{proposition}
                 \begin{proof}
-                    
+                    hello
                 \end{proof}
             \begin{corollary}
                 Let $A$ be an affinoid $K$-algebra. Then, any finite (commutative) $A$-algebra will also be an affinoid $K$-algebra. 
@@ -159,7 +159,7 @@
     \subsection{Raynaud's formal models for rigid spaces}
         \subsubsection{Coherent sheaves on formal schemes topologically of finite presentations}
             \begin{remark}[Affinoids over complete valuation rings] \label{remark: affinoids_over_complete_valuation_rings}
-                Since $(K, |-|)$ (as in convention \ref{conv: rigid_analytic_varieties_non_archimedean_ground_field}) is topologically complete with respect to the topology induced by the ultra-metric $|-|$, and since $K^{\circ}$ is a closed topological subspace, it is also topologically complete with respect to $|-|$. As such, many functional-analytic results concerning affinoid $K$-algebras carry over \textit{verbatim} to so-called \textbf{affinoid $K^{\circ}$-algebras}: these are quotients of \textbf{Tate $K^{\circ}$-algebras}, i.e. they are of the form $K^{\circ}\{x_1, ..., x_n\}/I$ for some positive integer $n$ and some $K^{\circ}\{x_1, ..., x_n\}$-ideal $I$.
+                Since $(K, |-|)$ (as in convention \ref{conv: rigid_analytic_varieties_non_archimedean_ground_field}) is topologically complete with respect to the topology induced by the ultra-metric $|-|$, and since $K^{\circ}$ is a closed topological subspace, it is also topologically complete with respect to $|-|$. As such, many functional-analytic results concerning affinoid $K$-algebras carry over \textit{verbatim} to so-called \textbf{affinoid $K^{\circ}$-algebras}: these are quotients of \textbf{Tate $K^{\circ}$-algebras}, i.e. they are of the form $K^{\circ}\{x_1, ..., x_n\}/I$ for some $n \in \N$ and some $K^{\circ}\{x_1, ..., x_n\}$-ideal $I$.
                 
                 In particular, this means that:
                     \begin{itemize}
@@ -178,7 +178,7 @@
                 Tate $K^{\circ}$-algebras are admissible in the sense of definition \ref{def: pre_admissible_and_pre_adic_rings} (i.e. as topological rings).
             \end{proposition}
                 \begin{proof}
-                    For this, let us firstly check whether or not Tate $K^{\circ}$-algebras are linearly topologised (cf. definition \ref{def: topological_modules}). To this end, fix once and for all a positive integer $n$ and observe that in the topology induced by the Gauss norm on the Tate $K^{\circ}$-algebra $K^{\circ}\{x_1, ..., x_n\}$, one may construct a canonical topological basis generated by the open balls $\B_{\e}(0) := \{f \in K^{\circ}\{x_1, ..., x_n\} \mid \|f\| < \e\}$ (for any $\e > 0$) which are indeed open neighbourhoods of $0$ consisting of $K^{\circ}\{x_1, ..., x_n\}$-submodules of $K^{\circ}\{x_1, ..., x_n\}$ itself: as such, $K^{\circ}\{x_1, ..., x_n\}$ is indeed linearly topologised. 
+                    For this, let us firstly check whether or not Tate $K^{\circ}$-algebras are linearly topologised (cf. definition \ref{def: topological_modules}). To this end, fix once and for all a $n \in \N$ and observe that in the topology induced by the Gauss norm on the Tate $K^{\circ}$-algebra $K^{\circ}\{x_1, ..., x_n\}$, one may construct a canonical topological basis generated by the open balls $\B_{\e}(0) := \{f \in K^{\circ}\{x_1, ..., x_n\} \mid \|f\| < \e\}$ (for any $\e > 0$) which are indeed open neighbourhoods of $0$ consisting of $K^{\circ}\{x_1, ..., x_n\}$-submodules of $K^{\circ}\{x_1, ..., x_n\}$ itself: as such, $K^{\circ}\{x_1, ..., x_n\}$ is indeed linearly topologised. 
                 
                     Next, let us check if $K^{\circ}\{x_1, ..., x_n\}$ has an ideal of definition (i.e. whether or not it is pre-admissible in the sense of definition \ref{def: pre_admissible_and_pre_adic_rings}); if it does, then it will automatically be admissible by virtue of being topologically complete with respect to the Gauss norm.  To this end, firstly pick an arbitrary open neighbourhood $U \ni 0$ inside $K^{\circ}\{x_1, ..., x_n\}$; we then claim that $(\varpi, x_1, ..., x_n)$, with $\varpi := x_0 \in \m_K$ being a pseudo-uniformiser, is an ideal of definition for $K^{\circ}\{x_1, ..., x_n\}$ (it is easy to verify that this ideal is indeed open with respect to the Gauss norm). To prove this claim, we might as well firstly assume that $U := \B_{\e}(0)$ for some $\e > 0$. We can then observe that for any fixed $\e > 0$, one can always choose a positive integer $N_{\e}$ such that $\left\| \sum_{j = 0}^m f_j x_j \right\|^{N_{\e}} = \max_{0 \leq j \leq m} \|f_j\|^{N_{\e}} < r$ for all $\sum_{j = 0}^m f_j x_j \in (x_1, ..., x_n)$ (where $f_j \in K^{\circ}\{x_1, ..., x_n\}$ for every $0 \leq j \leq m$), which is because $\|f_j\| \leq 1$ for all $0 \leq j \leq m$, as their coefficients are elements of $K^{\circ}$. This shows that for every $\e > 0$, there exists a positive integer $N_{\e}$ such that any open neighbourhood $U \ni 0$ contains the ideal $(\varpi, x_1, ..., x_n)^{N_{\e}}$, thus showing that $K^{\circ}\{x_1, ..., x_n\}$ is (pre-)admissible. 
                 \end{proof}
