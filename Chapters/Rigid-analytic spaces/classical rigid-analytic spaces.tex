@@ -1,10 +1,10 @@
 \section{Classical rigid-analytic spaces}
     \begin{convention} \label{conv: rigid_analytic_varieties_non_archimedean_ground_field}
-        Henceforth, we fix a \textit{complete}\footnote{This is an important hypothesis because eventually, we will want out affinoid algebras to be instances of Banach algebra over $K$ (cf. proposition \ref{prop: affinoid_algebras_are_banach_algebras}).} non-archimedean field $(K, |-|)$ valuation ring $K^{\circ} := \{x \in K \mid |x| \leq 1\}$ and residue field $k := K^{\circ}/\m$, where $\m := \{x \in K \mid |x| < 1\}$ is the unique maximal ideal of $K^{\circ}$. In addition, we will be caring about the value group of $K$ (or rather, of $K^{\circ}$), which comes from the valuation $v: K^{\x} \to \R$ that determines the non-archimedean ultra-metric $|-| := \exp(v(-))$, and is given by $\Gamma := \im v$ (note that this is well-defined because $v: K^{\x} \to \R$ is a group homomorphism); this is a totally ordered abelian group whose ordering is inherited from the archimedean ordering of $(\R, \leq)$.
+        Henceforth, we fix a \textit{complete}\footnote{This is an important hypothesis because eventually, we will want out affinoid algebras to be instances of Banach algebra over $K$ (cf. proposition \ref{prop: affinoid_algebras_are_banach_algebras}).} non-archimedean field $(K, |-|)$ valuation ring $K^{\circ} := \{x \in K \mid |x| \leq 1\}$ and residue field $k := K^{\circ}/\m_K$, where $\m_K := \{x \in K \mid |x| < 1\}$ is the unique maximal ideal of $K^{\circ}$. In addition, we will be caring about the value group of $K$ (or rather, of $K^{\circ}$), which comes from the valuation $v: K^{\x} \to \R$ that determines the non-archimedean ultra-metric $|-| := \exp(v(-))$, and is given by $\Gamma := \im v$ (note that this is well-defined because $v: K^{\x} \to \R$ is a group homomorphism); this is a totally ordered abelian group whose ordering is inherited from the archimedean ordering of $(\R, \leq)$.
     \end{convention}
 
     \subsection{Tate's rigid spaces}
-        \subsubsection{Affinoid algebras and the Tate topology}
+        \subsubsection{Affinoid algebras}
             \begin{remark}
                 In addition, recall that the valuation ring $K^{\circ}$ is Noetherian if and only if the value group $\Gamma$ is a discrete subgroup of $\R$; in which case, $K^{\circ}$ will be a discrete valuation ring.
             \end{remark}
@@ -51,7 +51,7 @@
                     
                 \end{proof}
             \begin{corollary}
-                There exists a category of commutative Banach $K$-algebras internal to $K\Ban$, whose objects are the commutative monoids internal to $K\Ban$ and whose morphisms are the continuous (i.e. bounded) $K$-algebra homomorphisms between them. This category shall be denoted by $K\Ban\Comm\Alg$. 
+                There exists a category of commutative Banach $K$-algebras internal to $K\Ban$, whose objects are the commutative monoids internal to $K\Ban$ and whose morphisms are the continuous (i.e. bounded) $K$-algebra homomorphisms between them. This category shall be denoted by $K\Ban\Comm\Alg$. This category is complete and cocomplete and in particular, coproducts are given by the completed tensor product $\hattensor_K$.
             \end{corollary}
             
             \begin{lemma}[Quotients of non-archimedean Banach spaces] \label{lemma: quotients_of_non_archimedean_banach_spaces}
@@ -78,17 +78,83 @@
                 \end{proof}
             \begin{corollary}
                 There is a full subcategory of the category $K\Ban\Comm\Alg$ of commutative Banach $K$-algebras and continuous $K$-algebra homomorphisms, wherein the objects are affinoid $K$-algebras. This category shall be denoted by $K\-\Affd$.
+                
+                The category $K\-\Affd$ of affinoid $K$-algebras, as a full subcategory of $K\Ban\Comm\Alg$, is closed under all finite limits and finite colimits (taken within $K\Ban\Comm\Alg$).
             \end{corollary}
-            \begin{proposition}[Maximal spectra of affinoid algebras] \label{prop: maximal_spectra_of_affinoid_algebras}
-                There is a functor: $\Spm: K\-\Affd \to \Sets$ which associates to each affinoid $K$-algebra $A$ the set $\Spm A$ whose elements are the maximal ideals of $A$. 
+            
+            \begin{lemma}[Power-bounded subrings are Banach] \label{lemma: power_bounded_subrings_of_affinoid_algebras_are_banach}
+                For any affinoid $K$-algebra $A$, the subring $A^{\circ} \subset A$ of power-bounded elements is a Banach $K^{\circ}$-algebra.
+            \end{lemma}
+            \begin{proposition}[Unit discs are mapped to unit discs] \label{prop: unit_discs_are_mapped_to_unit_discs}
+                There is a functor:
+                    $$(-)^{\circ}: K\Ban\Comm\Alg \to K^{\circ}\Ban\Comm\Alg$$
+                which assigns to each affinoid $K$-algebra $A$ the Banach $K^{\circ}$-algebra $A^{\circ}$ of power-bounded elements. 
             \end{proposition}
                 \begin{proof}
                     
                 \end{proof}
+            \begin{proposition}[Tate algebras are free affinoid algebras] \label{prop: tate_algebras_are_free_affinoid_algebras}
+                
+            \end{proposition}
+                \begin{proof}
+                    
+                \end{proof}
+            \begin{corollary}[Recentering is an automorphism] \label{coro: recentering_is_an_automorphism}
+                For any fixed positve integer $n$ and any $n$-tuple $(c_1, ..., c_n)$ of elements $c_i \in K$, there is an continuous $K$-algebra automorphism on $K\{x_1, ..., x_n\}$ given by $f(x_1, ..., x_n) \mapsto f(x_1 - c_1, ..., x_n - c_n)$.
+            \end{corollary}
+            
+            Let us now move on to some important dimension-theoretic properties of affinoid algebras. The take-home point here is that affinoid $K$-algebras behave remarkably similarly to finite-dimensional polynomial rings over algebraically closed fields (in particular, there is an $K$-affinoid analogue of Hilbert's \textit{Nullstellensatz}\footnote{Tate's \textit{Nullstellensatz} ?}), but at the same time, affinoid $K$-algebras have many more (often non-rational) points.
+            \begin{proposition}[Affinoid algebras are Noetherian] \label{prop: affinoid_algebras_are_noetherian}
+                Any affinoid $K$-algebra is Noetherian.
+            \end{proposition}
+                \begin{proof}
+                    Ideals of Tate $K$-algebras are closed (cf. lemma \ref{lemma: tate_algebra_ideals_are_closed}), so $(x_1, ..., x_n) \subset K\{x_1, ..., x_n\}$ is maximal for any positive integer $n$. The ideal is finitely generated as a $K\{x_1, ..., x_n\}$-module, so by using its maximality, one sees immediately that $K\{x_1, ..., x_n\}$ is Noetherian as a module over itself. Affinoid $K$-algebras are then Noetherian as $K\{x_1, ..., x_n\}$-modules by virtue of being quotients of $K\{x_1, ..., x_n\}$ by definition. One can then apply the Third Isomorphism Theorem to show that affinoid $K$-algebras are also Noetherian as modules over themselves, as claimed.
+                \end{proof}
+            \begin{proposition}[Affinoid algebras are Jacobson] \label{prop: affinoid_algebras_are_jacobson}
+                Any affinoid $K$-algebra is Jacobson; that is, every affindoid $K$-algebra $A$ is such that every radical $A$-ideal $I$ is equal to the intersection of the maximal $A$-ideals containing it, i.e. we have $I = \bigcap_{\m \in \Spm A/I} \m$ for every radical $A$-ideal $I$.
+            \end{proposition}
+                \begin{proof}
+                    Recall that an ideal $I \subset A$ is radical if and only if $I = \sqrt{I}$, where $\sqrt{I} := \{f \in A \mid \exists m \in \N: f^m \in I\}$ and as such, radical ideals of Tate $K$-algebras are 
+                \end{proof}
+            \begin{proposition}[Affinoid algebras admit Noetherian normalisations] \label{prop: affinoid_algebras_admit_noetherian_normalisation}
+                Let $A$ be an affinoid $K$-algebra of dimension $d$ (which is necessarily finite, since $A$ is Noetherian). Then there exists a finite $K$-algebra extension $K\{x_1, ..., x_d\} \subset A$.
+            \end{proposition}
+                \begin{proof}
+                    
+                \end{proof}
+            \begin{corollary}
+                Let $A$ be an affinoid $K$-algebra. Then, any finite (commutative) $A$-algebra will also be an affinoid $K$-algebra. 
+            \end{corollary}
+                \begin{proof}
+                    
+                \end{proof}
+            \begin{corollary}
+                Suppose that we have an affinoid $K$-algebra $A$ that is also an integral domain. Then all maximal ideals $\m \in \Spm A$ will have height $\dim A$.
+            \end{corollary}
+                \begin{proof}
+                    
+                \end{proof}
         
-        \subsubsection{Structure sheaves of Tate's rigid spaces}
+        \subsubsection{The Tate topology and structure sheaves of Tate's rigid spaces}
+            \begin{proposition}[Maximal spectra of affinoid algebras] \label{prop: maximal_spectra_of_affinoid_algebras}
+                There is a functor:
+                    $$\Spm: K\-\Affd \to \Sets$$
+                which associates to each affinoid $K$-algebra $A$ the set $\Spm A$ whose elements are the maximal ideals of $A$. 
+            \end{proposition}
+                \begin{proof}
+                    
+                \end{proof}
+            \begin{definition}[The canonical topology for affinoids] \label{def: the_canonical_topology_for_affinoid_algebras}
+                
+            \end{definition}
         
         \subsubsection{Coherent sheaves on Tate's rigid spaces}
+            \begin{theorem}[Tate's Acyclcity Theorem] \label{theorem: tate_acyclicity_theorem_for_rigid_spaces}
+                
+            \end{theorem}
+                \begin{proof}
+                    
+                \end{proof}
     
     \subsection{Raynaud's formal models for rigid spaces}
         \subsubsection{Coherent sheaves on formal schemes topologically of finite presentations}
@@ -105,26 +171,43 @@
                 An affinoid $K^{\circ}$-algebra $A \cong K^{\circ}\{x_1, ..., x_n\}$ is said to be \textbf{topologically of finite presentation} (often abbreviated to \textbf{tfp}) if and only if the ideal $I$ is finitely generated\footnote{Note that being algebraically finitely generated and being topologically so are the same for ideals of affinoid algebras, since they are closed.} as a $K^{\circ}\{x_1, ..., x_n\}$-module. 
             \end{definition}
             \begin{definition}[Admissible affinoid algebras] \label{def: admissible_affinoid_algebras}
-                An affinoid $K^{\circ}$-algebra that is topologically of finite type is said to be \textbf{admissible} over $K^{\circ}$ if and only if it is flat as a $K^{\circ}$-module. 
+                An affinoid $K^{\circ}$-algebra that is topologically of finite presentation is said to be \textbf{admissible} over $K^{\circ}$ if and only if it is flat as a $K^{\circ}$-module. 
             \end{definition}
             The following result eseentially tells us that every affinoid $K^{\circ}$-algebra is actually already admissible in the sense of definition \ref{def: pre_admissible_and_pre_adic_rings}, thus rendering the notion of affinoid-admissibility from definition \ref{def: admissible_affinoid_algebras} (even if it were to be defined without the conditions of being topologically of finite presentation and of flatness) strictly stronger than the notion from definition \ref{def: pre_admissible_and_pre_adic_rings}. 
-            \begin{proposition}[Comparing definitions \ref{def: admissible_affinoid_algebras} and \ref{def: pre_admissible_and_pre_adic_rings}] \label{prop: tate_algebras_over_valuation_rings_are_topologically_pre_admissible}
+            \begin{proposition}[Tate algebras are topologically admissible] \label{prop: tate_algebras_over_valuation_rings_are_topologically_pre_admissible}
                 Tate $K^{\circ}$-algebras are admissible in the sense of definition \ref{def: pre_admissible_and_pre_adic_rings} (i.e. as topological rings).
             \end{proposition}
                 \begin{proof}
-                    For this, let us firstly check whether or not Tate $K^{\circ}$-algebras are linearly topologised (cf. definition \ref{def: topological_modules}). To this end, fix once and for all a positive integer $n$ and observe that in the topology induced by the Gauss norm on the Tate $K^{\circ}$-algebra $K^{\circ}\{x_1, ..., x_n\}$, one may construct a canonical topological basis generated by the open balls $B_{\e}(0) := \{f \in K^{\circ}\{x_1, ..., x_n\} \mid \|f\| < \e\}$ (for any $\e > 0$) which are indeed open neighbourhoods of $0$ consisting of $K^{\circ}\{x_1, ..., x_n\}$-submodules of $K^{\circ}\{x_1, ..., x_n\}$ itself: as such, $K^{\circ}\{x_1, ..., x_n\}$ is indeed linearly topologised. 
+                    For this, let us firstly check whether or not Tate $K^{\circ}$-algebras are linearly topologised (cf. definition \ref{def: topological_modules}). To this end, fix once and for all a positive integer $n$ and observe that in the topology induced by the Gauss norm on the Tate $K^{\circ}$-algebra $K^{\circ}\{x_1, ..., x_n\}$, one may construct a canonical topological basis generated by the open balls $\B_{\e}(0) := \{f \in K^{\circ}\{x_1, ..., x_n\} \mid \|f\| < \e\}$ (for any $\e > 0$) which are indeed open neighbourhoods of $0$ consisting of $K^{\circ}\{x_1, ..., x_n\}$-submodules of $K^{\circ}\{x_1, ..., x_n\}$ itself: as such, $K^{\circ}\{x_1, ..., x_n\}$ is indeed linearly topologised. 
                 
-                    Next, let us check if $K^{\circ}\{x_1, ..., x_n\}$ has an ideal of definition (i.e. whether or not it is pre-admissible in the sense of definition \ref{def: pre_admissible_and_pre_adic_rings}); if it does, then it will automatically be admissible by virtue of being topologically complete with respect to the Gauss norm.  To this end, firstly pick an arbitrary open neighbourhood $U \ni 0$ inside $K^{\circ}\{x_1, ..., x_n\}$; we then claim that $(x_1, ..., x_n)$ is an ideal of definition for $K^{\circ}\{x_1, ..., x_n\}$ (it is easy to verify that this ideal is indeed open with respect to the Gauss norm). To prove this claim, we might as well firstly assume that $U := B_{\e}(0)$ for some $\e > 0$. We can then observe that for any fixed $\e > 0$, one can always choose a positive integer $N_{\e}$ such that $\left\| \sum_{j = 1}^m f_j x_j \right\|^{N_{\e}} = \max_{1 \leq j \leq m} \|f_j\|^{N_{\e}} < r$ for all $\sum_{j = 1}^m f_j x_j \in (x_1, ..., x_n)$ (where $f_j \in K^{\circ}\{x_1, ..., x_n\}$ for every $1 \leq j \leq m$), which is because $\|f_j\| \leq 1$ for all $1 \leq j \leq m$, as their coefficients are elements of $K^{\circ}$. This shows that for every $\e > 0$, there exists a positive integer $N_{\e}$ such that any open neighbourhood $U \ni 0$ contains the ideal $(x_1, ..., x_n)^{N_{\e}}$, thus showing that $K^{\circ}\{x_1, ..., x_n\}$ is (pre-)admissible. 
+                    Next, let us check if $K^{\circ}\{x_1, ..., x_n\}$ has an ideal of definition (i.e. whether or not it is pre-admissible in the sense of definition \ref{def: pre_admissible_and_pre_adic_rings}); if it does, then it will automatically be admissible by virtue of being topologically complete with respect to the Gauss norm.  To this end, firstly pick an arbitrary open neighbourhood $U \ni 0$ inside $K^{\circ}\{x_1, ..., x_n\}$; we then claim that $(\varpi, x_1, ..., x_n)$, with $\varpi := x_0 \in \m_K$ being a pseudo-uniformiser, is an ideal of definition for $K^{\circ}\{x_1, ..., x_n\}$ (it is easy to verify that this ideal is indeed open with respect to the Gauss norm). To prove this claim, we might as well firstly assume that $U := \B_{\e}(0)$ for some $\e > 0$. We can then observe that for any fixed $\e > 0$, one can always choose a positive integer $N_{\e}$ such that $\left\| \sum_{j = 0}^m f_j x_j \right\|^{N_{\e}} = \max_{0 \leq j \leq m} \|f_j\|^{N_{\e}} < r$ for all $\sum_{j = 0}^m f_j x_j \in (x_1, ..., x_n)$ (where $f_j \in K^{\circ}\{x_1, ..., x_n\}$ for every $0 \leq j \leq m$), which is because $\|f_j\| \leq 1$ for all $0 \leq j \leq m$, as their coefficients are elements of $K^{\circ}$. This shows that for every $\e > 0$, there exists a positive integer $N_{\e}$ such that any open neighbourhood $U \ni 0$ contains the ideal $(\varpi, x_1, ..., x_n)^{N_{\e}}$, thus showing that $K^{\circ}\{x_1, ..., x_n\}$ is (pre-)admissible. 
                 \end{proof}
-            \begin{corollary} \label{coro: affinoid_algebras_over_valuation_rings_are_topologically_pre_admissible}
-                Affinoid $K^{\circ}$-algebras are admissible in the sense of definition \ref{def: pre_admissible_and_pre_adic_rings}.
+            \begin{corollary}[Affinoid algebras are topologically admissible] \label{coro: affinoid_algebras_over_valuation_rings_are_topologically_pre_admissible}
+                Affinoid $K^{\circ}$-algebras are admissible in the sense of definition \ref{def: pre_admissible_and_pre_adic_rings}. Furthermore, if $A := K^{\circ}\{x_1, ..., x_n\}/I$ is any affinoid $K^{\circ}$-algebra then because it is admissible in the sense of definition \ref{def: pre_admissible_and_pre_adic_rings} (and hence weakly admissible in the sense of defintion \ref{def: weakly_pre_admissible_rings}), the pair $(A, (x_1, ..., x_n)/I)$ will be a Henselian pair by proposition \ref{prop: weakly_admissible_rings_induce_henselian_pairs}.
             \end{corollary}
             \begin{convention}[Affinoid-admissibility vs. topological admissibility] \label{conv: admissibility_and_topological_admissibility}
                 From now on, to distinguish between the two notions of admissibility from definitions \ref{def: admissible_affinoid_algebras} and \ref{def: pre_admissible_and_pre_adic_rings}, let us refer to the former as \say{affinoid-admissibility} or simply \say{admissibility}, whereas the latter will be known as \say{topological (pre-)admissibility}.
             \end{convention}
-            \begin{remark}[Admissibility is fpqc-local and relative]
-                Proposition \ref{prop: tate_algebras_over_valuation_rings_are_topologically_pre_admissible} prompts the following question: why bother with imposing the conditions that admissible affinoids are flat in addition to being topologically of finite presentation ? One reason is that unlike the notion of topological (pre-)admissibility, being affinoid-admissible can be very easily checked to be fpqc-local and stable under base-changes (i.e. it is a relative notion). This is of great importance for us, because we would like admissible affinoid $K^{\circ}$-algebras to remain admissible under base-changes along integral extensions of $K^{\circ}$, which are special cases of faithfully flat ring maps. 
+            \begin{remark}
+                The proof of proposition \ref{prop: tate_algebras_over_valuation_rings_are_topologically_pre_admissible} tells us that unlike affinoid $K^{\circ}$-algebras, affinoid $K$-algebras are actually \textit{not} topologically (pre-)admissible as there are sufficiently large open neighbourhoods inside $K\{x_1, ..., x_n\}$ which are not contained inside any power of the ideal of definition $(x_1, ..., x_n)$. On the other hand, there is nothing preventing $K\{x_1, ..., x_n\}$ nor any other affinoid $K$-algebra from being topologically of finite presentation nor being affinoid-admissible, as these are purely ring-theoretic notions; this in essence demonstrates the necessity for the notion of affinoid-admissibility over that of topological admissibility.
             \end{remark}
+            
+            Let us now establish certain topological properties of affinoid algebras which are topologically of finite presentation or admissible. We first introduce the notion of being topologically of finite type, a slight generalisation of the notion of being topologically of finite presentation introduced in definition \ref{def: affinoid_algebras_topologically_of_finite_presentation}.
+            \begin{definition}[Ring maps topologically of finite type] \label{def: ring_maps_topologically_of_finite_type}
+                A continuous ring homomorphism $\varphi: A \to B$ between topological rings is said to be \textbf{topologically of finite type} (abbreviation: \textbf{tft}) if and only if there exists an $A$-algebra homomorphism $\tilde{\varphi}: A[x_1, ..., x_n] \to B$ whose image is dense inside $B$.
+            \end{definition}
+            \begin{lemma}
+                Let $\varphi: A \to B$ be a continuous homomorphism of taut\footnote{Cf. definition \ref{def: taut_ring_maps}.} topologically weakly admissible\footnote{Cf. definition \ref{def: weakly_pre_admissible_rings}.} rings. Then $\varphi$ is topologically of finite type if and only if $\Spf \varphi: \Spf B \to \Spf A$ is of finite type.
+            \end{lemma}
+                \begin{proof}
+                    
+                \end{proof}
+            \begin{proposition}[Affinoid algebras are topologically of finite type] \label{prop: affinoid_algebras_are_topologically_of_finite_type}
+                Affinoid algebras over $K^{\circ}$ and affinoid algebras over $K$ are both topologically of finite type.
+            \end{proposition}
+                \begin{proof}
+                    
+                \end{proof}
         
         \subsubsection{Admissible formal blowups}
         
