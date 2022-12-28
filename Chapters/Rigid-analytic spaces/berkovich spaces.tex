@@ -1,11 +1,47 @@
 \section{Berkovich spaces}
     \subsection{The category of Berkovich spaces}
-        \subsubsection{Non-archimedean Gelfand spectra}
+        \subsubsection{Non-archimedean Berkovich-Gelfand spectra}
+            \begin{convention}
+                We  will still be following convention \ref{conv: rigid_analytic_varieties_non_archimedean_ground_field}.
+            \end{convention}
+            \begin{convention}[Radicals of subgroups]
+                Let $G$ be a group (written multiplicatively) and $H$ be a subgroup thereof. Then the \textbf{radical} of $H$ shall be denoted by $\sqrt{H}$; recall that this is the subset $\{g \in G \mid \exists m \in \N: g^m \in H\}$. It is trivial to check that this is a subgroup of $G$ that contains $H$: for all $g, h \in \sqrt{H}$ (and suppose that $g^l, h^m \in H$), we have $(gh^{-1})^{lm} \in H$ also.
+            \end{convention}
+            \begin{definition}[Generalised affinoid algebras] \label{def: generalised_affinoid_algebras}
+                Let $R$ be a non-archimedean Banach ring, let $n \in \N$ be a natural number, and let $(r_1, ..., r_n)$ be an $n$-tuple of elements $r_i \in \sqrt{|R^{\x}|}$ (here, we view the value group $|R^{\x}|$ as a subgroup of $\R_{> 0}$). Then, an \textbf{affinoid $R$-algebra of radius $r$}, with $r := |(r_1, ..., r_n)| := \max_{1 \leq i \leq n} |r_i|$, will be a quotient of the so-called \textbf{Tate $R$-algebra of radius $r$} $R\{x_1/r_1, ..., x_n/r_n\}$ of convergent power series in $x_1, ..., x_n$ scaled by $r_1, ..., r_n$ (i.e. in the variables $x_1/r_1, ..., x_n/r_n$). 
+            \end{definition}
+            \begin{convention}[Strict and non-strict affinoid algebras; radii of affinoid algebras]
+                From now on, let us refer to affinoid algebras as in definition \ref{def: affinoid_algebras} and remark \ref{remark: affinoids_over_complete_valuation_rings} shall be referred to as being \textbf{strict}, i.e. affinoid algebras that are either quotients of $K\{x_1, ..., x_n\}$ or $K^{\circ}\{x_1, ..., x_n\}$ (or even quotietns of $R\{x_1, ..., x_n\}$ for $R$ some non-archimedean Banach ring) for some natural number $n \in \N$. One should think of these affinoid algebras as being \say{of radius $1$}, so that the non-strict affinoid algebras $A \cong R\{x_1/r_1, ..., x_n/r_n\}/I$ (where $R$ is any arbitrary non-archimedean Banach ring and $(r_1, ..., r_n) \in \sqrt{|R^{\x}|}$ is an $n$-tuple of scalars $r_i \in \sqrt{|R^{\x}|}$) could be thought of as being of radius $|(r_1, ..., r_n)|$.
+            \end{convention}
+            \begin{proposition}[Generalised affinoid algebras are Banach algebras] \label{prop: generalised_affinoid_algebras_are_banach_algebras}
+                Let $R$ be a non-archimedean Banach ring, let $n \in \N$ be a natural number, and let $(r_1, ..., r_n)$ be an $n$-tuple of elements $r_i \in \sqrt{|R^{\x}|}$. Then any affinoid $R$-algebra of radius $r := |(r_1, ..., r_n)|$ will be a Banach $R$-algebra via the Gauss norm.
+            \end{proposition}
+                \begin{proof}
+                    
+                \end{proof}
+                
+            \begin{definition}[Berkovich-Gelfand spectra] \label{def: Berkovich-Gelfand_spectra_of_non_archimedean_banach_rings}
+                The \textbf{Berkovich-Gelfand spectrum}\footnote{We will explain later, why this name is used.} of a non-archimedean Banach ring $(A, \rho_0)$, denoted\footnote{Many authors write $\calM(A)$ instead of $\Spv A$, but we would like to refrain from doing this, since the letter $\calM$ is not obviously indicative of anything.} by $\Spv A$ or $\Spv (A, \rho_0)$ for specificity, is the set of multiplicative semi-norms $\rho: A \to \R_{\geq 0}$ which are bounded above by $|-|$, in the sense that for all $f \in A$, there exists a constant $C \geq 0$ such that $\rho(f) \leq C \rho_0(f)$.
+            \end{definition}
+            \begin{proposition}[A topology on Berkovich-Gelfand spectra] \label{prop: topology_on_Berkovich-Gelfand_spectra_of_non_archimedean_baanch_rings}
+                Let $(A, \rho_0)$ be a non-archimedean Banach ring and let us fix a positive real number $\e > 0$. At each point $\sigma \in \Spv(A, \rho_0)$, let us consider the open $\e$-ball centered at $\sigma$, which shall be given by:
+                    $$\B_{\e}(\sigma) := \{\rho \in \Spv(A, \rho_0) \mid \forall f \in A: |\rho(f) - \sigma(f)| < \e\}$$
+                
+                This is also the coarsest topology such that the evaluation maps $\Spv(A, \rho_0) \to \R$ given by $\rho \mapsto \rho(f)$ for all $f \in A$ are continuous.     
+            \end{proposition}
+                \begin{proof}
+                    
+                \end{proof}
         
         \subsubsection{Quasi-nets and structure sheaves of Berkovich spaces}
         
-        \subsubsection{Morphisms and (co)limits of Berkovich spaces}
+        \subsubsection{(Co)limits of Berkovich spaces}
     
-    \subsection{Coherent sheaves on Berkovich spaces}
+        \subsubsection{Fpqc descent for coherent sheaves on Berkovich spaces}
     
-    \subsection{Rigid-analytification of algebraic varieties}
+    \subsection{Rigid-analytification}
+        \subsubsection{Construction of associated rigid-analytic spaces}
+        
+        \subsubsection{Universal property}
+    
+    \subsection{Non-archimedean uniformisations}

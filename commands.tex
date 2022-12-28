@@ -80,13 +80,13 @@
 \newcommand{\SO}{\operatorname{SO}}
 \newcommand{\SU}{\operatorname{SU}}
 \newcommand{\opU}{\operatorname{U}}
-\newcommand{\Spec}{\mathrm{Spec}}
-\newcommand{\Spf}{\mathrm{Spf}}
-\newcommand{\Spm}{\mathrm{Spm}}
-\newcommand{\Spv}{\mathrm{Spv}}
-\newcommand{\Spa}{\mathrm{Spa}}
-\newcommand{\Spd}{\mathrm{Spd}}
-\newcommand{\Proj}{\mathrm{Proj}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Spf}{\operatorname{Spf}}
+\newcommand{\Spm}{\operatorname{Spm}}
+\newcommand{\Spv}{\operatorname{Spv}}
+\newcommand{\Spa}{\operatorname{Spa}}
+\newcommand{\Spd}{\operatorname{Spd}}
+\newcommand{\Proj}{\operatorname{Proj}}
 \newcommand{\Gr}{\mathrm{Gr}}
 \newcommand{\Hecke}{\mathrm{Hecke}}
 \newcommand{\Sht}{\mathrm{Sht}}
@@ -130,9 +130,12 @@
 \newcommand{\Esp}{\mathrm{Esp}}
 \newcommand{\Ob}{\mathrm{Ob}}
 \newcommand{\Mor}{\mathrm{Mor}}
-\newcommand{\Mfd}{\mathrm{Mfd}}
-%\newcommand{\LR}{\mathrm{LR}}
-%\newcommand{\RSpc}{\mathrm{RSpc}}
+\newcommand{\Man}{\mathrm{Man}}
+\newcommand{\Riem}{\mathrm{Riem}}
+\newcommand{\RS}{\mathrm{RS}}
+\newcommand{\LRS}{\mathrm{LRS}}
+\newcommand{\TRS}{\mathrm{TRS}}
+\newcommand{\LVRS}{\mathrm{LVRS}}
 \newcommand{\Spc}{\mathrm{Spc}}
 \newcommand{\Top}{\mathrm{Top}}
 \newcommand{\Topos}{\mathrm{Topos}}
@@ -141,6 +144,7 @@
 \newcommand{\Stk}{\mathrm{Stk}}
 \newcommand{\Pre}{\mathrm{Pre}}
 \newcommand{\simp}{\mathbf{\Delta}}
+\newcommand{\Res}{\mathrm{Res}}
 \newcommand{\Ind}{\mathrm{Ind}}
 \newcommand{\Pro}{\mathrm{Pro}}
 \newcommand{\Mon}{\mathrm{Mon}}
@@ -194,20 +198,26 @@
 \newcommand{\Huber}{\mathrm{Huber}}
 \newcommand{\Tate}{\mathrm{Tate}}
 \newcommand{\Affd}{\mathrm{Affd}} %affinoid algebras
-\newcommand{\Ad}{\mathrm{Ad}} %adic spaces
+\newcommand{\Adic}{\mathrm{Adic}} %adic spaces
+\newcommand{\Rig}{\mathrm{Rig}}
+\newcommand{\An}{\mathrm{An}}
 \newcommand{\Perfd}{\mathrm{Perfd}} %perfectoid spaces
 \newcommand{\Sub}{\mathrm{Sub}} %subobjects
 \newcommand{\Ideals}{\mathrm{Ideals}}
-\newcommand{\Isoc}{\mathrm{Isoc}}
+\newcommand{\Isoc}{\mathrm{Isoc}} %isocrystals
 \newcommand{\Ban}{\-\mathrm{Ban}} %Banach spaces
-\newcommand{\Fre}{\-\mathrm{Fre}} %Frechet spaces
+\newcommand{\Fre}{\-\mathrm{Fr\acute{e}}} %Frechet spaces
 \newcommand{\Ch}{\mathrm{Ch}} %chain complexes
+\newcommand{\Pure}{\mathrm{Pure}}
+\newcommand{\Mixed}{\mathrm{Mixed}}
+\newcommand{\Hodge}{\mathrm{Hodge}} %Hodge structures
 \newcommand{\Mot}{\mathrm{Mot}} %motives
 \newcommand{\KL}{\mathrm{KL}} %category of Kazhdan-Lusztig modules
 \newcommand{\Pres}{\mathrm{Pres}} %presentable categories
 \newcommand{\Noohi}{\mathrm{Noohi}} %category of Noohi groups
 \newcommand{\Inf}{\mathrm{Inf}}
 \newcommand{\LPar}{\mathrm{LPar}} %Langlands parameters
+\newcommand{\ORig}{\mathrm{ORig}} %overconvergent sites
 
 \newcommand{\Aut}{\mathrm{Aut}}
 \newcommand{\Inn}{\mathrm{Inn}}
@@ -242,6 +252,8 @@
 \newcommand{\Fil}{\mathrm{Fil}}
 \newcommand{\Prim}{\mathfrak{Prim}}
 \newcommand{\Nerve}{\mathrm{N}}
+\newcommand{\Hol}{\mathrm{Hol}} %holomorphic functions %holonomy groups
+\newcommand{\Bi}{\mathrm{Bi}} %Bi for biholomorphic functions
 
 \newcommand{\colim}{\operatorname{colim} \:}
 \renewcommand{\lim}{\operatorname{lim} \:}
@@ -282,7 +294,7 @@
 \newcommand{\NL}{\mathbb{NL}} %naive cotangent complex
 \newcommand{\pr}{\operatorname{pr}}
 \newcommand{\Der}{\mathrm{Der}}
-\newcommand{\Frob}{\mathrm{Frob}} %Frobenius
+\newcommand{\Frob}{\mathrm{Fr}} %Frobenius
 \newcommand{\frob}{\mathrm{f}} %trace of Frobenius
 \newcommand{\bfpt}{\mathbf{pt}}
 \newcommand{\bfloc}{\mathbf{loc}}
@@ -303,6 +315,7 @@
 \newcommand{\ram}{\mathrm{ram}} %ramification index
 \newcommand{\inv}{\mathrm{inv}}
 \newcommand{\Spr}{\mathrm{Spr}} %the Springer map/sheaf
+\newcommand{\Def}{\mathrm{Def}}
 
 \newcommand{\bbU}{\mathbb{U}}
 \newcommand{\V}{\mathbb{V}}
@@ -334,7 +347,6 @@
 \newcommand{\scrZ}{\mathscr{Z}}
 \newcommand{\calA}{\mathcal{A}}
 \newcommand{\calB}{\mathcal{B}}
-\newcommand{\sfT}{\mathrm{T}}
 \renewcommand{\S}{\mathcal{S}}
 \newcommand{\B}{\mathbb{B}}
 \newcommand{\bbD}{\mathbb{D}}
@@ -346,6 +358,8 @@
 \renewcommand{\t}{\mathfrak{t}}
 \renewcommand{\r}{\mathfrak{r}}
 \newcommand{\bbX}{\mathbb{X}}
+\newcommand{\frakG}{\mathfrak{G}}
+\newcommand{\frakH}{\mathfrak{H}}
 \newcommand{\g}{\mathfrak{g}}
 \newcommand{\h}{\mathfrak{h}}
 \renewcommand{\k}{\mathfrak{k}}
@@ -361,17 +375,21 @@
 \newcommand{\scrN}{\mathscr{N}}
 \newcommand{\scrP}{\mathscr{P}}
 \newcommand{\frakS}{\mathfrak{S}}
+\newcommand{\frakT}{\mathfrak{T}}
 \newcommand{\calI}{\mathcal{I}}
 \newcommand{\calJ}{\mathcal{J}}
+\newcommand{\scrI}{\mathscr{I}}
+\newcommand{\scrJ}{\mathscr{J}}
 \newcommand{\scrK}{\mathscr{K}}
 \newcommand{\calK}{\mathcal{K}}
 \newcommand{\scrV}{\mathscr{V}}
 \newcommand{\scrW}{\mathscr{W}}
 \newcommand{\bbS}{\mathbb{S}}
 \newcommand{\scrH}{\mathscr{H}}
+\newcommand{\bfA}{\mathbf{A}}
 \newcommand{\bfB}{\mathbf{B}}
+\newcommand{\bfC}{\mathbf{C}}
 \newcommand{\Witt}{W}
-%\newcommand{\bfA}{\mathbf{A}}
 \renewcommand{\O}{\mathbb{O}}
 \newcommand{\calV}{\mathcal{V}}
 \newcommand{\scrR}{\mathscr{R}} %radical
@@ -387,6 +405,15 @@
 \newcommand{\frakU}{\mathfrak{U}}
 \newcommand{\frakR}{\mathfrak{R}}
 \newcommand{\rmC}{\mathrm{C}}
+\newcommand{\frakP}{\mathfrak{P}}
+\newcommand{\frakQ}{\mathfrak{Q}}
+\newcommand{\frakE}{\mathfrak{E}}
+\newcommand{\sfX}{\mathsf{X}}
+\newcommand{\sfY}{\mathsf{Y}}
+\newcommand{\sfZ}{\mathsf{Z}}
+\newcommand{\sfS}{\mathsf{S}}
+\newcommand{\sfT}{\mathsf{T}}
+\newcommand{\sfOmega}{\mathsf{\Omega}} %drinfeld p-adic upper-half plane
 
 \newcommand{\aff}{\mathrm{aff}}
 \newcommand{\ft}{\mathrm{ft}} %finite type
@@ -399,7 +426,6 @@
 \newcommand{\qc}{\mathrm{qc}}
 \newcommand{\qs}{\mathrm{qs}}
 \newcommand{\lcmpt}{\mathrm{lcmpt}}
-%\newcommand{\conv}{\mathrm{conv}}
 \newcommand{\red}{\mathrm{red}}
 \newcommand{\fin}{\mathrm{fin}}
 \newcommand{\gen}{\mathrm{gen}}
@@ -417,6 +443,7 @@
 \newcommand{\Zar}{\mathrm{Zar}}
 \newcommand{\fppf}{\mathrm{fppf}}
 \newcommand{\fpqc}{\mathrm{fpqc}}
+\newcommand{\orig}{\mathrm{orig}} %overconvergent topology
 \newcommand{\smooth}{\mathrm{sm}}
 \newcommand{\sh}{\mathrm{sh}}
 \newcommand{\op}{\mathrm{op}}
@@ -426,7 +453,7 @@
 \newcommand{\alg}{\mathrm{alg}}
 \newcommand{\sober}{\mathrm{sober}}
 \newcommand{\dR}{\mathrm{dR}}
-\newcommand{\rad}{\mathfrak{rad}}
+\newcommand{\rad}{\mathfrak{Rad}}
 \newcommand{\discrete}{\mathrm{discrete}}
 %\newcommand{\add}{\mathrm{add}}
 %\newcommand{\lin}{\mathrm{lin}}
@@ -444,6 +471,7 @@
 \newcommand{\affd}{\mathrm{affd}}
 %\newcommand{\adic}{\mathrm{adic}}
 \newcommand{\pre}{\mathrm{pre}}
+\newcommand{\coperf}{\mathrm{coperf}}
 \newcommand{\perf}{\mathrm{perf}}
 \newcommand{\perfd}{\mathrm{perfd}}
 \newcommand{\rat}{\mathrm{rat}}
@@ -496,6 +524,9 @@
 \newcommand{\semisimple}{\mathrm{ss}}
 \newcommand{\connected}{\mathrm{connected}}
 \newcommand{\cg}{\mathrm{cg}} %compactly generated
+\newcommand{\nilp}{\mathrm{nilp}}
+\newcommand{\isg}{\mathrm{isg}} %isogenous
+\newcommand{\qisg}{\mathrm{qisg}} %quasi-isogenous
 
 %prism custom command
 \usepackage{relsize}

@@ -1,0 +1,52 @@
+\section{Complex analytification}
+    \subsection{Serre's complex-analytification functor}
+        We follow the presentation of \cite[Expos\'e XII]{SGA1}. 
+        
+        \subsubsection{\texorpdfstring{$\bbC$}{}-analytic spaces}
+            \begin{definition}[$\bbC$-analytic spaces] \label{def: complex_analytic_spaces}
+                An $\bbC$-analytic manifold is said to be a \textbf{$\bbC$-analytic space} if and only if it is locally isomorphic - as a locally ringed space over $\Spec \bbC$ - to the zero locus of some system of (possibly infinitely many) polynomials $\{f_i(z_1, ..., z_n)\}_{i \in I}$ in finitely many complex variables $z_1, ..., z_n$. An irreducible $\bbC$-analytic space is called a \textbf{$\bbC$-analytic variety}\footnote{Not (yet) to be confused with $\bbC$-varieties, which are entirely scheme-theoretic creatures.}.
+            \end{definition}
+            \begin{convention}
+                Denote by $\Spm \bbC$ the $\bbC$-analytic manifold that is isomorphic as a locally ringed space over $\Spec \bbC$ to the scheme $\Spec \bbC$. Note that this is entirely tautological, since both $\Spm \bbC$ and $\Spec \bbC$ consist of a single point. The difference in notations is only to put emphasis on the fact that $\Spm \bbC$ lives in the category of $\bbC$-analytic manifolds as opposed to that of schemes over $\Spec \bbC$.
+                
+                Note in particular that if $\calX \in \Ob(\LRS_{/\Spec \bbC})$ is any locally ringed space over $\Spec \bbC$ then we shall be writing $\calX(\bbC)$ to mean either $\LRS_{/\Spec \bbC}(\Spec \bbC, \calX)$ or $\LRS_{/\Spec \bbC}(\Spm \bbC, \calX)$. 
+            \end{convention}
+            \begin{remark}[The category of $\bbC$-analytic spaces] \label{remark: the_category_of_complex_analytic_spaces}
+                The category $\LRS_{/\Spec \bbC}$ of locally ringed spaces over $\Spec \bbC$ (and likewise, the full subcategory $\An\Man_{/\Spm \bbC} \subset \LRS_{/\Spec \bbC}$ of $\bbC$-analytic manifolds) admits that of $\bbC$-analytic spaces, which shall be denoted by $\An\Spc_{/\Spm \bbC}$, as a full subcategory. In turn, $\An\Spc_{/\Spm \bbC}$ admits $\An\Var_{/\Spm \bbC}$, the category of $\bbC$-analytic varieties, as a full subcategory of its own.
+            \end{remark}
+            \begin{convention}[Affine and projective spaces] \label{conv: complex_analytic_affine_and_projective_spaces}
+                Instead of writing $\bbC^n$, we shall be writing $(\A^n_{\bbC})^{\an}$ for the $\bbC$-analytic manifold whose underlying set is that of $\bbC^{\oplus n}$ and whose complex manifold structure comes from the usual norm on said $\bbC$-vector space. It is easy to see that $(\A^n_{\bbC})^{\an}$ is an instance of a $\bbC$-analytic variety. We choose this notation in order to highlight the fact that $(\A^n_{\bbC})^{\an}$ is \say{affine} (cf. definition \ref{def: quasi_affine_and_quasi_projective_complex_analytic_spaces}) as a $\bbC$-analytic variety. 
+                
+                By $(\G_m)_{\bbC}^{\an}$, we shall mean the complex Lie group that is abstractly isomorphic to the $\bbC$-analytic algebraic group with underlying set $\GL_1(\bbC)$ equipped with the obvious complex manifold structure. Then, we shall be setting $(\P^n_{\bbC})^{\an} := (\A^{n + 1}_{\bbC})^{\an}/(\G_m)_{\bbC}^{\an}$, wherein it is understood that the $(\G_m)_{\bbC}^{\an}$-action on $(\A^{n + 1}_{\bbC})^{\an}$ is via left-multiplication. Using the fact that $(\A^{n + 1}_{\bbC})^{\an}$ is a $\bbC$-analytic variety, one can show that $(\P^n_{\bbC})^{\an}$ is also a $\bbC$-analytic variety; in particular, its structure sheaf is given by nothing but $(\G_m)_{\bbC}^{\an}$-invariants, in the sense that $\calO_{(\P^n_{\bbC})^{\an}} \cong \calO_{(\A^{n + 1}_{\bbC})^{\an}}^{(\G_m)_{\bbC}^{\an}}$.
+            \end{convention}
+            \begin{definition}[(Quasi-)affine and (quasi-)projective $\bbC$-analytic spaces] \label{def: quasi_affine_and_quasi_projective_complex_analytic_spaces}
+                An \textbf{$\bbC$-analytic space} is said to be \textbf{(quasi-)affine/(quasi-)projective} if and only if it is a closed (respectively, open) $\bbC$-analytic submanifold of $(\A^n_{\bbC})^{\an}$ (respectively, $(\P^n_{\bbC})^{\an}$) for some $n \geq 0$.
+            \end{definition}
+            \begin{example}
+                For an example of an affine $\bbC$-analytic variety, consider the circle $\bbS^1_{\bbC}$, i.e. the zero locus of $f(z_1, z_2) := z_1^2 + z_2^2 - 1$ inside $(\A^2_{\bbC})^{\an}$. As for projective $\bbC$-analytic varieties, consider complex elliptic curves. 
+            \end{example}
+            \begin{example}
+                Any $\bbC$-analytic variety $X$ locally immerses into some $(\A^n_{\bbC})^{\an}$ (equipped with the usual complex structure) as a closed ($\bbC$-analytic) submanifold. This is not true globally, only when $X$ was a closed submanifold of $(\A^n_{\bbC})^{\an}$ to begin with: for example, the disjoint union of two copies of the circle $\bbS^1_{\bbC}$ (each given by the zero locus of $f(z_1, z_2) := z_1^2 + z_2^2 - 1$) does not globally immerse into $(\A^2_{\bbC})^{\an}$ as a closed submanifold, though $\bbS^1_{\bbC} \sqcup \bbS^1_{\bbC}$ is nevertheless a perfectly well-defined $\bbC$-analytic space. 
+            \end{example}
+            \begin{example}
+                For $\bbC$-analytic spaces, being affine/projective is a stronger condition than being quasi-affine/quasi-projective. For instance, the open ball $\B^n_{\bbC} \subset (\A^n_{\bbC})^{\an}$ (whose underlying set is $\{z \in (\A^n_{\bbC})^{\an} \mid |z| < 1\}$) is certainly $\bbC$-analytically open and irreducible inside $(\A^n_{\bbC})^{\an}$ and hence is a quasi-affine $\bbC$-analytic variety by definition, but it is also not affine. On the other hand, the closed disc $\bbD^n_{\bbC} \subset (\A^n_{\bbC})^{\an}$ (whose underlying set is $\{z \in (\A^n_{\bbC})^{\an} \mid |z| \leq 1\}$) is an affine $\bbC$-analytic variety by definition.
+            \end{example}
+            
+            The following proposition helps us justify the definition of $\bbC$-analytic spaces as $\bbC$-analytic manifolds which are locally isomorphic to $\bbC$-analytic varieties (and hence are \say{locally algebraic} in a sense).
+            \begin{proposition}[Analytification of locally algebraic $\bbC$-schemes] \label{prop: analytification_of_locally_algebraic_complex_schemes}
+                There is a left-exact functor from the category of schemes locally of finite type over $\Spec \bbC$ to that of $\bbC$-analytic spaces, called \textbf{complex-analytification} or \textbf{$\bbC$-analytification}:
+                    $$(-)^{\an}: \Sch_{/\Spec \bbC}^{\lft} \to \An\Spc_{/\Spm \bbC}$$
+                which associates to each $X \in \Ob(\Sch_{/\Spec \bbC}^{\lft})$ the locally ringed space $(|X^{\an}|, \calO_{X^{\an}}) := (X(\bbC), )$ over $\Spec \bbC$, which happens to be a $\bbC$-analytic space. 
+            \end{proposition}
+                \begin{proof}
+                        
+                \end{proof}
+            \begin{corollary}
+                
+            \end{corollary}
+        
+        \subsubsection{GAGA for coherent sheaves and Grothendieck's Existence Theorem}
+        
+        \subsubsection{Comparison of finite-\'etale covers}
+        
+    \subsection{Condensed analytification}

@@ -1,12 +1,12 @@
 \section{Classical rigid-analytic spaces}
     \begin{convention} \label{conv: rigid_analytic_varieties_non_archimedean_ground_field}
-        Henceforth, we fix a \textit{complete}\footnote{This is an important hypothesis because eventually, we will want out affinoid algebras to be instances of Banach algebra over $K$ (cf. proposition \ref{prop: affinoid_algebras_are_banach_algebras}).} non-archimedean field $(K, |-|)$ valuation ring $K^{\circ} := \{x \in K \mid |x| \leq 1\}$ and residue field $k := K^{\circ}/\m_K$, where $\m_K := \{x \in K \mid |x| < 1\}$ is the unique maximal ideal of $K^{\circ}$. In addition, we will be caring about the value group of $K$ (or rather, of $K^{\circ}$), which comes from the valuation $v: K^{\x} \to \R$ that determines the non-archimedean ultra-metric $|-| := \exp(v(-))$, and is given by $\Gamma := \im v$ (note that this is well-defined because $v: K^{\x} \to \R$ is a group homomorphism); this is a totally ordered abelian group whose ordering is inherited from the archimedean ordering of $(\R, \leq)$.
+        Henceforth, we fix a \textit{complete}\footnote{This is an important hypothesis because eventually, we will want out affinoid algebras to be instances of Banach algebra over $K$ (cf. proposition \ref{prop: affinoid_algebras_are_banach_algebras}).} non-archimedean field $(K, |-|)$ with valuation ring $K^{\circ} := \{x \in K \mid |x| \leq 1\}$ and residue field $k := K^{\circ}/\m_K$, where $\m_K := \{x \in K \mid |x| < 1\}$ is the unique maximal ideal of $K^{\circ}$. In addition, we will be caring about the value group of $K$ (or rather, of $K^{\circ}$), which comes from the valuation $v: K^{\x} \to \R$ that determines the non-archimedean ultra-metric $|-| := \exp(v(-))$, and is given by $|K^{\x}| := \im v$ (note that this is well-defined because $v: K^{\x} \to \R$ is a group homomorphism); this is a totally ordered abelian group whose ordering is inherited from the archimedean ordering of $(\R, \leq)$.
     \end{convention}
 
     \subsection{Tate's rigid spaces}
         \subsubsection{Affinoid algebras}
             \begin{remark}
-                In addition, recall that the valuation ring $K^{\circ}$ is Noetherian if and only if the value group $\Gamma$ is a discrete subgroup of $\R$; in which case, $K^{\circ}$ will be a discrete valuation ring.
+                In addition, recall that the valuation ring $K^{\circ}$ is Noetherian if and only if the value group $|K^{\x}|$ is a discrete subgroup of $\R$; in which case, $K^{\circ}$ will be a discrete valuation ring.
             \end{remark}
             
             \begin{convention}[Multi-indices] \label{conv: mutli_indices}
@@ -60,7 +60,7 @@
                 \begin{proof}
                     
                 \end{proof}
-            \begin{corollary}
+            \begin{corollary}[Commutative non-archimedean Banach algebras] \label{coro: commutative_non_archimedean_banach_algebras}
                 There exists a category of commutative Banach $K$-algebras internal to $K\Ban$, whose objects are the commutative monoids internal to $K\Ban$ and whose morphisms are the continuous (i.e. bounded) $K$-algebra homomorphisms between them. This category shall be denoted by $K\Ban\Comm\Alg$. This category is complete and cocomplete, and in particular, coproducts are given by the completed tensor product $\hattensor_K$, and initial objects are isomorphic to the zero ring $0$.
             \end{corollary}
                 \begin{proof}
@@ -109,9 +109,6 @@
                 \begin{proof}
                     
                 \end{proof}
-            \begin{corollary}[Recentering is an automorphism] \label{coro: recentering_tate_algebras_over_non_archimedean_fields_is_an_automorphism}
-                For any fixed positve integer $n$ and any $n$-tuple $(c_1, ..., c_n)$ of elements $c_i \in K$, there is an continuous $K$-algebra automorphism on $K\{x_1, ..., x_n\}$ given by $f(x_1, ..., x_n) \mapsto f(x_1 - c_1, ..., x_n - c_n)$.
-            \end{corollary}
             
             Let us now move on to some important dimension-theoretic properties of affinoid algebras. The take-home point here is that the maximal spectrum $\Spm A$ of any affinoid $K$-algebra $A$ is, in a sense, \say{analytically quasi-compact and Hausdorff} due to there being a non-archimedean version of the Maximum Modulus Principal on this space (cf. theorem \ref{theorem: maximum_modulus_principle_for_affinoid_algebras}).
             \begin{lemma}[Tate algebras are topologically of finite type] \label{lemma: tate_algebras_are_topologically_of_finite_type}
